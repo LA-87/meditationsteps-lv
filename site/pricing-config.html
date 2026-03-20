@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Section Configurator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    :root {
+      --c-cream: #F5F0E8;
+      --c-cream-dark: #EDE6D8;
+      --c-forest: #1E3828;
+      --c-forest-light: #2D5A3F;
+      --c-sage: #7A9E87;
+      --c-sage-light: #A8C4B0;
+      --c-terracotta: #A8503A;
+      --c-terracotta-light: #C4764A;
+      --c-gold: #C4960A;
+      --c-warm-black: #1C1917;
+      --c-warm-gray: #57534E;
+      --c-warm-gray-light: #A8A29E;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      color: var(--c-warm-black);
+      background: #111;
+      overflow-x: hidden;
+    }
+
+    .font-display { font-family: var(--font-display); }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ============================================
+       CONFIG PANEL
+       ============================================ */
+
+    .config-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 360px;
+      max-height: 100vh;
+      overflow-y: auto;
+      z-index: 100;
+      background: rgba(30,56,40,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 1.5rem;
+      color: var(--c-cream);
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+      border-left: 1px solid rgba(245,240,232,0.1);
+    }
+    .config-panel.collapsed {
+      transform: translateX(100%);
+    }
+
+    .config-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 101;
+      background: var(--c-forest);
+      color: var(--c-cream);
+      border: 1px solid rgba(245,240,232,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .config-toggle:hover {
+      background: var(--c-forest-light);
+    }
+
+    .config-section {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+    }
+    .config-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .config-section h3 {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-sage-light);
+      margin-bottom: 1rem;
+    }
+
+    .config-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    .config-row label {
+      font-size: 0.78rem;
+      color: rgba(245,240,232,0.8);
+      flex-shrink: 0;
+      margin-right: 1rem;
+      min-width: 90px;
+    }
+    .config-row .value {
+      font-size: 0.7rem;
+      color: var(--c-sage-light);
+      min-width: 50px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .config-row input[type="range"] {
+      flex: 1;
+      max-width: 130px;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(245,240,232,0.15);
+      border-radius: 2px;
+      outline: none;
+      margin: 0 0.5rem;
+    }
+    .config-row input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--c-terracotta);
+      cursor: pointer;
+      border: 2px solid var(--c-cream);
+    }
+
+    .config-row select {
+      background: rgba(245,240,232,0.1);
+      color: var(--c-cream);
+      border: 1px solid rgba(245,240,232,0.15);
+      border-radius: 6px;
+      padding: 0.35rem 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      cursor: pointer;
+      outline: none;
+    }
+    .config-row select option {
+      background: var(--c-forest);
+    }
+
+    .config-presets {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .preset-btn {
+      background: rgba(245,240,232,0.08);
+      border: 1px solid rgba(245,240,232,0.12);
+      color: var(--c-cream);
+      padding: 0.4rem 0.75rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover {
+      background: rgba(245,240,232,0.15);
+      border-color: rgba(245,240,232,0.25);
+    }
+
+    .export-btn {
+      width: 100%;
+      background: var(--c-terracotta);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .export-btn:hover { background: #8B3D2A; }
+
+    .export-output {
+      margin-top: 0.75rem;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-family: monospace;
+      font-size: 0.65rem;
+      line-height: 1.5;
+      color: var(--c-sage-light);
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .config-hint {
+      font-size: 0.65rem;
+      color: rgba(245,240,232,0.4);
+      margin-top: 0.25rem;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+
+<body x-data="{
+  panelOpen: true,
+  showExport: false,
+
+  // Section background
+  sectionBgR: 30,
+  sectionBgG: 56,
+  sectionBgB: 40,
+
+  // Background image
+  bgImgOpacity: 15,
+  bgImgSaturation: 40,
+  bgImgBrightness: 60,
+
+  // Overlay
+  overlayStrength: 50,
+  overlayStyle: 'radial',
+
+  // Heading
+  headingSize: 4.5,
+  headingWeight: 300,
+
+  // Glass card
+  cardBlur: 20,
+  cardBg: 6,
+  cardBorder: 15,
+  cardRadius: 28,
+  cardPadding: 3,
+  cardShadow: 20,
+  cardSaturate: 150,
+  cardWidth: 540,
+
+  // Top edge highlight
+  edgeHighlight: 20,
+
+  // Radial glow
+  glowStrength: 10,
+  glowColor: 'sage',
+
+  // Price font
+  priceSize: 3.2,
+  cardTitleSize: 1.8,
+  cardSubtitleSize: 0.9,
+
+  // Button
+  btnBg: 75,
+  btnBlur: 12,
+  btnBorder: 18,
+  btnShadow: 25,
+  btnGlow: true,
+
+  // Inset highlights
+  insetTop: 10,
+  insetBottom: 3,
+
+  applyPreset(name) {
+    if (name === 'current') {
+      this.cardBlur = 20; this.cardBg = 6; this.cardBorder = 15;
+      this.cardRadius = 28; this.cardPadding = 3; this.cardShadow = 20;
+      this.cardSaturate = 150; this.edgeHighlight = 20; this.glowStrength = 10;
+      this.bgImgOpacity = 15; this.overlayStrength = 50;
+      this.headingSize = 4.5; this.priceSize = 3.2;
+      this.btnBg = 75; this.btnBlur = 12; this.btnBorder = 18;
+      this.insetTop = 10; this.insetBottom = 3;
+    } else if (name === 'heavy-frost') {
+      this.cardBlur = 40; this.cardBg = 12; this.cardBorder = 25;
+      this.cardRadius = 32; this.cardPadding = 3.5; this.cardShadow = 30;
+      this.cardSaturate = 170; this.edgeHighlight = 30; this.glowStrength = 18;
+      this.bgImgOpacity = 25; this.overlayStrength = 40;
+      this.headingSize = 5; this.priceSize = 3.5;
+      this.btnBg = 80; this.btnBlur = 16; this.btnBorder = 22;
+      this.insetTop = 15; this.insetBottom = 5;
+    } else if (name === 'subtle') {
+      this.cardBlur = 12; this.cardBg = 4; this.cardBorder = 10;
+      this.cardRadius = 20; this.cardPadding = 2.5; this.cardShadow = 12;
+      this.cardSaturate = 130; this.edgeHighlight = 12; this.glowStrength = 6;
+      this.bgImgOpacity = 10; this.overlayStrength = 60;
+      this.headingSize = 3.8; this.priceSize = 2.8;
+      this.btnBg = 70; this.btnBlur = 8; this.btnBorder = 14;
+      this.insetTop = 6; this.insetBottom = 2;
+    } else if (name === 'bold') {
+      this.cardBlur = 32; this.cardBg = 15; this.cardBorder = 22;
+      this.cardRadius = 24; this.cardPadding = 3; this.cardShadow = 35;
+      this.cardSaturate = 160; this.edgeHighlight = 25; this.glowStrength = 22;
+      this.bgImgOpacity = 30; this.overlayStrength = 35;
+      this.headingSize = 5; this.priceSize = 3.5;
+      this.btnBg = 85; this.btnBlur = 14; this.btnBorder = 20;
+      this.insetTop = 14; this.insetBottom = 5;
+    } else if (name === 'minimal') {
+      this.cardBlur = 8; this.cardBg = 3; this.cardBorder = 8;
+      this.cardRadius = 16; this.cardPadding = 2.5; this.cardShadow = 8;
+      this.cardSaturate = 120; this.edgeHighlight = 8; this.glowStrength = 0;
+      this.bgImgOpacity = 8; this.overlayStrength = 65;
+      this.headingSize = 3.5; this.priceSize = 2.8;
+      this.btnBg = 65; this.btnBlur = 6; this.btnBorder = 12;
+      this.insetTop = 5; this.insetBottom = 0;
+    }
+  },
+
+  getOverlayBg() {
+    const s = this.overlayStrength / 100;
+    const r = this.sectionBgR, g = this.sectionBgG, b = this.sectionBgB;
+    if (this.overlayStyle === 'radial') {
+      return 'radial-gradient(ellipse at center, rgba(' + r + ',' + g + ',' + b + ',' + (s * 0.6) + ') 0%, rgba(' + r + ',' + g + ',' + b + ',' + (s * 1.4) + ') 100%)';
+    } else if (this.overlayStyle === 'uniform') {
+      return 'rgba(' + r + ',' + g + ',' + b + ',' + s + ')';
+    } else if (name === 'top') {
+      return 'linear-gradient(to bottom, rgba(' + r + ',' + g + ',' + b + ',' + (s * 1.3) + ') 0%, rgba(' + r + ',' + g + ',' + b + ',' + (s * 0.5) + ') 50%, transparent 80%)';
+    }
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + s + ')';
+  },
+
+  getGlowRgb() {
+    if (this.glowColor === 'sage') return '122,158,135';
+    if (this.glowColor === 'terracotta') return '168,80,58';
+    if (this.glowColor === 'gold') return '196,150,10';
+    if (this.glowColor === 'cream') return '245,240,232';
+    return '122,158,135';
+  },
+
+  getExportCSS() {
+    const r = this.sectionBgR, g = this.sectionBgG, b = this.sectionBgB;
+    return '/* === PRICING SECTION === */\n\n' +
+      '/* Section */\n' +
+      '#tickets {\n' +
+      '  background: rgb(' + r + ',' + g + ',' + b + ');\n' +
+      '  position: relative;\n' +
+      '  overflow: hidden;\n' +
+      '}\n\n' +
+      '/* Background image */\n' +
+      '#tickets .bg-image {\n' +
+      '  opacity: ' + (this.bgImgOpacity / 100).toFixed(2) + ';\n' +
+      '  filter: saturate(' + (this.bgImgSaturation / 100).toFixed(2) + ') brightness(' + (this.bgImgBrightness / 100).toFixed(2) + ');\n' +
+      '}\n\n' +
+      '/* Overlay */\n' +
+      '#tickets .overlay {\n' +
+      '  background: ' + this.getOverlayBg() + ';\n' +
+      '}\n\n' +
+      '/* Heading */\n' +
+      '#tickets h2 {\n' +
+      '  font-size: ' + this.headingSize + 'rem;\n' +
+      '  font-weight: ' + this.headingWeight + ';\n' +
+      '}\n\n' +
+      '/* Glass price card */\n' +
+      '.price-glass-card {\n' +
+      '  background: rgba(245,240,232,' + (this.cardBg / 100).toFixed(2) + ');\n' +
+      '  backdrop-filter: blur(' + this.cardBlur + 'px) saturate(' + (this.cardSaturate / 100).toFixed(1) + ');\n' +
+      '  -webkit-backdrop-filter: blur(' + this.cardBlur + 'px) saturate(' + (this.cardSaturate / 100).toFixed(1) + ');\n' +
+      '  border: 1px solid rgba(245,240,232,' + (this.cardBorder / 100).toFixed(2) + ');\n' +
+      '  border-radius: ' + this.cardRadius + 'px;\n' +
+      '  padding: ' + this.cardPadding + 'rem ' + (this.cardPadding - 0.5) + 'rem;\n' +
+      '  max-width: ' + this.cardWidth + 'px;\n' +
+      '  box-shadow:\n' +
+      '    0 16px 48px rgba(0,0,0,' + (this.cardShadow / 100).toFixed(2) + '),\n' +
+      '    inset 0 1px 0 rgba(245,240,232,' + (this.insetTop / 100).toFixed(2) + '),\n' +
+      '    inset 0 -1px 0 rgba(0,0,0,' + (this.insetBottom / 100).toFixed(2) + ');\n' +
+      '}\n\n' +
+      '/* Top edge highlight */\n' +
+      '.price-glass-card::before {\n' +
+      '  background: linear-gradient(90deg, transparent, rgba(245,240,232,' + (this.edgeHighlight / 100).toFixed(2) + '), transparent);\n' +
+      '}\n\n' +
+      '/* Radial glow */\n' +
+      '.price-glass-card .glow {\n' +
+      '  background: radial-gradient(ellipse at center, rgba(' + this.getGlowRgb() + ',' + (this.glowStrength / 100).toFixed(2) + ') 0%, transparent 70%);\n' +
+      '}\n\n' +
+      '/* Card typography */\n' +
+      '.price-glass-card h3 { font-size: ' + this.cardTitleSize + 'rem; }\n' +
+      '.price-glass-card .price { font-size: ' + this.priceSize + 'rem; }\n\n' +
+      '/* Register button (frosted terracotta) */\n' +
+      '.btn-primary {\n' +
+      '  background: rgba(168,80,58,' + (this.btnBg / 100).toFixed(2) + ');\n' +
+      '  backdrop-filter: blur(' + this.btnBlur + 'px) saturate(1.3);\n' +
+      '  -webkit-backdrop-filter: blur(' + this.btnBlur + 'px) saturate(1.3);\n' +
+      '  border: 1px solid rgba(245,240,232,' + (this.btnBorder / 100).toFixed(2) + ');\n' +
+      '  box-shadow: 0 4px 16px rgba(168,80,58,' + (this.btnShadow / 100).toFixed(2) + '),\n' +
+      '    inset 0 1px 0 rgba(255,255,255,0.12);\n' +
+      '}';
+  }
+}">
+
+  <!-- CONFIG TOGGLE -->
+  <button class="config-toggle" @click="panelOpen = !panelOpen" x-text="panelOpen ? 'Hide Config' : 'Show Config'"></button>
+
+  <!-- CONFIG PANEL -->
+  <div class="config-panel" :class="{ 'collapsed': !panelOpen }">
+    <div style="margin-bottom:1rem;">
+      <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:400;color:var(--c-cream);margin-bottom:0.25rem;">Pricing Section</h2>
+      <p style="font-size:0.7rem;color:rgba(245,240,232,0.4);">Configurator for glass effects</p>
+    </div>
+
+    <div class="config-section">
+      <h3>Presets</h3>
+      <div class="config-presets">
+        <button class="preset-btn" @click="applyPreset('current')">Current</button>
+        <button class="preset-btn" @click="applyPreset('subtle')">Subtle</button>
+        <button class="preset-btn" @click="applyPreset('heavy-frost')">Heavy Frost</button>
+        <button class="preset-btn" @click="applyPreset('bold')">Bold</button>
+        <button class="preset-btn" @click="applyPreset('minimal')">Minimal</button>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Background Image</h3>
+      <div class="config-row">
+        <label>Opacity</label>
+        <input type="range" min="0" max="50" x-model.number="bgImgOpacity">
+        <span class="value" x-text="bgImgOpacity + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Saturation</label>
+        <input type="range" min="0" max="100" x-model.number="bgImgSaturation">
+        <span class="value" x-text="bgImgSaturation + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Brightness</label>
+        <input type="range" min="20" max="100" x-model.number="bgImgBrightness">
+        <span class="value" x-text="bgImgBrightness + '%'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Overlay</h3>
+      <div class="config-row">
+        <label>Style</label>
+        <select x-model="overlayStyle">
+          <option value="radial">Radial vignette</option>
+          <option value="uniform">Uniform</option>
+        </select>
+      </div>
+      <div class="config-row">
+        <label>Strength</label>
+        <input type="range" min="0" max="90" x-model.number="overlayStrength">
+        <span class="value" x-text="overlayStrength + '%'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Section Heading</h3>
+      <div class="config-row">
+        <label>Font size</label>
+        <input type="range" min="2" max="6" step="0.1" x-model.number="headingSize">
+        <span class="value" x-text="headingSize + 'rem'"></span>
+      </div>
+      <div class="config-row">
+        <label>Weight</label>
+        <select x-model.number="headingWeight">
+          <option value="300">300 (Light)</option>
+          <option value="400">400 (Regular)</option>
+          <option value="500">500 (Medium)</option>
+          <option value="600">600 (Semi)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Glass Card &mdash; Appearance</h3>
+      <div class="config-row">
+        <label>Blur</label>
+        <input type="range" min="0" max="50" x-model.number="cardBlur">
+        <span class="value" x-text="cardBlur + 'px'"></span>
+      </div>
+      <div class="config-row">
+        <label>BG opacity</label>
+        <input type="range" min="0" max="25" x-model.number="cardBg">
+        <span class="value" x-text="cardBg + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Saturate</label>
+        <input type="range" min="100" max="200" step="5" x-model.number="cardSaturate">
+        <span class="value" x-text="(cardSaturate / 100).toFixed(1)"></span>
+      </div>
+      <div class="config-row">
+        <label>Border</label>
+        <input type="range" min="0" max="40" x-model.number="cardBorder">
+        <span class="value" x-text="cardBorder + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Radius</label>
+        <input type="range" min="8" max="48" x-model.number="cardRadius">
+        <span class="value" x-text="cardRadius + 'px'"></span>
+      </div>
+      <div class="config-row">
+        <label>Padding</label>
+        <input type="range" min="1.5" max="5" step="0.25" x-model.number="cardPadding">
+        <span class="value" x-text="cardPadding + 'rem'"></span>
+      </div>
+      <div class="config-row">
+        <label>Shadow</label>
+        <input type="range" min="0" max="50" x-model.number="cardShadow">
+        <span class="value" x-text="cardShadow + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Width</label>
+        <input type="range" min="400" max="700" step="10" x-model.number="cardWidth">
+        <span class="value" x-text="cardWidth + 'px'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Glass Card &mdash; Details</h3>
+      <div class="config-row">
+        <label>Edge highlight</label>
+        <input type="range" min="0" max="40" x-model.number="edgeHighlight">
+        <span class="value" x-text="edgeHighlight + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Inset top</label>
+        <input type="range" min="0" max="30" x-model.number="insetTop">
+        <span class="value" x-text="insetTop + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Inset bottom</label>
+        <input type="range" min="0" max="15" x-model.number="insetBottom">
+        <span class="value" x-text="insetBottom + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Glow</label>
+        <input type="range" min="0" max="30" x-model.number="glowStrength">
+        <span class="value" x-text="glowStrength + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Glow color</label>
+        <select x-model="glowColor">
+          <option value="sage">Sage</option>
+          <option value="terracotta">Terracotta</option>
+          <option value="gold">Gold</option>
+          <option value="cream">Cream</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Card Typography</h3>
+      <div class="config-row">
+        <label>Title size</label>
+        <input type="range" min="1.2" max="2.5" step="0.1" x-model.number="cardTitleSize">
+        <span class="value" x-text="cardTitleSize + 'rem'"></span>
+      </div>
+      <div class="config-row">
+        <label>Subtitle size</label>
+        <input type="range" min="0.7" max="1.2" step="0.05" x-model.number="cardSubtitleSize">
+        <span class="value" x-text="cardSubtitleSize + 'rem'"></span>
+      </div>
+      <div class="config-row">
+        <label>Price size</label>
+        <input type="range" min="2" max="5" step="0.1" x-model.number="priceSize">
+        <span class="value" x-text="priceSize + 'rem'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Register Button (Frosted)</h3>
+      <div class="config-row">
+        <label>BG opacity</label>
+        <input type="range" min="40" max="100" x-model.number="btnBg">
+        <span class="value" x-text="btnBg + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Blur</label>
+        <input type="range" min="0" max="24" x-model.number="btnBlur">
+        <span class="value" x-text="btnBlur + 'px'"></span>
+      </div>
+      <div class="config-row">
+        <label>Border</label>
+        <input type="range" min="0" max="35" x-model.number="btnBorder">
+        <span class="value" x-text="btnBorder + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Glow</label>
+        <input type="range" min="0" max="50" x-model.number="btnShadow">
+        <span class="value" x-text="btnShadow + '%'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Export</h3>
+      <button class="export-btn" @click="showExport = !showExport" x-text="showExport ? 'Hide CSS' : 'Export CSS'"></button>
+      <div class="export-output" x-show="showExport" x-text="getExportCSS()"></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PRICING SECTION PREVIEW
+       ============================================ -->
+  <section id="tickets" style="padding:6rem 1.5rem;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;"
+           :style="'background:rgb(' + sectionBgR + ',' + sectionBgG + ',' + sectionBgB + ')'">
+
+    <!-- Background image -->
+    <div style="position:absolute;inset:0;">
+      <img src="images/activity-7.jpg" alt=""
+           style="width:100%;height:100%;object-fit:cover;"
+           :style="'opacity:' + (bgImgOpacity/100) + ';filter:saturate(' + (bgImgSaturation/100) + ') brightness(' + (bgImgBrightness/100) + ')'">
+    </div>
+
+    <!-- Overlay -->
+    <div style="position:absolute;inset:0;" :style="'background:' + getOverlayBg()"></div>
+
+    <div style="max-width:1000px;margin:0 auto;width:100%;position:relative;z-index:1;">
+
+      <!-- Section heading -->
+      <div style="text-align:center;margin-bottom:4rem;">
+        <span style="color:var(--c-terracotta-light);font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Secure your spot</span>
+        <h2 class="font-display" :style="'font-size:' + headingSize + 'rem;font-weight:' + headingWeight + ';color:var(--c-cream);margin-top:0.75rem;letter-spacing:-0.02em;'">
+          Reserve Your Place
+        </h2>
+        <p style="color:var(--c-sage-light);margin-top:1rem;font-size:1rem;">
+          Includes: accommodation, all vegetarian meals, all teachings &amp; practices, personal meditation instruction.
+        </p>
+      </div>
+
+      <!-- Glass price card -->
+      <div :style="'max-width:' + cardWidth + 'px;margin:0 auto;'">
+        <div style="text-align:center;position:relative;overflow:hidden;"
+             :style="'background:rgba(245,240,232,' + (cardBg/100) + ');backdrop-filter:blur(' + cardBlur + 'px) saturate(' + (cardSaturate/100) + ');-webkit-backdrop-filter:blur(' + cardBlur + 'px) saturate(' + (cardSaturate/100) + ');border:1px solid rgba(245,240,232,' + (cardBorder/100) + ');border-radius:' + cardRadius + 'px;padding:' + cardPadding + 'rem ' + (cardPadding - 0.5) + 'rem;box-shadow:0 16px 48px rgba(0,0,0,' + (cardShadow/100) + '),inset 0 1px 0 rgba(245,240,232,' + (insetTop/100) + '),inset 0 -1px 0 rgba(0,0,0,' + (insetBottom/100) + ')'">
+
+          <!-- Top edge highlight -->
+          <div style="position:absolute;top:0;left:10%;right:10%;height:1px;pointer-events:none;"
+               :style="'background:linear-gradient(90deg,transparent,rgba(245,240,232,' + (edgeHighlight/100) + '),transparent)'"></div>
+
+          <!-- Radial glow -->
+          <div style="position:absolute;bottom:-40%;left:-10%;right:-10%;height:70%;pointer-events:none;"
+               :style="'background:radial-gradient(ellipse at center,rgba(' + getGlowRgb() + ',' + (glowStrength/100) + ') 0%,transparent 70%)'"></div>
+
+          <!-- Card content -->
+          <div style="position:relative;z-index:1;margin-bottom:2.5rem;">
+            <span :style="'font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-sage-light);font-weight:500;'">April 30 &ndash; May 3, 2026</span>
+            <h3 class="font-display" :style="'font-size:' + cardTitleSize + 'rem;font-weight:400;margin-top:0.5rem;color:var(--c-cream);'">Yoga &amp; Meditation Retreat</h3>
+            <p :style="'font-size:' + cardSubtitleSize + 'rem;color:var(--c-sage-light);margin-top:0.35rem;'">4 days of immersion &middot; Open to everyone</p>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:2rem 0;border-top:1px solid rgba(245,240,232,0.1);position:relative;z-index:1;">
+            <div>
+              <div style="position:relative;display:inline-block;">
+                <span style="position:absolute;top:-1.4rem;left:50%;transform:translateX(-50%);background:var(--c-gold);color:var(--c-warm-black);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:600;white-space:nowrap;">Save 30 EUR</span>
+              </div>
+              <span style="font-size:0.85rem;color:var(--c-sage-light);display:block;margin-top:0.5rem;">Early bird <em>(before 15.04.2026)</em></span>
+              <div class="font-display" :style="'font-size:' + priceSize + 'rem;font-weight:600;margin-top:0.25rem;color:var(--c-cream);'">300 <span style="font-size:1.1rem;font-weight:400;">EUR</span></div>
+            </div>
+            <div style="border-left:1px solid rgba(245,240,232,0.1);padding-left:2rem;">
+              <span style="font-size:0.85rem;color:var(--c-sage-light);display:block;margin-top:0.5rem;">Regular price</span>
+              <div class="font-display" :style="'font-size:' + priceSize + 'rem;font-weight:600;margin-top:0.25rem;color:var(--c-cream);'">330 <span style="font-size:1.1rem;font-weight:400;">EUR</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Register CTA -->
+      <div style="text-align:center;margin-top:3.5rem;">
+        <a href="#" onclick="event.preventDefault()"
+           style="display:inline-flex;align-items:center;gap:0.5rem;padding:1.25rem 3.5rem;color:white;font-family:var(--font-body);font-size:1.05rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-radius:100px;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;"
+           :style="'background:rgba(168,80,58,' + (btnBg/100) + ');backdrop-filter:blur(' + btnBlur + 'px) saturate(1.3);-webkit-backdrop-filter:blur(' + btnBlur + 'px) saturate(1.3);border:1px solid rgba(245,240,232,' + (btnBorder/100) + ');box-shadow:0 4px 16px rgba(168,80,58,' + (btnShadow/100) + '),inset 0 1px 0 rgba(255,255,255,0.12)'">
+          Register Now
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p style="margin-top:1.25rem;font-size:0.85rem;color:var(--c-sage-light);">
+          Questions? Contact us on <a href="#" onclick="event.preventDefault()" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:2px;">Telegram @Virabhava21</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

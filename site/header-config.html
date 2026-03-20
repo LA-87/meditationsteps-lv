@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Configurator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    :root {
+      --c-cream: #F5F0E8;
+      --c-cream-dark: #EDE6D8;
+      --c-forest: #1E3828;
+      --c-forest-light: #2D5A3F;
+      --c-sage: #7A9E87;
+      --c-sage-light: #A8C4B0;
+      --c-terracotta: #A8503A;
+      --c-terracotta-light: #C4764A;
+      --c-gold: #C4960A;
+      --c-warm-black: #1C1917;
+      --c-warm-gray: #57534E;
+      --c-warm-gray-light: #A8A29E;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      color: var(--c-warm-black);
+      background: var(--c-cream);
+      overflow-x: hidden;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 1rem 2.5rem; background: var(--c-terracotta); color: white;
+      font-family: var(--font-body); font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      border-radius: 100px; border: none; cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #8B3D2A;
+      box-shadow: 0 8px 24px rgba(28,25,23,0.25);
+    }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 2rem; background: transparent; color: var(--c-cream);
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      border-radius: 100px; border: 1.5px solid rgba(245,240,232,0.4); cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover { background: var(--c-cream); color: var(--c-forest); border-color: var(--c-cream); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ============================================
+       HERO
+       ============================================ */
+
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: #0F1F15;
+    }
+
+    .hero-triptych {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      transition: background 0.3s;
+    }
+
+    /* ---- GLASS CARD — absolutely positioned, draggable ---- */
+    .glass-card {
+      position: absolute;
+      z-index: 2;
+      cursor: grab;
+      user-select: none;
+      transition: box-shadow 0.2s;
+    }
+    .glass-card.dragging {
+      cursor: grabbing;
+      box-shadow: 0 16px 64px rgba(0,0,0,0.4) !important;
+    }
+
+    /* Drag hint */
+    .glass-drag-hint {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(245,240,232,0.3);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+    .glass-card.dragging .glass-drag-hint,
+    .glass-card:not(:hover) .glass-drag-hint { opacity: 0; }
+    .drag-dots {
+      display: grid;
+      grid-template-columns: repeat(3, 3px);
+      gap: 2px;
+    }
+    .drag-dots span {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(245,240,232,0.3);
+    }
+
+    /* Resize handle */
+    .glass-resize {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 24px;
+      height: 24px;
+      cursor: nwse-resize;
+      z-index: 10;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 4px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .glass-card:hover .glass-resize { opacity: 1; }
+    .glass-resize svg {
+      width: 12px;
+      height: 12px;
+      color: rgba(245,240,232,0.35);
+    }
+
+    /* Shine line at top */
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,240,232,0.3), transparent);
+      pointer-events: none;
+    }
+
+    .glass-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      color: rgba(245,240,232,0.6);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    .glass-eyebrow .line {
+      width: 32px;
+      height: 1px;
+      background: var(--c-terracotta-light);
+    }
+
+    .glass-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--c-cream);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .glass-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--c-sage-light);
+    }
+
+    .glass-desc {
+      color: rgba(245,240,232,0.7);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .glass-date {
+      color: rgba(245,240,232,0.85);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .glass-date strong {
+      color: var(--c-cream);
+      font-weight: 600;
+    }
+    .glass-date .tag {
+      color: var(--c-sage-light);
+    }
+
+    .glass-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================
+       CONFIG PANEL
+       ============================================ */
+
+    .config-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 340px;
+      max-height: 100vh;
+      overflow-y: auto;
+      z-index: 100;
+      background: rgba(30,56,40,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 1.5rem;
+      color: var(--c-cream);
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+      border-left: 1px solid rgba(245,240,232,0.1);
+    }
+    .config-panel.collapsed {
+      transform: translateX(100%);
+    }
+
+    .config-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 101;
+      background: var(--c-forest);
+      color: var(--c-cream);
+      border: 1px solid rgba(245,240,232,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .config-toggle:hover {
+      background: var(--c-forest-light);
+    }
+
+    .config-section {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+    }
+    .config-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .config-section h3 {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-sage-light);
+      margin-bottom: 1rem;
+    }
+
+    .config-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    .config-row label {
+      font-size: 0.78rem;
+      color: rgba(245,240,232,0.8);
+      flex-shrink: 0;
+      margin-right: 1rem;
+    }
+    .config-row .value {
+      font-size: 0.7rem;
+      color: var(--c-sage-light);
+      min-width: 44px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .config-row input[type="range"] {
+      flex: 1;
+      max-width: 140px;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(245,240,232,0.15);
+      border-radius: 2px;
+      outline: none;
+      margin: 0 0.5rem;
+    }
+    .config-row input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--c-terracotta);
+      cursor: pointer;
+      border: 2px solid var(--c-cream);
+    }
+
+    .config-row select {
+      background: rgba(245,240,232,0.1);
+      color: var(--c-cream);
+      border: 1px solid rgba(245,240,232,0.15);
+      border-radius: 6px;
+      padding: 0.35rem 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      cursor: pointer;
+      outline: none;
+    }
+    .config-row select option {
+      background: var(--c-forest);
+    }
+
+    .config-presets {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .preset-btn {
+      background: rgba(245,240,232,0.08);
+      border: 1px solid rgba(245,240,232,0.12);
+      color: var(--c-cream);
+      padding: 0.4rem 0.75rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover {
+      background: rgba(245,240,232,0.15);
+      border-color: rgba(245,240,232,0.25);
+    }
+
+    .config-hint {
+      font-size: 0.65rem;
+      color: rgba(245,240,232,0.4);
+      margin-top: 0.25rem;
+      line-height: 1.4;
+    }
+
+    .snap-btn {
+      background: rgba(245,240,232,0.06);
+      border: 1px solid rgba(245,240,232,0.1);
+      color: rgba(245,240,232,0.7);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .snap-btn:hover {
+      background: rgba(245,240,232,0.12);
+      color: var(--c-cream);
+    }
+
+    .export-btn {
+      width: 100%;
+      background: var(--c-terracotta);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .export-btn:hover { background: #8B3D2A; }
+
+    .export-output {
+      margin-top: 0.75rem;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-family: monospace;
+      font-size: 0.65rem;
+      line-height: 1.5;
+      color: var(--c-sage-light);
+      max-height: 200px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  </style>
+</head>
+
+<body x-data="{
+  panelOpen: true,
+  showExport: false,
+
+  // Images
+  sideOpacity: 60,
+  sideBrightness: 70,
+  sideSaturation: 50,
+  centerOpacity: 75,
+  centerBrightness: 95,
+  centerSaturation: 80,
+
+  // Overlay
+  overlayStrength: 30,
+  overlayStyle: 'radial',
+
+  // Glass card appearance
+  glassBlur: 24,
+  glassBg: 8,
+  glassBorder: 15,
+  glassRadius: 32,
+  glassPadding: 3.5,
+  glassShadow: 20,
+  glassTextAlign: 'center',
+
+  // Glass card position & size (percentage of hero)
+  glassX: 50,
+  glassY: 50,
+  glassW: 520,
+
+  // Drag state
+  dragging: false,
+  resizing: false,
+  dragStartX: 0,
+  dragStartY: 0,
+  dragStartGlassX: 0,
+  dragStartGlassY: 0,
+  resizeStartX: 0,
+  resizeStartW: 0,
+
+  init() {
+    // Center the card initially
+    this.$nextTick(() => {
+      const hero = document.getElementById('hero');
+      if (hero) {
+        this.glassX = hero.offsetWidth / 2;
+        this.glassY = hero.offsetHeight / 2;
+      }
+    });
+
+    // Global mouse handlers
+    window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    window.addEventListener('mouseup', () => this.onMouseUp());
+  },
+
+  startDrag(e) {
+    // Don't drag if clicking buttons/links inside the card
+    if (e.target.closest('a, button, .glass-resize')) return;
+    this.dragging = true;
+    this.dragStartX = e.clientX;
+    this.dragStartY = e.clientY;
+    this.dragStartGlassX = this.glassX;
+    this.dragStartGlassY = this.glassY;
+    e.preventDefault();
+  },
+
+  startResize(e) {
+    this.resizing = true;
+    this.resizeStartX = e.clientX;
+    this.resizeStartW = this.glassW;
+    e.preventDefault();
+    e.stopPropagation();
+  },
+
+  onMouseMove(e) {
+    if (this.dragging) {
+      const dx = e.clientX - this.dragStartX;
+      const dy = e.clientY - this.dragStartY;
+      this.glassX = this.dragStartGlassX + dx;
+      this.glassY = this.dragStartGlassY + dy;
+    }
+    if (this.resizing) {
+      const dx = e.clientX - this.resizeStartX;
+      this.glassW = Math.max(320, Math.min(900, this.resizeStartW + dx * 2));
+    }
+  },
+
+  onMouseUp() {
+    this.dragging = false;
+    this.resizing = false;
+  },
+
+  snapTo(pos) {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+    const hw = hero.offsetWidth;
+    const hh = hero.offsetHeight;
+    const pad = 48;
+
+    if (pos === 'center') {
+      this.glassX = hw / 2;
+      this.glassY = hh / 2;
+      this.glassTextAlign = 'center';
+    } else if (pos === 'left') {
+      this.glassX = pad + this.glassW / 2;
+      this.glassY = hh / 2;
+      this.glassTextAlign = 'left';
+    } else if (pos === 'bottom-center') {
+      this.glassX = hw / 2;
+      this.glassY = hh - pad - 150;
+      this.glassTextAlign = 'center';
+    } else if (pos === 'bottom-left') {
+      this.glassX = pad + this.glassW / 2;
+      this.glassY = hh - pad - 150;
+      this.glassTextAlign = 'left';
+    }
+  },
+
+  applyPreset(name) {
+    if (name === 'subtle') {
+      this.glassBlur = 16; this.glassBg = 5; this.glassBorder = 8;
+      this.glassRadius = 24; this.glassShadow = 10;
+      this.sideOpacity = 70; this.centerOpacity = 85;
+      this.overlayStrength = 15;
+    } else if (name === 'frosted') {
+      this.glassBlur = 32; this.glassBg = 12; this.glassBorder = 20;
+      this.glassRadius = 32; this.glassShadow = 25;
+      this.sideOpacity = 55; this.centerOpacity = 70;
+      this.overlayStrength = 35;
+    } else if (name === 'bold') {
+      this.glassBlur = 40; this.glassBg = 18; this.glassBorder = 25;
+      this.glassRadius = 20; this.glassShadow = 35;
+      this.sideOpacity = 50; this.centerOpacity = 60;
+      this.overlayStrength = 45;
+    } else if (name === 'minimal') {
+      this.glassBlur = 8; this.glassBg = 3; this.glassBorder = 6;
+      this.glassRadius = 16; this.glassShadow = 8;
+      this.sideOpacity = 75; this.centerOpacity = 90;
+      this.overlayStrength = 10;
+    }
+  },
+
+  getOverlayBg() {
+    const s = this.overlayStrength / 100;
+    if (this.overlayStyle === 'radial') {
+      return 'radial-gradient(ellipse at center, rgba(15,31,21,' + (s * 0.3) + ') 0%, rgba(15,31,21,' + (s * 1.2) + ') 100%)';
+    } else if (this.overlayStyle === 'bottom') {
+      return 'linear-gradient(to top, rgba(15,31,21,' + (s * 1.5) + ') 0%, rgba(15,31,21,' + (s * 0.4) + ') 40%, transparent 65%)';
+    } else if (this.overlayStyle === 'uniform') {
+      return 'rgba(15,31,21,' + (s * 0.8) + ')';
+    } else if (this.overlayStyle === 'left') {
+      return 'linear-gradient(to right, rgba(15,31,21,' + (s * 1.4) + ') 0%, rgba(15,31,21,' + (s * 0.3) + ') 50%, transparent 70%)';
+    }
+    return 'none';
+  },
+
+  getExportCSS() {
+    const hero = document.getElementById('hero');
+    const hw = hero ? hero.offsetWidth : 1440;
+    const hh = hero ? hero.offsetHeight : 900;
+    const leftPx = Math.round(this.glassX - this.glassW / 2);
+    const topPx = Math.round(this.glassY - 200);
+    return '/* Side panels */\n.hero-panel.side img {\n  opacity: ' + (this.sideOpacity/100) + ';\n  filter: saturate(' + (this.sideSaturation/100) + ') brightness(' + (this.sideBrightness/100) + ');\n}\n\n/* Center panel */\n.hero-panel.center img {\n  opacity: ' + (this.centerOpacity/100) + ';\n  filter: saturate(' + (this.centerSaturation/100) + ') brightness(' + (this.centerBrightness/100) + ');\n}\n\n/* Overlay */\n.hero-overlay {\n  background: ' + this.getOverlayBg() + ';\n}\n\n/* Glass card */\n.glass-card {\n  background: rgba(245,240,232,' + (this.glassBg/100) + ');\n  backdrop-filter: blur(' + this.glassBlur + 'px) saturate(1.4);\n  border: 1px solid rgba(245,240,232,' + (this.glassBorder/100) + ');\n  border-radius: ' + this.glassRadius + 'px;\n  padding: ' + this.glassPadding + 'rem;\n  box-shadow: 0 8px 32px rgba(0,0,0,' + (this.glassShadow/100) + ');\n  width: ' + this.glassW + 'px;\n  text-align: ' + this.glassTextAlign + ';\n  /* Position: ' + leftPx + 'px from left, ' + topPx + 'px from top */\n}';
+  }
+}">
+
+  <!-- CONFIG TOGGLE -->
+  <button class="config-toggle" @click="panelOpen = !panelOpen" x-text="panelOpen ? 'Hide Config' : 'Show Config'"></button>
+
+  <!-- CONFIG PANEL -->
+  <div class="config-panel" :class="{ 'collapsed': !panelOpen }">
+    <div class="config-section">
+      <h3>Presets</h3>
+      <div class="config-presets">
+        <button class="preset-btn" @click="applyPreset('minimal')">Minimal</button>
+        <button class="preset-btn" @click="applyPreset('subtle')">Subtle</button>
+        <button class="preset-btn" @click="applyPreset('frosted')">Frosted</button>
+        <button class="preset-btn" @click="applyPreset('bold')">Bold</button>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Glass Card &mdash; Position &amp; Size</h3>
+      <p class="config-hint">Drag the card to position it. Drag the corner to resize.</p>
+      <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.75rem;">
+        <button class="snap-btn" @click="snapTo('center')">Snap: Center</button>
+        <button class="snap-btn" @click="snapTo('left')">Snap: Left</button>
+        <button class="snap-btn" @click="snapTo('bottom-center')">Snap: Bottom</button>
+        <button class="snap-btn" @click="snapTo('bottom-left')">Snap: Bottom Left</button>
+      </div>
+      <div class="config-row" style="margin-top:1rem;">
+        <label>Width</label>
+        <input type="range" min="320" max="900" step="10" x-model.number="glassW">
+        <span class="value" x-text="glassW + 'px'"></span>
+      </div>
+      <div class="config-row">
+        <label>Text align</label>
+        <select x-model="glassTextAlign">
+          <option value="center">Center</option>
+          <option value="left">Left</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Glass Card &mdash; Appearance</h3>
+      <div class="config-row">
+        <label>Blur</label>
+        <input type="range" min="0" max="50" x-model="glassBlur">
+        <span class="value" x-text="glassBlur + 'px'"></span>
+      </div>
+      <div class="config-row">
+        <label>BG opacity</label>
+        <input type="range" min="0" max="30" x-model="glassBg">
+        <span class="value" x-text="glassBg + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Border</label>
+        <input type="range" min="0" max="40" x-model="glassBorder">
+        <span class="value" x-text="glassBorder + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Radius</label>
+        <input type="range" min="0" max="48" x-model="glassRadius">
+        <span class="value" x-text="glassRadius + 'px'"></span>
+      </div>
+      <div class="config-row">
+        <label>Padding</label>
+        <input type="range" min="1.5" max="5" step="0.25" x-model="glassPadding">
+        <span class="value" x-text="glassPadding + 'rem'"></span>
+      </div>
+      <div class="config-row">
+        <label>Shadow</label>
+        <input type="range" min="0" max="50" x-model="glassShadow">
+        <span class="value" x-text="glassShadow + '%'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Side Panels (Teachers)</h3>
+      <div class="config-row">
+        <label>Opacity</label>
+        <input type="range" min="20" max="100" x-model="sideOpacity">
+        <span class="value" x-text="sideOpacity + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Brightness</label>
+        <input type="range" min="30" max="100" x-model="sideBrightness">
+        <span class="value" x-text="sideBrightness + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Saturation</label>
+        <input type="range" min="0" max="100" x-model="sideSaturation">
+        <span class="value" x-text="sideSaturation + '%'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Center Panel (Gong)</h3>
+      <div class="config-row">
+        <label>Opacity</label>
+        <input type="range" min="20" max="100" x-model="centerOpacity">
+        <span class="value" x-text="centerOpacity + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Brightness</label>
+        <input type="range" min="30" max="120" x-model="centerBrightness">
+        <span class="value" x-text="centerBrightness + '%'"></span>
+      </div>
+      <div class="config-row">
+        <label>Saturation</label>
+        <input type="range" min="0" max="100" x-model="centerSaturation">
+        <span class="value" x-text="centerSaturation + '%'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Overlay</h3>
+      <div class="config-row">
+        <label>Style</label>
+        <select x-model="overlayStyle">
+          <option value="radial">Radial vignette</option>
+          <option value="bottom">Bottom gradient</option>
+          <option value="left">Left gradient</option>
+          <option value="uniform">Uniform</option>
+        </select>
+      </div>
+      <div class="config-row">
+        <label>Strength</label>
+        <input type="range" min="0" max="80" x-model="overlayStrength">
+        <span class="value" x-text="overlayStrength + '%'"></span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Export</h3>
+      <button class="export-btn" @click="showExport = !showExport" x-text="showExport ? 'Hide CSS' : 'Export CSS'"></button>
+      <div class="export-output" x-show="showExport" x-text="getExportCSS()"></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <!-- Triptych -->
+    <div class="hero-triptych">
+      <div class="hero-panel">
+        <img src="images/dada-hero.jpeg" alt="" style="object-position:center 20%;"
+             :style="'opacity:' + (sideOpacity/100) + ';filter:saturate(' + (sideSaturation/100) + ') brightness(' + (sideBrightness/100) + ')'">
+      </div>
+      <div class="hero-panel">
+        <img src="images/didi-hero.jpg" alt=""
+             :style="'opacity:' + (centerOpacity/100) + ';filter:saturate(' + (centerSaturation/100) + ') brightness(' + (centerBrightness/100) + ')'">
+      </div>
+      <div class="hero-panel">
+        <img src="images/dada-portrait.png" alt="" style="object-position:center 30%;"
+             :style="'opacity:' + (sideOpacity/100) + ';filter:saturate(' + (sideSaturation/100) + ') brightness(' + (sideBrightness/100) + ')'">
+      </div>
+    </div>
+    <div class="hero-overlay" :style="'background:' + getOverlayBg()"></div>
+
+    <!-- Glass card — draggable & resizable -->
+    <div class="glass-card"
+         :class="{ 'dragging': dragging }"
+         @mousedown="startDrag($event)"
+         :style="'left:' + glassX + 'px;top:' + glassY + 'px;transform:translate(-50%,-50%);width:' + glassW + 'px;backdrop-filter:blur(' + glassBlur + 'px) saturate(1.4);-webkit-backdrop-filter:blur(' + glassBlur + 'px) saturate(1.4);background:rgba(245,240,232,' + (glassBg/100) + ');border:1px solid rgba(245,240,232,' + (glassBorder/100) + ');border-radius:' + glassRadius + 'px;padding:' + glassPadding + 'rem;box-shadow:0 8px 32px rgba(0,0,0,' + (glassShadow/100) + '),inset 0 1px 0 rgba(245,240,232,0.1);text-align:' + glassTextAlign">
+
+      <!-- Drag hint -->
+      <div class="glass-drag-hint">
+        <div class="drag-dots">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+        drag to move
+      </div>
+
+      <div class="glass-eyebrow" :style="glassTextAlign === 'center' ? 'justify-content:center' : ''">
+        <span class="line"></span>
+        <span>Lithuania &middot; April 30 &ndash; May 3, 2026</span>
+        <span class="line"></span>
+      </div>
+
+      <h1 class="glass-title">
+        Yoga Retreat<br>
+        <em>in the Baltics</em>
+      </h1>
+
+      <p class="glass-date">
+        <strong>April 30<sup>th</sup> &ndash; May 3<sup>rd</sup>, 2026</strong> &mdash; <span class="tag">Open to everyone</span>
+      </p>
+
+      <div class="glass-actions" :style="glassTextAlign === 'center' ? 'justify-content:center' : ''">
+        <a href="#" class="btn-primary" onclick="event.preventDefault()">
+          Register Now
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Resize handle -->
+      <div class="glass-resize" @mousedown="startResize($event)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15l-6 6M21 9l-12 12"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+</body>
+</html>
