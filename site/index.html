@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meditation Steps Latvia — Yoga Retreat in the Baltics 2025</title>
+  <meta name="description" content="7-day yoga & meditation retreat in Lithuania. April 28 - May 4, 2025. Guided by Dada Sadananda & Didi Ananda Sanjana. Meditation, asanas, lectures, gong meditation. Dragonfly Land, near Vilnius.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yoga Retreat in the Baltics — Meditation Steps Latvia">
+  <meta property="og:description" content="7-day yoga & meditation retreat in Lithuania. April 28 - May 4, 2025. Guided meditation, asanas, lectures, gong sessions.">
+  <meta property="og:image" content="images/dada-hero.jpeg">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    :root {
+      --c-cream: #F5F0E8;
+      --c-cream-dark: #EDE6D8;
+      --c-forest: #1E3828;
+      --c-forest-light: #2D5A3F;
+      --c-sage: #7A9E87;
+      --c-sage-light: #A8C4B0;
+      --c-terracotta: #A8503A;
+      --c-terracotta-light: #C4764A;
+      --c-gold: #C4960A;
+      --c-warm-black: #1C1917;
+      --c-warm-gray: #57534E;
+      --c-warm-gray-light: #A8A29E;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--c-warm-black);
+      background: var(--c-cream);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--c-cream); }
+    ::-webkit-scrollbar-thumb { background: var(--c-sage); border-radius: 4px; }
+
+    .font-display { font-family: var(--font-display); }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* Reveal animations */
+    .reveal-up {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-up.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+    .reveal-scale {
+      opacity: 0; transform: scale(0.92);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-scale.revealed { opacity: 1; transform: scale(1); }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+    .stagger-7 { transition-delay: 0.7s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-up, .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Focus styles */
+    :focus-visible { outline: 2px solid var(--c-terracotta); outline-offset: 3px; border-radius: 4px; }
+
+    /* Nav */
+    .nav-link {
+      position: relative; letter-spacing: 0.08em; text-transform: uppercase;
+      font-size: 0.75rem; font-weight: 500; color: var(--c-cream); text-decoration: none; padding: 0.25rem 0;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+      background: var(--c-cream); transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .deco-line { width: 60px; height: 2px; background: var(--c-terracotta); }
+
+    /* Hero */
+    .hero-section {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden; background: var(--c-forest);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr 1fr;
+    }
+    .hero-bg-img {
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.35;
+      filter: brightness(0.7) saturate(0.8);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(30,56,40,0.85) 0%, rgba(30,56,40,0.6) 50%, rgba(30,56,40,0.8) 100%);
+    }
+
+    /* Activity cards */
+    .activity-card {
+      position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 1; cursor: default;
+    }
+    .activity-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .activity-card:hover img { transform: scale(1.08); }
+    .activity-card .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(30,56,40,0.9) 0%, rgba(30,56,40,0.3) 50%, transparent 100%);
+      display: flex; align-items: flex-end; padding: 1.5rem; transition: background 0.4s ease;
+    }
+    .activity-card:hover .overlay {
+      background: linear-gradient(to top, rgba(30,56,40,0.95) 0%, rgba(30,56,40,0.5) 60%, rgba(30,56,40,0.2) 100%);
+    }
+
+    /* Schedule */
+    .schedule-day { border-bottom: 1px solid rgba(30,56,40,0.12); }
+    .schedule-day:last-child { border-bottom: none; }
+    .schedule-item {
+      display: grid; grid-template-columns: 120px 1fr; gap: 1rem;
+      padding: 0.5rem 0; font-size: 0.95rem; line-height: 1.6;
+    }
+    .schedule-item .time { font-weight: 600; color: var(--c-forest); white-space: nowrap; }
+
+    /* Price cards */
+    .price-card {
+      background: white; border-radius: 16px; padding: 2.5rem;
+      position: relative; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
+    }
+    .price-card.featured { background: var(--c-forest); color: var(--c-cream); }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 1rem 2.5rem; background: var(--c-terracotta); color: white;
+      font-family: var(--font-body); font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      border-radius: 100px; border: none; cursor: pointer;
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .btn-primary:hover {
+      background: #8B3D2A; transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(28, 25, 23, 0.25);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 2rem; background: transparent; color: var(--c-cream);
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      border-radius: 100px; border: 1.5px solid rgba(245,240,232,0.5); cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover { background: var(--c-cream); color: var(--c-forest); border-color: var(--c-cream); }
+
+    /* Packing */
+    .pack-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+    .pack-icon {
+      width: 80px; height: 80px; border-radius: 50%; background: white;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.3s ease;
+    }
+    .pack-icon:hover { transform: scale(1.1) rotate(-5deg); }
+    .pack-icon img { width: 44px; height: 44px; object-fit: contain; }
+
+    /* Teacher card */
+    .teacher-card { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .teacher-card.reverse { direction: rtl; }
+    .teacher-card.reverse > * { direction: ltr; }
+    .teacher-img-wrap {
+      position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4;
+    }
+    .teacher-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    .lang-btn {
+      padding: 0.25rem 0.5rem; font-size: 0.75rem; letter-spacing: 0.05em;
+      color: rgba(245,240,232,0.6); text-decoration: none; transition: color 0.2s; text-transform: uppercase;
+    }
+    .lang-btn:hover, .lang-btn.active { color: var(--c-cream); }
+
+    .section-pad { padding: 6rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .container-narrow { max-width: 800px; margin: 0 auto; }
+
+    /* Sticky mobile CTA */
+    .sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+      background: rgba(30,56,40,0.97); backdrop-filter: blur(12px);
+      padding: 0.75rem 1.5rem; display: none;
+      border-top: 1px solid rgba(245,240,232,0.1);
+    }
+    .sticky-cta a { width: 100%; justify-content: center; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed; inset: 0; background: var(--c-forest); z-index: 100;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu a {
+      font-family: var(--font-display); font-size: 2rem; color: var(--c-cream);
+      text-decoration: none; font-weight: 300;
+    }
+
+    /* Quote block */
+    .quote-block {
+      position: relative; padding: 2rem 0; text-align: center;
+      font-family: var(--font-display); font-style: italic; font-size: 1.4rem;
+      line-height: 1.6; color: var(--c-forest); max-width: 700px; margin: 0 auto;
+    }
+    .quote-block cite {
+      display: block; margin-top: 1rem; font-style: normal;
+      font-family: var(--font-body); font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-warm-gray);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .teacher-card, .teacher-card.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .teacher-img-wrap { aspect-ratio: 3/4; max-height: 450px; }
+      .schedule-item { grid-template-columns: 100px 1fr; gap: 0.5rem; font-size: 0.9rem; }
+      .section-pad { padding: 4rem 1.5rem; }
+      .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
+      .activity-grid { grid-template-columns: 1fr 1fr !important; }
+      .value-grid { grid-template-columns: 1fr !important; }
+      .pack-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .hero-bg { grid-template-columns: 1fr; }
+      .hero-bg-img:nth-child(2), .hero-bg-img:nth-child(3) { display: none; }
+      .hero-bg-img:first-child { opacity: 0.3; }
+      .sticky-cta { display: flex; }
+      .desktop-only { display: none !important; }
+    }
+    @media (min-width: 769px) {
+      .mobile-only { display: none !important; }
+    }
+    @media (max-width: 480px) {
+      .activity-grid { grid-template-columns: 1fr !important; }
+      .price-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+
+<body x-data="{ mobileOpen: false, activeDay: 0, lang: 'en' }">
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" x-show="mobileOpen" x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+       @click.self="mobileOpen = false">
+    <a href="#programme" @click="mobileOpen = false">Programme</a>
+    <a href="#teachers" @click="mobileOpen = false">Teachers</a>
+    <a href="#schedule" @click="mobileOpen = false">Schedule</a>
+    <a href="#tickets" @click="mobileOpen = false">Tickets</a>
+    <a href="#location" @click="mobileOpen = false">Location</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSflPYsf_kSrM4m2FOc_ECvEOl_svdoB4ndHYxne_C9ZFjj5gA/viewform" target="_blank" class="btn-primary" style="margin-top:1rem;font-size:0.9rem;" @click="mobileOpen = false">Register Now</a>
+    <button @click="mobileOpen = false" aria-label="Close menu" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--c-cream);font-size:2rem;cursor:pointer;">&times;</button>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;transition:background 0.3s ease;"
+       x-data="{ scrolled: false }"
+       x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 60 })"
+       :style="scrolled ? 'background:rgba(30,56,40,0.95);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,0.1)' : 'background:transparent'">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;">
+      <a href="#" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
+        <img src="images/logo.png" alt="Meditation Steps" style="height:36px;width:auto;">
+      </a>
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <div style="display:flex;gap:2rem;" class="desktop-only">
+          <a href="#programme" class="nav-link">Programme</a>
+          <a href="#teachers" class="nav-link">Teachers</a>
+          <a href="#schedule" class="nav-link">Schedule</a>
+          <a href="#tickets" class="nav-link">Tickets</a>
+          <a href="#location" class="nav-link">Location</a>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSflPYsf_kSrM4m2FOc_ECvEOl_svdoB4ndHYxne_C9ZFjj5gA/viewform" target="_blank" class="btn-primary desktop-only" style="padding:0.6rem 1.5rem;font-size:0.7rem;">Register</a>
+        <div style="display:flex;gap:0.25rem;align-items:center;">
+          <a href="#" class="lang-btn active">En</a>
+          <span style="color:rgba(245,240,232,0.3);font-size:0.7rem;">|</span>
+          <a href="#" class="lang-btn">Lv</a>
+          <span style="color:rgba(245,240,232,0.3);font-size:0.7rem;">|</span>
+          <a href="#" class="lang-btn">Ru</a>
+        </div>
+        <button @click="mobileOpen = true" class="mobile-only" aria-label="Open menu"
+                style="background:none;border:none;color:var(--c-cream);cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;">
+          <span style="width:24px;height:1.5px;background:currentColor;display:block;"></span>
+          <span style="width:18px;height:1.5px;background:currentColor;display:block;margin-left:auto;"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO with 3 background images -->
+  <header class="hero-section">
+    <div class="hero-bg">
+      <img src="images/dada-hero.jpeg" alt="" class="hero-bg-img" style="object-position:center 20%;">
+      <img src="images/didi-hero.jpg" alt="" class="hero-bg-img">
+      <img src="images/dada-portrait.png" alt="" class="hero-bg-img" style="object-position:center 30%;">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="container" style="padding:8rem 1.5rem 6rem;position:relative;z-index:1;">
+      <div style="max-width:720px;">
+        <div class="reveal-up revealed" style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;">
+          <div style="width:40px;height:1px;background:var(--c-terracotta-light);"></div>
+          <span style="color:rgba(245,240,232,0.7);font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:400;">Lithuania &middot; April 28 &ndash; May 4</span>
+        </div>
+
+        <h1 class="font-display hero-title" style="font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;color:var(--c-cream);margin-bottom:1.5rem;letter-spacing:-0.02em;">
+          <span class="reveal-up revealed">Yoga Retreat</span><br>
+          <span class="reveal-up revealed stagger-1" style="font-style:italic;font-weight:300;">in the Baltics</span>
+        </h1>
+
+        <p class="reveal-up revealed stagger-2" style="color:rgba(245,240,232,0.75);font-size:1.05rem;line-height:1.7;max-width:560px;margin-bottom:1.5rem;">
+          Seven days of guided meditation, asana practice, and spiritual teachings with monks who have 25+ years of experience &mdash; in the peaceful Lithuanian countryside.
+        </p>
+
+        <div class="reveal-up revealed stagger-2" style="color:rgba(245,240,232,0.8);font-size:1rem;line-height:1.8;margin-bottom:0.5rem;">
+          <p style="margin-bottom:0.4rem;">
+            <strong style="color:var(--c-cream);">April 28<sup>th</sup> &ndash; May 1<sup>st</sup></strong> &mdash; <span style="color:var(--c-sage-light);">Open to everyone</span>
+          </p>
+          <p>
+            <strong style="color:var(--c-cream);">May 1<sup>st</sup> &ndash; May 4<sup>th</sup></strong> &mdash; <span style="color:var(--c-sage-light);">For experienced practitioners</span>
+            <span style="opacity:0.5;font-size:0.85rem;">(with personal lesson)</span>
+          </p>
+        </div>
+
+        <div class="reveal-up revealed stagger-3" style="display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSflPYsf_kSrM4m2FOc_ECvEOl_svdoB4ndHYxne_C9ZFjj5gA/viewform" class="btn-primary" target="_blank">
+            Register Now
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#programme" class="btn-outline">Discover the Journey</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+      <span style="color:rgba(245,240,232,0.4);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;">Discover</span>
+      <div style="width:1px;height:32px;background:linear-gradient(to bottom,rgba(245,240,232,0.4),transparent);animation:scrollPulse 2s ease infinite;"></div>
+    </div>
+    <style>
+      @keyframes scrollPulse {
+        0%, 100% { opacity: 1; transform: scaleY(1); }
+        50% { opacity: 0.4; transform: scaleY(0.6); }
+      }
+    </style>
+  </header>
+
+  <!-- RETREAT IS A CHANCE TO -->
+  <section id="programme" class="section-pad" style="background:var(--c-cream);">
+    <div class="container">
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;">
+        <div class="deco-line" style="margin:0 auto 1.5rem;"></div>
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);letter-spacing:-0.01em;">
+          Retreat Is a Chance to
+        </h2>
+      </div>
+
+      <div class="value-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;max-width:1000px;margin:0 auto;">
+        <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;padding:2rem 1.5rem;">
+          <div style="margin-bottom:1.5rem;">
+            <img src="images/icon-lotus1.png" alt="Spiritual practice" style="width:72px;height:72px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;">
+          </div>
+          <h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;">Deep Practice</h3>
+          <p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;">
+            Immerse yourself in intensive spiritual practice. Experience the power of collective meditation guided by experienced acharyas, away from everyday distractions.
+          </p>
+        </div>
+
+        <div class="reveal-up stagger-2" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;padding:2rem 1.5rem;">
+          <div style="margin-bottom:1.5rem;">
+            <img src="images/icon-lotus2.png" alt="Personal guidance" style="width:72px;height:72px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;">
+          </div>
+          <h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;">Personal Guidance</h3>
+          <p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;">
+            Receive personal meditation instruction from the teachers. Whether you are a beginner or experienced, get techniques suited to your level.
+          </p>
+        </div>
+
+        <div class="reveal-up stagger-3" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;padding:2rem 1.5rem;">
+          <div style="margin-bottom:1.5rem;">
+            <img src="images/icon-lotus3.png" alt="Community" style="width:72px;height:72px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;">
+          </div>
+          <h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;">Satsanga</h3>
+          <p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;">
+            Connect with like-minded seekers from across the Baltics and beyond. Share knowledge, experience and inspiration in a supportive spiritual community.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHERS -->
+  <section id="teachers" class="section-pad" style="background:var(--c-cream-dark);">
+    <div class="container">
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:2rem;">
+        <span style="color:var(--c-terracotta);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Meet your guides</span>
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);margin-top:0.75rem;">
+          Acharyas <span style="font-style:italic;opacity:0.6;">(meditation teachers)</span>
+        </h2>
+      </div>
+
+      <!-- Credibility bar -->
+      <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')" style="display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:4rem;padding:1.5rem 0;border-top:1px solid rgba(30,56,40,0.08);border-bottom:1px solid rgba(30,56,40,0.08);">
+        <div style="text-align:center;">
+          <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">25+</div>
+          <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Years teaching</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">2,000+</div>
+          <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Personal initiations</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">80,000+</div>
+          <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Students worldwide</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">15+</div>
+          <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Countries</div>
+        </div>
+      </div>
+
+      <!-- Dada Sadananda -->
+      <div class="teacher-card" style="margin-bottom:6rem;">
+        <div class="reveal-left" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="teacher-img-wrap">
+            <img src="images/dada-hero.jpeg" alt="Dada Sadananda" loading="lazy" style="object-position:center 20%;">
+          </div>
+        </div>
+        <div class="reveal-right" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div style="max-width:480px;">
+            <h3 class="font-display" style="font-size:2.2rem;font-weight:400;color:var(--c-forest);margin-bottom:1.5rem;">Dada Sadananda</h3>
+            <div style="color:var(--c-warm-gray);line-height:1.8;font-size:1rem;">
+              <p style="margin-bottom:1rem;">
+                Yogic monk, a teacher of yoga and meditation. Founder of the educational online project and YouTube channel "Meditationsteps".
+              </p>
+              <p style="margin-bottom:1rem;">
+                Dada has been practicing yoga and meditation for 25 years. Since the year 2000 has been teaching yoga practices. Has given initiations and guides in yoga practice more than 2,000 people. More than 80,000 people have learned the basic technique of meditation with the Basic Course. Has taught more than 60 instructors.
+              </p>
+              <p>
+                Spent 3 years in yogic monasteries in Sweden and India. Annually holds seminars all over the world. Founder and organizer of the Centre for overall development in Altai.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Didi Ananda Sanjana -->
+      <div class="teacher-card reverse">
+        <div class="reveal-right" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="teacher-img-wrap">
+            <img src="images/didi-photo.jpg" alt="Didi Ananda Sanjana" loading="lazy">
+          </div>
+        </div>
+        <div class="reveal-left" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div style="max-width:480px;">
+            <h3 class="font-display" style="font-size:2.2rem;font-weight:400;color:var(--c-forest);margin-bottom:1.5rem;">
+              <a href="https://www.instagram.com/meditationsteps_azerbaijan/p/CjpYzKbj5t-/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--c-sage-light);transition:border-color 0.2s;">
+                Didi Ananda Sanjana
+              </a>
+            </h3>
+            <div style="color:var(--c-warm-gray);line-height:1.8;font-size:1rem;">
+              <p style="margin-bottom:1rem;">
+                Nun, yoga and meditation teacher, yoga instructor, and certified alternative medicine specialist from Singapore.
+              </p>
+              <p>
+                Didi has been practicing yoga in five traditions for over 30 years and teaching internationally. She has led detox retreats with over 300 participants and holds certifications from five countries. Passionate about holistic wellness, she blends yoga with aromatherapy, massage, and fitness, sharing her expertise at global conferences.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WILL WE DO -->
+  <section class="section-pad" style="background:var(--c-forest);color:var(--c-cream);">
+    <div class="container">
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;">
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;letter-spacing:-0.01em;">
+          What will we do at the retreat?
+        </h2>
+      </div>
+
+      <div class="activity-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:1000px;margin:0 auto;">
+        <div class="reveal-scale stagger-1" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="activity-card">
+            <img src="images/activity-1.jpg" alt="Spiritual practices" loading="lazy">
+            <div class="overlay"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Daily collective spiritual practices</p></div>
+          </div>
+        </div>
+        <div class="reveal-scale stagger-2" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="activity-card">
+            <img src="images/activity-2.jpeg" alt="Asana classes" loading="lazy">
+            <div class="overlay"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Daily asana classes, yogic dances Kaoshiki and Tandava</p></div>
+          </div>
+        </div>
+        <div class="reveal-scale stagger-3" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="activity-card">
+            <img src="images/activity-3.jpg" alt="Lectures" loading="lazy">
+            <div class="overlay"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Lectures on spiritual philosophy, Q&amp;A sessions, practical advice</p></div>
+          </div>
+        </div>
+        <div class="reveal-scale stagger-4" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="activity-card">
+            <img src="images/activity-4.jpg" alt="Satsanga" loading="lazy">
+            <div class="overlay"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Satsanga &mdash; connecting with like-minded seekers</p></div>
+          </div>
+        </div>
+        <div class="reveal-scale stagger-5" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="activity-card">
+            <img src="images/activity-5.png" alt="Gong meditation" loading="lazy">
+            <div class="overlay"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Gong meditation</p></div>
+          </div>
+        </div>
+        <div class="reveal-scale stagger-6" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="activity-card">
+            <img src="images/activity-6.jpg" alt="Vegetarian food" loading="lazy">
+            <div class="overlay"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Healthy vegetarian, vegan &amp; raw food</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-up stagger-7" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-top:2rem;">
+        <p style="color:var(--c-sage-light);font-size:1rem;line-height:1.7;max-width:600px;margin:0 auto;">
+          Comfortable accommodation in a cozy, quiet, sattvic (pure and harmonious) place near Vilnius, Lithuania.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" class="section-pad" style="background:var(--c-cream);">
+    <div class="container-narrow" style="padding:0 1.5rem;">
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;">
+        <span style="color:var(--c-terracotta);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Day by Day</span>
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);margin-top:0.75rem;">
+          Retreat Schedule
+        </h2>
+        <p style="color:var(--c-warm-gray);margin-top:0.75rem;font-size:0.95rem;">April 28 &ndash; May 1 &middot; Meditation Retreat</p>
+        <p style="color:var(--c-warm-gray);margin-top:0.25rem;font-size:0.8rem;font-style:italic;">Notation: (20/20) = 20 min kiirtana (devotional chanting) + 20 min silent meditation</p>
+      </div>
+
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')">
+        <!-- Day 1 -->
+        <div class="schedule-day" style="margin-bottom:1rem;">
+          <button @click="activeDay = activeDay === 1 ? 0 : 1" :aria-expanded="activeDay === 1"
+                  style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 0;background:none;border:none;cursor:pointer;font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--c-forest);">
+            <span>Monday, April 28</span>
+            <svg :style="activeDay === 1 ? 'transform:rotate(180deg)' : ''" style="transition:transform 0.3s ease;flex-shrink:0;margin-left:1rem;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div x-show="activeDay === 1" x-collapse style="padding-bottom:1.5rem;">
+            <div class="schedule-item"><span class="time">14:00 - 16:00</span><span>Arrival, accommodation, light snack</span></div>
+            <div class="schedule-item"><span class="time">14:00 - 16:00</span><span>Free time (sea, relaxation)</span></div>
+            <div class="schedule-item"><span class="time">16:15</span><span>Collective Meditation (20/20)</span></div>
+            <div class="schedule-item"><span class="time">17:00 - 17:30</span><span>Opening</span></div>
+            <div class="schedule-item"><span class="time">17:30 - 18:50</span><span>Lecture by Dada Sadananda</span></div>
+            <div class="schedule-item"><span class="time">19:00 - 19:40</span><span>Dinner</span></div>
+            <div class="schedule-item"><span class="time">20:00 - 21:00</span><span>Communication &amp; interaction training, introductions</span></div>
+            <div class="schedule-item"><span class="time">21:15 - 22:00</span><span>Collective Meditation (30/30)</span></div>
+            <div class="schedule-item"><span class="time">22:00</span><span>Lights out &mdash; <em>Manuvrata (silence) until 9:00 AM</em></span></div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="schedule-day" style="margin-bottom:1rem;">
+          <button @click="activeDay = activeDay === 2 ? 0 : 2" :aria-expanded="activeDay === 2"
+                  style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 0;background:none;border:none;cursor:pointer;font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--c-forest);">
+            <span>Tuesday, April 29</span>
+            <svg :style="activeDay === 2 ? 'transform:rotate(180deg)' : ''" style="transition:transform 0.3s ease;flex-shrink:0;margin-left:1rem;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div x-show="activeDay === 2" x-collapse style="padding-bottom:1.5rem;">
+            <div class="schedule-item"><span class="time">04:30 - 05:00</span><span>Wake up, morning routine</span></div>
+            <div class="schedule-item"><span class="time">05:00 - 05:35</span><span>Panchajanya &mdash; pre-dawn spiritual practice (15/20)</span></div>
+            <div class="schedule-item"><span class="time">05:40 - 05:55</span><span>Kaoshiki (yogic dance)</span></div>
+            <div class="schedule-item"><span class="time">05:55 - 07:00</span><span>Asanas (yoga postures)</span></div>
+            <div class="schedule-item"><span class="time">07:00 - 07:05</span><span>Tandava (yogic dance)</span></div>
+            <div class="schedule-item"><span class="time">07:05 - 07:30</span><span>Free time</span></div>
+            <div class="schedule-item"><span class="time">07:30 - 08:20</span><span>Collective Meditation (20/30) + personal lessons</span></div>
+            <div class="schedule-item"><span class="time">09:00 - 09:50</span><span>Breakfast</span></div>
+            <div class="schedule-item"><span class="time">10:00 - 12:00</span><span>Lecture by Dada Sadananda</span></div>
+            <div class="schedule-item"><span class="time">12:00 - 12:30</span><span>Free time</span></div>
+            <div class="schedule-item"><span class="time">12:30 - 13:30</span><span>Collective Meditation (30/30)</span></div>
+            <div class="schedule-item"><span class="time">13:30 - 14:20</span><span>Lunch</span></div>
+            <div class="schedule-item"><span class="time">14:30 - 16:30</span><span>Satsang (spiritual gathering) &amp; personal lesson review</span></div>
+            <div class="schedule-item"><span class="time">16:30 - 18:30</span><span>Gong Meditation</span></div>
+            <div class="schedule-item"><span class="time">19:00 - 19:40</span><span>Dinner</span></div>
+            <div class="schedule-item"><span class="time">20:00 - 21:00</span><span>Musical evening by the campfire &mdash; Prabhat Samgiita (Songs of the New Dawn)</span></div>
+            <div class="schedule-item"><span class="time">21:00 - 22:00</span><span>Collective Meditation (30/30)</span></div>
+            <div class="schedule-item"><span class="time">22:00</span><span>Lights out</span></div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="schedule-day" style="margin-bottom:1rem;">
+          <button @click="activeDay = activeDay === 3 ? 0 : 3" :aria-expanded="activeDay === 3"
+                  style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 0;background:none;border:none;cursor:pointer;font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--c-forest);">
+            <span>Wednesday, April 30</span>
+            <svg :style="activeDay === 3 ? 'transform:rotate(180deg)' : ''" style="transition:transform 0.3s ease;flex-shrink:0;margin-left:1rem;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div x-show="activeDay === 3" x-collapse style="padding-bottom:1.5rem;">
+            <div class="schedule-item"><span class="time">05:00</span><span>Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)</span></div>
+            <div class="schedule-item"><span class="time">05:40 - 05:55</span><span>Kaoshiki</span></div>
+            <div class="schedule-item"><span class="time">05:55 - 07:00</span><span>Asanas</span></div>
+            <div class="schedule-item"><span class="time">07:00 - 07:05</span><span>Tandava</span></div>
+            <div class="schedule-item"><span class="time">07:30</span><span>Collective Meditation (30/30) + inspiration from Didi Ananda Sanjana</span></div>
+            <div class="schedule-item"><span class="time">09:00</span><span>Breakfast + personal time</span></div>
+            <div class="schedule-item"><span class="time">10:15</span><span>Lecture by Didi Ananda Sanjana</span></div>
+            <div class="schedule-item"><span class="time">12:00</span><span>Collective Meditation</span></div>
+            <div class="schedule-item"><span class="time">13:00</span><span>Lunch</span></div>
+            <div class="schedule-item"><span class="time">14:00</span><span>Lecture by Didi Ananda Sanjana</span></div>
+            <div class="schedule-item"><span class="time">15:30</span><span>Group photo</span></div>
+            <div class="schedule-item"><span class="time">15:30</span><span>Sadhana Shivir (intensive meditation) + inspiration from Dada Sadananda (30/30 &times;3)</span></div>
+            <div class="schedule-item"><span class="time">19:00</span><span>Dinner</span></div>
+            <div class="schedule-item"><span class="time">21:00</span><span>Spiritual song evening (<em>interpretation and meaning of Prabhat Samgiita</em>)</span></div>
+            <div class="schedule-item"><span class="time">22:00</span><span>Lights out</span></div>
+          </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="schedule-day">
+          <button @click="activeDay = activeDay === 4 ? 0 : 4" :aria-expanded="activeDay === 4"
+                  style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 0;background:none;border:none;cursor:pointer;font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--c-forest);">
+            <span>Thursday, May 1</span>
+            <svg :style="activeDay === 4 ? 'transform:rotate(180deg)' : ''" style="transition:transform 0.3s ease;flex-shrink:0;margin-left:1rem;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div x-show="activeDay === 4" x-collapse style="padding-bottom:1.5rem;">
+            <div class="schedule-item"><span class="time">05:00</span><span>Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)</span></div>
+            <div class="schedule-item"><span class="time">05:30</span><span>Kaoshiki (21 min), Tandava (1-3 min)</span></div>
+            <div class="schedule-item"><span class="time">06:00</span><span>Asana class, self-massage, shavasana (deep relaxation)</span></div>
+            <div class="schedule-item"><span class="time">07:30</span><span>Collective Meditation (30/30) + inspiration from Dada Sadananda</span></div>
+            <div class="schedule-item"><span class="time">09:00</span><span>Breakfast</span></div>
+            <div class="schedule-item"><span class="time">10:00</span><span>Group activities (walk, feedback session) + personal lesson review</span></div>
+            <div class="schedule-item"><span class="time">11:30</span><span>Collective Meditation (30/30)</span></div>
+            <div class="schedule-item"><span class="time">12:30</span><span>Closing ceremony</span></div>
+            <div class="schedule-item"><span class="time">13:00</span><span>Lunch</span></div>
+            <div class="schedule-item"><span class="time">14:00 - 15:00</span><span>Packing, departure</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION with Google Maps -->
+  <section id="location" class="section-pad" style="background:var(--c-forest);color:var(--c-cream);position:relative;overflow:hidden;">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:3rem;">
+        <span style="color:var(--c-terracotta-light);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Where we gather</span>
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;margin-top:0.75rem;">
+          Retreat Location
+        </h2>
+      </div>
+
+      <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;max-width:800px;margin:0 auto;">
+        <h3 class="font-display" style="font-size:1.6rem;font-weight:400;margin-bottom:0.75rem;">
+          Laum&#382;irgi&#371; &#381;em&#279; / Dragonfly Land
+        </h3>
+        <p style="color:var(--c-sage-light);line-height:1.7;font-size:0.95rem;margin-bottom:1.5rem;">
+          A magical retreat center ~25 km north of Vilnius, founded by Baltic sound therapy pioneers. Two beautiful halls (225 m&sup2; Ashtar Hall &amp; 100 m&sup2; Gaia Dome), cozy cedar and straw-clay guest cabins (~42 sleeping places), a traditional Baltic sauna, spring-water ponds, and a sacred gong garden.
+        </p>
+        <p style="color:var(--c-sage-light);line-height:1.7;font-size:0.85rem;margin-bottom:2.5rem;">
+          <a href="https://www.gongai.lt/erdves/laumzirgiu-zeme/" target="_blank" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:3px;">Visit venue website &rarr;</a>
+          &nbsp;&middot;&nbsp; GPS: 54.893035, 25.274413
+        </p>
+
+        <!-- Google Maps embed -->
+        <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:2rem;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4600!2d25.274413!3d54.893035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTTCsDUzJzM0LjkiTiAyNcKwMTYnMjcuOSJF!5e0!3m2!1sen!2slt!4v1"
+            width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Laumžirgių Žemė location map"></iframe>
+        </div>
+
+        <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:var(--c-forest-light);">
+          <img src="images/activity-7.jpg" alt="Retreat venue — Dragonfly Land" loading="lazy" style="width:100%;height:100%;object-fit:cover;opacity:0.9;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO BRING -->
+  <section class="section-pad" style="background:var(--c-cream-dark);">
+    <div class="container" style="max-width:800px;">
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:3.5rem;">
+        <h2 class="font-display" style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:400;color:var(--c-forest);">
+          What to Bring
+        </h2>
+      </div>
+
+      <div class="pack-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;" class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')">
+        <div class="pack-item">
+          <div class="pack-icon"><img src="images/shoe.png" alt="Indoor shoes"></div>
+          <span style="font-size:0.85rem;color:var(--c-warm-gray);">Indoor shoes</span>
+        </div>
+        <div class="pack-item">
+          <div class="pack-icon"><img src="images/hygiene.png" alt="Hygiene products"></div>
+          <span style="font-size:0.85rem;color:var(--c-warm-gray);">Personal hygiene products</span>
+        </div>
+        <div class="pack-item">
+          <div class="pack-icon"><img src="images/bottle.png" alt="Water bottle"></div>
+          <span style="font-size:0.85rem;color:var(--c-warm-gray);">Drinking water bottle</span>
+        </div>
+        <div class="pack-item">
+          <div class="pack-icon"><img src="images/clothes.png" alt="Comfortable clothes"></div>
+          <span style="font-size:0.85rem;color:var(--c-warm-gray);">Comfortable clothes for asana<br><strong style="color:var(--c-terracotta);font-size:0.8rem;">No leggings or revealing clothes</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="tickets" class="section-pad" style="background:var(--c-cream);">
+    <div class="container" style="max-width:1000px;">
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;">
+        <span style="color:var(--c-terracotta);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Secure your spot</span>
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);margin-top:0.75rem;">
+          Reserve Your Place
+        </h2>
+        <p style="color:var(--c-warm-gray);margin-top:0.75rem;font-size:0.9rem;">
+          Includes: accommodation, all vegetarian meals, all teachings &amp; practices, personal meditation instruction.
+        </p>
+      </div>
+
+      <div class="price-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+        <!-- Retreat 1 -->
+        <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="price-card" style="height:100%;">
+            <div style="margin-bottom:2rem;">
+              <span style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-sage);font-weight:500;">April 28 &ndash; May 1</span>
+              <h3 class="font-display" style="font-size:1.3rem;font-weight:400;color:var(--c-forest);margin-top:0.5rem;">Meditation Retreat</h3>
+              <p style="font-size:0.8rem;color:var(--c-warm-gray);margin-top:0.25rem;">Open to everyone</p>
+            </div>
+            <div style="margin-bottom:1rem;">
+              <div style="padding:1rem 0;border-bottom:1px solid rgba(0,0,0,0.06);">
+                <span style="font-size:0.85rem;color:var(--c-warm-gray);">Early bird <em>(before 15.03)</em></span>
+                <div class="font-display" style="font-size:2.2rem;font-weight:600;color:var(--c-forest);margin-top:0.25rem;">280 <span style="font-size:1rem;font-weight:400;">EUR</span></div>
+              </div>
+              <div style="padding:1rem 0;">
+                <span style="font-size:0.85rem;color:var(--c-warm-gray);">Regular price</span>
+                <div class="font-display" style="font-size:2.2rem;font-weight:600;color:var(--c-forest);margin-top:0.25rem;">330 <span style="font-size:1rem;font-weight:400;">EUR</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Retreat 2 -->
+        <div class="reveal-up stagger-2" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="price-card" style="height:100%;">
+            <div style="margin-bottom:2rem;">
+              <span style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-sage);font-weight:500;">May 1 &ndash; May 4</span>
+              <h3 class="font-display" style="font-size:1.3rem;font-weight:400;color:var(--c-forest);margin-top:0.5rem;">Marg Retreat</h3>
+              <p style="font-size:0.8rem;color:var(--c-warm-gray);margin-top:0.25rem;">For experienced practitioners</p>
+            </div>
+            <div style="padding:1rem 0;">
+              <span style="font-size:0.85rem;color:var(--c-warm-gray);">Price</span>
+              <div class="font-display" style="font-size:2.2rem;font-weight:600;color:var(--c-forest);margin-top:0.25rem;">280 <span style="font-size:1rem;font-weight:400;">EUR</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Both retreats -->
+        <div class="reveal-up stagger-3" x-data x-intersect.once="$el.classList.add('revealed')">
+          <div class="price-card featured" style="height:100%;">
+            <div style="position:absolute;top:1rem;right:1.5rem;">
+              <span style="background:var(--c-gold);color:var(--c-warm-black);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:100px;font-weight:600;">Best Value</span>
+            </div>
+            <div style="margin-bottom:2rem;">
+              <span style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-sage-light);font-weight:500;">April 28 &ndash; May 4</span>
+              <h3 class="font-display" style="font-size:1.3rem;font-weight:400;margin-top:0.5rem;">Both Retreats</h3>
+              <p style="font-size:0.8rem;color:var(--c-sage-light);margin-top:0.25rem;">7 full days of immersion</p>
+            </div>
+            <div style="padding:1rem 0;">
+              <span style="font-size:0.85rem;color:var(--c-sage-light);">Combined price</span>
+              <div class="font-display" style="font-size:2.8rem;font-weight:600;margin-top:0.25rem;">600 <span style="font-size:1rem;font-weight:400;">EUR</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Register CTA -->
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-top:3.5rem;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSflPYsf_kSrM4m2FOc_ECvEOl_svdoB4ndHYxne_C9ZFjj5gA/viewform" class="btn-primary" target="_blank" style="font-size:1rem;padding:1.25rem 3.5rem;">
+          Register Now
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p style="margin-top:1rem;font-size:0.85rem;color:var(--c-warm-gray);">
+          Questions? Contact us on <a href="https://t.me/Virabhava21" target="_blank" style="color:var(--c-terracotta);text-decoration:underline;text-underline-offset:2px;">Telegram @Virabhava21</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--c-forest);color:var(--c-cream);padding:3rem 1.5rem;">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <img src="images/logo.png" alt="Meditation Steps" style="height:28px;width:auto;filter:brightness(1.2);">
+        <span style="font-size:0.85rem;color:var(--c-sage-light);">Meditation Steps Latvia</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="https://t.me/Virabhava21" target="_blank"
+           style="color:var(--c-sage-light);text-decoration:none;font-size:0.9rem;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;"
+           onmouseover="this.style.color='var(--c-cream)'" onmouseout="this.style.color='var(--c-sage-light)'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          @Virabhava21
+        </a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(245,240,232,0.08);">
+      <p style="font-size:0.8rem;color:rgba(245,240,232,0.35);">Organized by Meditation Steps Latvia &middot; Retreat held in Lithuania</p>
+      <p style="font-size:0.75rem;color:rgba(245,240,232,0.2);margin-top:0.25rem;">&copy; 2025 Meditation Steps Latvia</p>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta mobile-only">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSflPYsf_kSrM4m2FOc_ECvEOl_svdoB4ndHYxne_C9ZFjj5gA/viewform" class="btn-primary" target="_blank" style="width:100%;justify-content:center;">
+      Register Now &mdash; from 280 EUR
+    </a>
+  </div>
+
+  <!-- Alpine.js plugins -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.directive('intersect', (el, { modifiers }, { cleanup }) => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              el.classList.add('revealed');
+              if (modifiers.includes('once')) observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.1 });
+        observer.observe(el);
+        cleanup(() => observer.unobserve(el));
+      });
+
+      Alpine.directive('collapse', (el, {}, { cleanup }) => {
+        el.style.overflow = 'hidden';
+        el.style.transition = 'max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+        const setHeight = (show) => {
+          if (show) { el.style.maxHeight = el.scrollHeight + 'px'; el.style.opacity = '1'; }
+          else { el.style.maxHeight = '0px'; el.style.opacity = '0'; }
+        };
+        const obs = new MutationObserver(() => {
+          const visible = el.style.display !== 'none';
+          if (visible) { el.style.display = ''; setHeight(true); } else { setHeight(false); }
+        });
+        if (el.style.display === 'none' || !el.offsetParent) { el.style.maxHeight = '0px'; el.style.opacity = '0'; }
+        obs.observe(el, { attributes: true, attributeFilter: ['style'] });
+        cleanup(() => obs.disconnect());
+      });
+    });
+  </script>
+</body>
+</html>
