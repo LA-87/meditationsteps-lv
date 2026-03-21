@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header V1 — Centered Glass Card</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    :root {
+      --c-cream: #F5F0E8;
+      --c-cream-dark: #EDE6D8;
+      --c-forest: #1E3828;
+      --c-forest-light: #2D5A3F;
+      --c-sage: #7A9E87;
+      --c-sage-light: #A8C4B0;
+      --c-terracotta: #A8503A;
+      --c-terracotta-light: #C4764A;
+      --c-gold: #C4960A;
+      --c-warm-black: #1C1917;
+      --c-warm-gray: #57534E;
+      --c-warm-gray-light: #A8A29E;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+
+      /* Liquid glass tokens — reusable across the site */
+      --glass-blur: 4px;
+      --glass-bg: rgba(245,240,232,0.04);
+      --glass-border: rgba(245,240,232,0.21);
+      --glass-radius: 48px;
+      --glass-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      color: var(--c-warm-black);
+      background: var(--c-cream);
+      overflow-x: hidden;
+    }
+
+    .nav-link {
+      position: relative; letter-spacing: 0.06em; text-transform: uppercase;
+      font-size: 0.8rem; font-weight: 500; color: var(--c-forest); text-decoration: none; padding: 0.25rem 0;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px;
+      background: var(--c-terracotta); transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: var(--c-terracotta); }
+    .nav-link:hover::after { width: 100%; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 1rem 2.5rem; background: var(--c-terracotta); color: white;
+      font-family: var(--font-body); font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      border-radius: 100px; border: none; cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #8B3D2A; transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(28,25,23,0.25);
+    }
+
+    .lang-btn {
+      padding: 0.25rem 0.5rem; font-size: 0.75rem; letter-spacing: 0.05em;
+      color: var(--c-warm-gray-light); text-decoration: none; transition: color 0.2s; text-transform: uppercase;
+      font-weight: 500;
+    }
+    .lang-btn:hover, .lang-btn.active { color: var(--c-forest); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    @media (max-width: 768px) {
+      .desktop-only { display: none !important; }
+    }
+    @media (min-width: 769px) {
+      .mobile-only { display: none !important; }
+    }
+
+    /* ============================================
+       HERO: Triptych + Centered Liquid Glass Card
+       ============================================ */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: #0F1F15;
+    }
+
+    /* Triptych background */
+    .hero-triptych {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Side panels */
+    .hero-panel.side img {
+      opacity: 1;
+      filter: saturate(0.59) brightness(0.85);
+    }
+    /* Center panel — brighter, the star */
+    .hero-panel.center img {
+      opacity: 0.71;
+      filter: saturate(0.8) brightness(0.87);
+    }
+    /* Panel edge vignettes */
+    .hero-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(15,31,21,0.4) 0%, transparent 25%, transparent 75%, rgba(15,31,21,0.4) 100%);
+    }
+
+    /* Overall overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(ellipse at center, rgba(15,31,21,0.09) 0%, rgba(15,31,21,0.36) 100%);
+    }
+
+    /* ---- LIQUID GLASS CARD ---- */
+    .glass-card {
+      position: relative;
+      z-index: 2;
+      width: 670px;
+      max-width: 90%;
+      text-align: center;
+      padding: 2.25rem;
+      border-radius: var(--glass-radius);
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(245,240,232,0.08);
+    }
+
+    /* Subtle shine line at top */
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,240,232,0.2), transparent);
+      border-radius: 1px;
+    }
+
+    .glass-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      color: rgba(245,240,232,0.6);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    .glass-eyebrow .line {
+      width: 32px;
+      height: 1px;
+      background: var(--c-terracotta-light);
+    }
+
+    .glass-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 4.8rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--c-cream);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .glass-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--c-sage-light);
+    }
+
+    .glass-date {
+      color: rgba(245,240,232,0.85);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .glass-date strong {
+      color: var(--c-cream);
+      font-weight: 600;
+    }
+    .glass-date .tag {
+      color: var(--c-sage-light);
+    }
+
+    .glass-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Scroll indicator */
+    .scroll-ind {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 5;
+    }
+    .scroll-ind span {
+      color: rgba(245,240,232,0.35);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .scroll-ind-line {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, rgba(245,240,232,0.35), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.4; transform: scaleY(0.6); }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero-triptych { grid-template-columns: 1fr; }
+      .hero-panel.side { display: none; }
+      .hero-panel.center img { opacity: 0.5; }
+      .glass-card {
+        padding: 2rem 1.5rem;
+        border-radius: 32px;
+      }
+      .glass-title { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+    }
+  </style>
+</head>
+
+<body x-data="{ mobileOpen: false, lang: 'en' }">
+
+  <!-- NAVIGATION -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 0.4s ease;"
+       x-data="{ scrolled: false }"
+       x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 60 })"
+       :style="scrolled ? 'background:rgba(245,240,232,0.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,0.04)' : 'background:transparent'">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;">
+      <a href="#" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
+        <img src="images/logo.png" alt="Meditation Steps" style="height:36px;width:auto;">
+      </a>
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <div style="display:flex;gap:2rem;" class="desktop-only">
+          <a href="#programme" class="nav-link">Programme</a>
+          <a href="#teachers" class="nav-link">Teachers</a>
+          <a href="#schedule" class="nav-link">Schedule</a>
+          <a href="#tickets" class="nav-link">Tickets</a>
+          <a href="#location" class="nav-link">Location</a>
+        </div>
+        <a href="#" class="btn-primary desktop-only" style="padding:0.6rem 1.5rem;font-size:0.7rem;">Register</a>
+        <div style="display:flex;gap:0.25rem;align-items:center;">
+          <a href="#" class="lang-btn active">En</a>
+          <span style="color:var(--c-warm-gray-light);font-size:0.65rem;">|</span>
+          <a href="#" class="lang-btn">Lv</a>
+          <span style="color:var(--c-warm-gray-light);font-size:0.65rem;">|</span>
+          <a href="#" class="lang-btn">Ru</a>
+        </div>
+        <button class="mobile-only" aria-label="Open menu"
+                style="background:none;border:none;color:var(--c-forest);cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;">
+          <span style="width:24px;height:1.5px;background:currentColor;display:block;"></span>
+          <span style="width:18px;height:1.5px;background:currentColor;display:block;margin-left:auto;"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <!-- Triptych: Dada | Gong | Didi -->
+    <div class="hero-triptych">
+      <div class="hero-panel side">
+        <img src="images/dada-hero.jpeg" alt="" style="object-position:center 20%;">
+      </div>
+      <div class="hero-panel center">
+        <img src="images/didi-hero.jpg" alt="">
+      </div>
+      <div class="hero-panel side">
+        <img src="images/dada-portrait.png" alt="" style="object-position:center 30%;">
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <!-- Centered glass card — compact -->
+    <div class="glass-card">
+      <div class="glass-eyebrow">
+        <span class="line"></span>
+        <span>Lithuania &middot; April 30 &ndash; May 3, 2026</span>
+        <span class="line"></span>
+      </div>
+
+      <h1 class="glass-title">
+        Yoga Retreat<br>
+        <em>in the Baltics</em>
+      </h1>
+
+      <p class="glass-date">
+        <strong>April 30<sup>th</sup> &ndash; May 3<sup>rd</sup>, 2026</strong> &mdash; <span class="tag">Open to everyone</span>
+      </p>
+
+      <div class="glass-actions">
+        <a href="#" class="btn-primary">
+          Register Now
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-ind">
+      <span>Discover</span>
+      <div class="scroll-ind-line"></div>
+    </div>
+  </header>
+
+  <section style="padding:6rem 1.5rem;background:var(--c-cream);">
+    <div class="container" style="text-align:center;">
+      <p style="color:var(--c-warm-gray);font-size:1rem;">Rest of page content...</p>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html :lang="lang" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meditation Steps Latvia — Yoga Retreat in the Baltics 2026</title>
-  <meta name="description" content="Yoga & meditation retreat in Lithuania. April 30 - May 3, 2026. Guided by Didi Ananda Sanjana. Meditation, asanas, lectures, gong meditation. Dragonfly Land, near Vilnius.">
+  <title>Meditation Steps Latvia</title>
+  <meta name="description" content="">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Yoga Retreat in the Baltics — Meditation Steps Latvia">
-  <meta property="og:description" content="Yoga & meditation retreat in Lithuania. April 30 - May 3, 2026. Guided meditation, asanas, lectures, gong sessions.">
+  <meta property="og:description" content="Yoga & meditation retreat in Lithuania. April 30 - May 3, 2026.">
   <meta property="og:image" content="images/dada-hero.jpeg">
   <meta property="og:type" content="website">
 
@@ -16,660 +16,526 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 
+  <!-- Translations — MUST load before Alpine -->
+  <script>
+    const translations = {
+      en: {
+        page_title: 'Meditation Steps Latvia — Yoga Retreat in the Baltics 2026',
+        page_description: 'Yoga & meditation retreat in Lithuania. April 30 - May 3, 2026. Guided by Didi Ananda Sanjana. Meditation, asanas, lectures, gong meditation. Dragonfly Land, near Vilnius.',
+        nav_programme: 'Programme',
+        nav_teachers: 'Teachers',
+        nav_schedule: 'Schedule',
+        nav_tickets: 'Tickets',
+        nav_location: 'Location',
+        nav_register: 'Register',
+        hero_eyebrow: 'Lithuania &middot; April 30 &ndash; May 3, 2026',
+        hero_title_1: 'Yoga Retreat',
+        hero_title_2: 'in the Baltics',
+        hero_date: '<strong style="color:var(--c-cream);">April 30<sup>th</sup> &ndash; May 3<sup>rd</sup>, 2026</strong> &mdash; <span style="color:var(--c-sage-light);">Open to everyone</span>',
+        hero_register: 'Register Now',
+        hero_discover: 'Discover',
+        values_heading: 'Retreat Is a Chance to',
+        val1_title: 'Deep Practice',
+        val1_desc: 'Immerse yourself in intensive spiritual practice. Experience the power of collective meditation guided by experienced acharyas, away from everyday distractions.',
+        val2_title: 'Personal Guidance',
+        val2_desc: 'Receive personal meditation instruction from the teachers. Whether you are a beginner or experienced, get techniques suited to your level.',
+        val3_title: 'Satsanga',
+        val3_desc: 'Connect with like-minded seekers from across the Baltics and beyond. Share knowledge, experience and inspiration in a supportive spiritual community.',
+        teachers_eyebrow: 'Meet your guides',
+        teachers_heading: 'Acharyas <span style="font-style:italic;opacity:0.6;">(meditation teachers)</span>',
+        cred_years_label: 'Years of practice',
+        cred_init_label: 'Personal initiations',
+        cred_students_label: 'Students worldwide',
+        cred_countries_label: 'Countries',
+        dada_name: 'Dada Sadananda',
+        dada_p1: 'Yogic monk, teacher of yoga and meditation. Founder of the educational online project and YouTube channel "Meditationsteps" with over 763,000 subscribers.',
+        dada_p2: 'Dada has been practicing yoga and meditation for 29 years. Since the year 2000 has been teaching yoga practices. Has given personal initiations and guides in practice more than 2,000 people. Around 470,000 have learned the universal meditation technique through the Basic Course. Has trained more than 80 yoga and meditation instructors.',
+        dada_p3: 'Spent 3 years in yogic monasteries in Sweden and India. Annually holds seminars across 32 countries. Founder and organizer of the Centre for overall development in Altai.',
+        dada_p4: 'Author of the book "Dialogues on Meditation" &mdash; exploring meditation, yoga and tantra through the lens of personal monastic experience.',
+        didi_name: 'Didi Ananda Sanjana',
+        didi_p1: 'Nun, yoga and meditation teacher, yoga instructor, and certified alternative medicine specialist from Singapore.',
+        didi_p2: 'Didi has been practicing yoga in five traditions for over 30 years and teaching internationally. She has led detox retreats with over 300 participants and holds certifications from five countries. Passionate about holistic wellness, she blends yoga with aromatherapy, massage, and fitness, sharing her expertise at global conferences.',
+        activities_heading: 'What will we do at the retreat?',
+        act1: 'Daily collective spiritual practices',
+        act2: 'Daily asana classes, yogic dances Kaoshiki and Tandava',
+        act3: 'Lectures on spiritual philosophy, Q&amp;A sessions, practical advice',
+        act4: 'Satsanga &mdash; connecting with like-minded seekers',
+        act5: 'Gong meditation',
+        act6: 'Healthy vegetarian, vegan &amp; raw food',
+        activities_note: 'Comfortable accommodation in a cozy, quiet, sattvic (pure and harmonious) place near Vilnius, Lithuania.',
+        sched_eyebrow: 'Day by Day',
+        sched_heading: 'Retreat Schedule',
+        sched_dates: 'April 30 &ndash; May 3, 2026',
+        legend_meditation: 'Meditation',
+        legend_movement: 'Yoga &amp; Movement',
+        legend_lectures: 'Lectures',
+        legend_meals: 'Meals',
+        typical_title: 'A Typical Day',
+        btn_detailed: 'View Detailed Schedule',
+        btn_overview: 'Back to Overview',
+        sched_notation: 'Notation: (30/30) = 30 min kiirtana (devotional chanting) + 30 min silent meditation. Schedule may be adjusted.',
+        typ_0500: 'Morning meditation &amp; chanting',
+        typ_0600: 'Yoga asanas &amp; yogic dance',
+        typ_0730: 'Collective meditation',
+        typ_0900: 'Breakfast',
+        typ_1000: 'Lecture &amp; discussion',
+        typ_1230: 'Midday meditation',
+        typ_1330: 'Lunch',
+        typ_1430: 'Spiritual gathering or special activity',
+        typ_1900: 'Dinner',
+        typ_2100: 'Evening meditation &amp; rest',
+        day1_label: 'Day 1', day1_date: 'Thu, Apr 30',
+        day2_label: 'Day 2', day2_date: 'Fri, May 1',
+        day3_label: 'Day 3', day3_date: 'Sat, May 2',
+        day4_label: 'Day 4', day4_date: 'Sun, May 3',
+        sec_afternoon: 'Afternoon', sec_evening: 'Evening', sec_early_morning: 'Early Morning', sec_morning: 'Morning',
+        badge_featured: 'Featured', badge_special_session: 'Special Session', badge_special: 'Special',
+        d1_1: 'Arrival, accommodation, light snack', d1_2: 'Free time', d1_3: 'Opening Ceremony',
+        d1_4: 'Collective Meditation (30/30)', d1_5: 'Asana class', d1_6: 'Dinner',
+        d1_7: 'Communication &amp; interaction training, introductions', d1_8: 'Collective Meditation (20/30)', d1_9: 'Lights out',
+        d2_1: 'Wake up, morning routine',
+        d2_2: 'Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)',
+        d2_3: 'Kaoshiki (yogic dance)', d2_4: 'Asanas (yoga postures)', d2_5: 'Tandava (yogic dance)', d2_6: 'Free time',
+        d2_7: 'Collective Meditation (30/30)', d2_8: 'Breakfast',
+        d2_9: 'Lecture by Didi Ananda Sanjana &mdash; Layers of the Mind', d2_10: 'Free time',
+        d2_11: 'Collective Meditation (30/30)', d2_12: 'Lunch',
+        d2_13: 'Satsang (spiritual gathering) &amp; personal lesson review',
+        d2_14: 'Lalita Marmika &mdash; dynamic meditation', d2_15: 'Meditation', d2_16: 'Dinner',
+        d2_17: 'Musical evening by the campfire &mdash; Prabhat Samgiita',
+        d2_18: 'Collective Meditation (30/30)', d2_19: 'Lights out',
+        d3_1: 'Wake up, morning routine',
+        d3_2: 'Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)',
+        d3_3: 'Kaoshiki', d3_4: 'Asanas', d3_5: 'Tandava', d3_6: 'Free time',
+        d3_7: 'Collective Meditation (30/30) + inspiration from Didi Ananda Sanjana',
+        d3_8: 'Breakfast + personal time', d3_9: 'Gong Meditation', d3_10: 'Collective Meditation (30/30)',
+        d3_11: 'Lunch', d3_12: 'Lecture by Didi Ananda Sanjana', d3_13: 'Group photo',
+        d3_14: 'Sadhana Shivir (intensive meditation) + inspiration from Didi Ananda Sanjana (30/30 &times;3)',
+        d3_15: 'Dinner', d3_16: 'Evening walk', d3_17: '3 basic asanas', d3_18: 'Lights out',
+        d4_1: 'Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)',
+        d4_2: 'Kaoshiki', d4_3: 'Asanas', d4_4: 'Tandava', d4_5: 'Collective Meditation (30/30)',
+        d4_6: 'Breakfast', d4_7: 'Packing, group activities (walk, feedback session) + personal lesson review',
+        d4_8: 'Collective Meditation (30/30)', d4_9: 'Closing ceremony', d4_10: 'Lunch', d4_11: 'Departure',
+        loc_eyebrow: 'Where we gather', loc_heading: 'Retreat Location',
+        loc_name: 'Laumžirgių Žemė / Dragonfly Land',
+        loc_desc: 'A magical retreat center ~25 km north of Vilnius, founded by Baltic sound therapy pioneers. Two beautiful halls (225 m&sup2; Ashtar Hall &amp; 100 m&sup2; Gaia Dome), cozy cedar and straw-clay guest cabins (~42 sleeping places), a traditional Baltic sauna, spring-water ponds, and a sacred gong garden.',
+        loc_link_text: 'Visit venue website &rarr;', loc_gps: 'GPS: 54.893035, 25.274413',
+        bring_heading: 'What to Bring', bring_shoes: 'Indoor shoes', bring_hygiene: 'Personal hygiene products',
+        bring_bottle: 'Drinking water bottle', bring_clothes: 'Comfortable clothes for practice',
+        bring_clothes_note: 'No leggings or revealing clothes',
+        price_eyebrow: 'Secure your spot', price_heading: 'Reserve Your Place',
+        price_includes: 'Includes: accommodation, all vegetarian meals, all teachings &amp; practices, personal meditation instruction.',
+        price_dates: 'April 30 &ndash; May 3, 2026', price_title: 'Yoga &amp; Meditation Retreat',
+        price_subtitle: '4 days of immersion &middot; Open to everyone', price_save: 'Save 30 EUR',
+        price_early_label: 'Early bird <em>(before 15.04.2026)</em>', price_regular_label: 'Regular price',
+        price_register: 'Register Now',
+        contact_text: 'Questions? Contact us on <a href="https://t.me/Virabhava21" target="_blank" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:2px;">Telegram @Virabhava21</a>',
+        footer_org: 'Meditation Steps Latvia',
+        footer_note: 'Organized by Meditation Steps Latvia &middot; Retreat held in Lithuania',
+        footer_copyright: '&copy; 2026 Meditation Steps Latvia',
+        sticky_cta: 'Register Now &mdash; from 300 EUR'
+      },
+
+      lv: {
+        page_title: 'Meditation Steps Latvia \u2014 Jogas retreats Baltij\u0101 2026',
+        page_description: 'Jogas un medit\u0101cijas retreats Lietuv\u0101. 2026. gada 30. apr\u012blis \u2013 3. maijs. Vada Didi Ananda Sanjana. Medit\u0101cija, \u0101sanas, lekcijas, gongu medit\u0101cija. Dragonfly Land, net\u0101lu no Vi\u013c\u0146as.',
+        nav_programme: 'Programma', nav_teachers: 'Skolot\u0101ji', nav_schedule: 'Grafiks',
+        nav_tickets: 'Bi\u013cetes', nav_location: 'Vieta', nav_register: 'Re\u0123istr\u0113ties',
+        hero_eyebrow: 'Lietuva &middot; 2026. gada 30. apr\u012blis &ndash; 3. maijs',
+        hero_title_1: 'Jogas retreats', hero_title_2: 'Baltij\u0101',
+        hero_date: '<strong style="color:var(--c-cream);">2026. gada 30. apr\u012blis &ndash; 3. maijs</strong> &mdash; <span style="color:var(--c-sage-light);">Atv\u0113rts visiem</span>',
+        hero_register: 'Re\u0123istr\u0113ties', hero_discover: 'Uzzin\u0101t',
+        values_heading: 'Retreats ir iesp\u0113ja',
+        val1_title: 'Dzi\u013ca prakse',
+        val1_desc: 'Iegremdejieties intens\u012bv\u0101 gar\u012bgaj\u0101 praks\u0113. Izj\u016btiet kolekt\u012bv\u0101s medit\u0101cijas sp\u0113ku, ko vada pieredz\u0113ju\u0161i a\u010d\u0101rjas, prom no ikdienas trauc\u0113k\u013ciem.',
+        val2_title: 'Person\u012bga vad\u012bba',
+        val2_desc: 'Sa\u0146emiet person\u012bgus medit\u0101cijas nor\u0101d\u012bjumus no skolot\u0101jiem. Neatkar\u012bgi no t\u0101, vai esat ies\u0101c\u0113js vai pieredz\u0113jis praktiz\u0113t\u0101js, ieg\u016bstiet j\u016bsu l\u012bmenim piem\u0113rotas tehnikas.',
+        val3_title: 'Satsanga',
+        val3_desc: 'Sazinieties ar l\u012bdz\u012bgi dom\u0101jo\u0161iem mekl\u0113t\u0101jiem no visas Baltijas un \u0101rpus t\u0101s. Dal\u012bties ar zin\u0101\u0161an\u0101m, pieredzi un iedvesmu atbalsto\u0161\u0101 gar\u012bg\u0101 kopien\u0101.',
+        teachers_eyebrow: 'Iepaz\u012bstiet savus vad\u012bt\u0101jus',
+        teachers_heading: 'A\u010d\u0101rjas <span style="font-style:italic;opacity:0.6;">(medit\u0101cijas skolot\u0101ji)</span>',
+        cred_years_label: 'Prakses gadi', cred_init_label: 'Person\u012bg\u0101s inici\u0101cijas',
+        cred_students_label: 'Studenti vis\u0101 pasaul\u0113', cred_countries_label: 'Valstis',
+        dada_name: 'Dada Sadananda',
+        dada_p1: 'Jogas m\u016bks, jogas un medit\u0101cijas skolot\u0101js. Izgl\u012btojo\u0161\u0101 tie\u0161saistes projekta un YouTube kan\u0101la "Meditationsteps" dibin\u0101t\u0101js ar vair\u0101k nek\u0101 763 000 abon\u0113t\u0101jiem.',
+        dada_p2: 'Dada praktiz\u0113 jogu un medit\u0101ciju jau 29 gadus. Kop\u0161 2000. gada m\u0101ca jogas prakses. Ir devis person\u012bg\u0101s inici\u0101cijas un vada praks\u0113 vair\u0101k nek\u0101 2000 cilv\u0113ku. Aptuveni 470 000 ir apguvu\u0161i univers\u0101lo medit\u0101cijas tehniku caur Pamatkursu. Ir apm\u0101c\u012bjis vair\u0101k nek\u0101 80 jogas un medit\u0101cijas instruktoru.',
+        dada_p3: 'Pavad\u012bjis 3 gadus jogas klosteros Zviedrij\u0101 un Indij\u0101. Katru gadu vada semin\u0101rus 32 valst\u012bs. Visaptvero\u0161\u0101s att\u012bst\u012bbas centra dibin\u0101t\u0101js un organizators Altaj\u0101.',
+        dada_p4: 'Gr\u0101matas "Dialogi par medit\u0101ciju" autors &mdash; p\u0113tot medit\u0101ciju, jogu un tantru caur person\u012bg\u0101s klostera pieredzes prizmu.',
+        didi_name: 'Didi Ananda Sanjana',
+        didi_p1: 'M\u016b\u0137ene, jogas un medit\u0101cijas skolot\u0101ja, jogas instruktore un sertific\u0113ta alternat\u012bv\u0101s medic\u012bnas speci\u0101liste no Singap\u016bras.',
+        didi_p2: 'Didi praktiz\u0113 jogu piecos virzienos jau vair\u0101k nek\u0101 30 gadus un m\u0101ca starptautiski. Vi\u0146a ir vad\u012bjusi detoks retreatus ar vair\u0101k nek\u0101 300 dal\u012bbniekiem un ir ieguvusi sertifik\u0101tus no piec\u0101m valst\u012bm. Aizraujoties ar holistisko labsaj\u016btu, vi\u0146a apvieno jogu ar aromat\u0113rapiju, mas\u0101\u017eu un fitnesu, daloties ar savu pieredzi starptautisk\u0101s konferenc\u0113s.',
+        activities_heading: 'Ko m\u0113s dar\u012bsim retreat\u0101?',
+        act1: 'Ikdienas kolekt\u012bv\u0101s gar\u012bg\u0101s prakses',
+        act2: 'Ikdienas \u0101sanu nodarb\u012bbas, jogas dejas Kaoshiki un Tandava',
+        act3: 'Lekcijas par gar\u012bgo filozofiju, jaut\u0101jumu un atbil\u017eu sesijas, praktiski padomi',
+        act4: 'Satsanga &mdash; saikne ar l\u012bdz\u012bgi dom\u0101jo\u0161iem mekl\u0113t\u0101jiem',
+        act5: 'Gongu medit\u0101cija',
+        act6: 'Vesel\u012bgs ve\u0123et\u0101rs, veg\u0101ns un neapstr\u0101d\u0101ts \u0113diens',
+        activities_note: '\u0112rta izmitin\u0101\u0161ana m\u0101j\u012bg\u0101, klus\u0101, s\u0101tviskas (t\u012br\u0101 un harmonisk\u0101) viet\u0101 net\u0101lu no Vi\u013c\u0146as, Lietuv\u0101.',
+        sched_eyebrow: 'Diena p\u0113c dienas', sched_heading: 'Retreata grafiks',
+        sched_dates: '2026. gada 30. apr\u012blis &ndash; 3. maijs',
+        legend_meditation: 'Medit\u0101cija', legend_movement: 'Joga un kust\u012bba',
+        legend_lectures: 'Lekcijas', legend_meals: '\u0112dienreizes',
+        typical_title: 'Tipiska diena', btn_detailed: 'Skat\u012bt detaliz\u0113tu grafiku',
+        btn_overview: 'Atpaka\u013c uz p\u0101rskatu',
+        sched_notation: 'Apz\u012bm\u0113jums: (30/30) = 30 min k\u012brtana (dievbij\u012bga dzied\u0101\u0161ana) + 30 min klus\u0101 medit\u0101cija. Grafiks var tikt main\u012bts.',
+        typ_0500: 'R\u012bta medit\u0101cija un dzied\u0101\u0161ana',
+        typ_0600: 'Jogas \u0101sanas un jogas deja', typ_0730: 'Kolekt\u012bv\u0101 medit\u0101cija',
+        typ_0900: 'Brokastis', typ_1000: 'Lekcija un diskusija', typ_1230: 'Pusdienas medit\u0101cija',
+        typ_1330: 'Pusdienas', typ_1430: 'Gar\u012bgais pas\u0101kums vai \u012bpa\u0161a aktivit\u0101te',
+        typ_1900: 'Vakari\u0146as', typ_2100: 'Vakara medit\u0101cija un atp\u016bta',
+        day1_label: '1. diena', day1_date: 'Ce, 30. apr.',
+        day2_label: '2. diena', day2_date: 'Pk, 1. maijs',
+        day3_label: '3. diena', day3_date: 'Se, 2. maijs',
+        day4_label: '4. diena', day4_date: 'Sv, 3. maijs',
+        sec_afternoon: 'P\u0113cpusdiena', sec_evening: 'Vakars', sec_early_morning: 'Agrs r\u012bts', sec_morning: 'R\u012bts',
+        badge_featured: 'Izcelta', badge_special_session: '\u012apa\u0161a sesija', badge_special: '\u012apa\u0161s',
+        d1_1: 'Iera\u0161an\u0101s, izmitin\u0101\u0161ana, viegla uzkoda', d1_2: 'Br\u012bvais laiks',
+        d1_3: 'Atkl\u0101\u0161anas ceremonija', d1_4: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30)',
+        d1_5: '\u0100sanu nodarb\u012bba', d1_6: 'Vakari\u0146as',
+        d1_7: 'Komunik\u0101cijas un mijiedarb\u012bbas treni\u0146\u0161, iepaz\u012b\u0161an\u0101s',
+        d1_8: 'Kolekt\u012bv\u0101 medit\u0101cija (20/30)', d1_9: 'Naktsmiers',
+        d2_1: 'Pamo\u0161an\u0101s, r\u012bta rut\u012bna',
+        d2_2: 'Pan\u010dad\u017eanja (5 min Prabhat Samgiita, 15 min k\u012brtana, 10 min medit\u0101cija)',
+        d2_3: 'Kaoshiki (jogas deja)', d2_4: '\u0100sanas (jogas poz\u012bcijas)',
+        d2_5: 'Tandava (jogas deja)', d2_6: 'Br\u012bvais laiks',
+        d2_7: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30)', d2_8: 'Brokastis',
+        d2_9: 'Didi Ananda Sanjana lekcija &mdash; Pr\u0101ta sl\u0101\u0146i',
+        d2_10: 'Br\u012bvais laiks', d2_11: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30)', d2_12: 'Pusdienas',
+        d2_13: 'Satsanga (gar\u012bgais pul\u010d\u0113\u0161an\u0101s) un person\u012bg\u0101s m\u0101c\u012bbu p\u0101rskat\u012b\u0161ana',
+        d2_14: 'Lalita Marmika &mdash; dinamisk\u0101 medit\u0101cija', d2_15: 'Medit\u0101cija', d2_16: 'Vakari\u0146as',
+        d2_17: 'Muzik\u0101ls vakars pie ugunskura &mdash; Prabhat Samgiita',
+        d2_18: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30)', d2_19: 'Naktsmiers',
+        d3_1: 'Pamo\u0161an\u0101s, r\u012bta rut\u012bna',
+        d3_2: 'Pan\u010dad\u017eanja (5 min Prabhat Samgiita, 15 min k\u012brtana, 10 min medit\u0101cija)',
+        d3_3: 'Kaoshiki', d3_4: '\u0100sanas', d3_5: 'Tandava', d3_6: 'Br\u012bvais laiks',
+        d3_7: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30) + Didi Ananda Sanjana iedvesma',
+        d3_8: 'Brokastis + person\u012bgais laiks', d3_9: 'Gongu medit\u0101cija',
+        d3_10: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30)', d3_11: 'Pusdienas',
+        d3_12: 'Didi Ananda Sanjana lekcija', d3_13: 'Grupas foto',
+        d3_14: 'Sadhana \u0160ivir (intens\u012bv\u0101 medit\u0101cija) + Didi Ananda Sanjana iedvesma (30/30 &times;3)',
+        d3_15: 'Vakari\u0146as', d3_16: 'Vakara pastaiga', d3_17: '3 pamata \u0101sanas', d3_18: 'Naktsmiers',
+        d4_1: 'Pan\u010dad\u017eanja (5 min Prabhat Samgiita, 15 min k\u012brtana, 10 min medit\u0101cija)',
+        d4_2: 'Kaoshiki', d4_3: '\u0100sanas', d4_4: 'Tandava',
+        d4_5: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30)', d4_6: 'Brokastis',
+        d4_7: 'Pak\u0101\u0161an\u0101s, grupas aktivit\u0101tes (pastaiga, atsauk\u0161u sesija) + person\u012bg\u0101s m\u0101c\u012bbu p\u0101rskat\u012b\u0161ana',
+        d4_8: 'Kolekt\u012bv\u0101 medit\u0101cija (30/30)', d4_9: 'Nosl\u0113guma ceremonija',
+        d4_10: 'Pusdienas', d4_11: 'Izbrauk\u0161ana',
+        loc_eyebrow: 'Kur m\u0113s pul\u010d\u0113jamies', loc_heading: 'Retreata vieta',
+        loc_name: 'Laum\u017eirgi\u0173 \u017dem\u0117 / Dragonfly Land',
+        loc_desc: 'Ma\u0123isks retreata centrs ~25 km uz zieme\u013ciem no Vi\u013c\u0146as, ko dibin\u0101ja Baltijas ska\u0146u terapijas pionieri. Divas skaistas z\u0101les (225 m&sup2; Ashtar z\u0101le un 100 m&sup2; Gaia kupols), m\u0101j\u012bgas ciedru un salmu-m\u0101la viesu nami\u0146as (~42 gultas vietas), tradicion\u0101la Baltijas pirts, avota \u016bdens d\u012b\u0137i un sv\u0113ts gongu d\u0101rzs.',
+        loc_link_text: 'Apmekl\u0113t norises vietas m\u0101jaslapu &rarr;', loc_gps: 'GPS: 54.893035, 25.274413',
+        bring_heading: 'Ko \u0146emt l\u012bdzi', bring_shoes: 'Iek\u0161telpu apavi',
+        bring_hygiene: 'Person\u012bg\u0101s higi\u0113nas piederumi', bring_bottle: '\u016adens pudele',
+        bring_clothes: '\u0112rti ap\u0123\u0113rbi praksei', bring_clothes_note: 'Bez leginsu vai atkl\u0101tiem ap\u0123\u0113rbiem',
+        price_eyebrow: 'Nodro\u0161ini savu vietu', price_heading: 'Rezerv\u0113 savu vietu',
+        price_includes: 'Iek\u013cauts: izmitin\u0101\u0161ana, visas ve\u0123et\u0101r\u0101s \u0113dienreizes, visas m\u0101c\u012bbas un prakses, person\u012bgi medit\u0101cijas nor\u0101d\u012bjumi.',
+        price_dates: '2026. gada 30. apr\u012blis &ndash; 3. maijs',
+        price_title: 'Jogas un medit\u0101cijas retreats',
+        price_subtitle: '4 dienas iegremd\u0113\u0161an\u0101s &middot; Atv\u0113rts visiem',
+        price_save: 'Ietaupi 30 EUR',
+        price_early_label: 'Agr\u0101 pieteik\u0161an\u0101s <em>(l\u012bdz 15.04.2026)</em>',
+        price_regular_label: 'Parast\u0101 cena', price_register: 'Re\u0123istr\u0113ties',
+        contact_text: 'Jaut\u0101jumi? Sazinieties ar mums <a href="https://t.me/Virabhava21" target="_blank" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:2px;">Telegram @Virabhava21</a>',
+        footer_org: 'Meditation Steps Latvia',
+        footer_note: 'Organiz\u0113 Meditation Steps Latvia &middot; Retreats notiek Lietuv\u0101',
+        footer_copyright: '&copy; 2026 Meditation Steps Latvia',
+        sticky_cta: 'Re\u0123istr\u0113ties &mdash; no 300 EUR'
+      },
+
+      ru: {
+        page_title: 'Meditation Steps Latvia \u2014 \u0420\u0435\u0442\u0440\u0438\u0442 \u0439\u043e\u0433\u0438 \u0432 \u0411\u0430\u043b\u0442\u0438\u0438 2026',
+        page_description: '\u0420\u0435\u0442\u0440\u0438\u0442 \u0439\u043e\u0433\u0438 \u0438 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438 \u0432 \u041b\u0438\u0442\u0432\u0435. 30 \u0430\u043f\u0440\u0435\u043b\u044f \u2014 3 \u043c\u0430\u044f 2026. \u041f\u043e\u0434 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e\u043c \u0414\u0438\u0434\u0438 \u0410\u043d\u0430\u043d\u0434\u0430 \u0421\u0430\u043d\u0434\u0436\u0430\u043d\u044b. \u041c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f, \u0430\u0441\u0430\u043d\u044b, \u043b\u0435\u043a\u0446\u0438\u0438, \u0433\u043e\u043d\u0433-\u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f. Dragonfly Land, \u043d\u0435\u0434\u0430\u043b\u0435\u043a\u043e \u043e\u0442 \u0412\u0438\u043b\u044c\u043d\u044e\u0441\u0430.',
+        nav_programme: '\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430', nav_teachers: '\u0423\u0447\u0438\u0442\u0435\u043b\u044f',
+        nav_schedule: '\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435', nav_tickets: '\u0411\u0438\u043b\u0435\u0442\u044b',
+        nav_location: '\u041c\u0435\u0441\u0442\u043e', nav_register: '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f',
+        hero_eyebrow: '\u041b\u0438\u0442\u0432\u0430 &middot; 30 \u0430\u043f\u0440\u0435\u043b\u044f &ndash; 3 \u043c\u0430\u044f, 2026',
+        hero_title_1: '\u0420\u0435\u0442\u0440\u0438\u0442 \u0439\u043e\u0433\u0438', hero_title_2: '\u0432 \u0411\u0430\u043b\u0442\u0438\u0438',
+        hero_date: '<strong style="color:var(--c-cream);">30 \u0430\u043f\u0440\u0435\u043b\u044f &ndash; 3 \u043c\u0430\u044f, 2026</strong> &mdash; <span style="color:var(--c-sage-light);">\u041e\u0442\u043a\u0440\u044b\u0442 \u0434\u043b\u044f \u0432\u0441\u0435\u0445</span>',
+        hero_register: '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f', hero_discover: '\u0423\u0437\u043d\u0430\u0442\u044c',
+        values_heading: '\u0420\u0435\u0442\u0440\u0438\u0442 &mdash; \u044d\u0442\u043e \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c',
+        val1_title: '\u0413\u043b\u0443\u0431\u043e\u043a\u0430\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0430',
+        val1_desc: '\u041f\u043e\u0433\u0440\u0443\u0437\u0438\u0442\u0435\u0441\u044c \u0432 \u0438\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0443\u044e \u0434\u0443\u0445\u043e\u0432\u043d\u0443\u044e \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443. \u041e\u0449\u0443\u0442\u0438\u0442\u0435 \u0441\u0438\u043b\u0443 \u043a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0439 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438 \u043f\u043e\u0434 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e\u043c \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0430\u0447\u0430\u0440\u044c\u0435\u0432, \u0432\u0434\u0430\u043b\u0438 \u043e\u0442 \u043f\u043e\u0432\u0441\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0445 \u043e\u0442\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0439.',
+        val2_title: '\u041b\u0438\u0447\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e',
+        val2_desc: '\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u043e \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438 \u043e\u0442 \u0443\u0447\u0438\u0442\u0435\u043b\u0435\u0439. \u041d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u043e\u0442 \u0442\u043e\u0433\u043e, \u043d\u043e\u0432\u0438\u0447\u043e\u043a \u0432\u044b \u0438\u043b\u0438 \u043e\u043f\u044b\u0442\u043d\u044b\u0439 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443\u044e\u0449\u0438\u0439, \u0432\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u0435 \u0442\u0435\u0445\u043d\u0438\u043a\u0438, \u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0438\u0435 \u0432\u0430\u0448\u0435\u043c\u0443 \u0443\u0440\u043e\u0432\u043d\u044e.',
+        val3_title: '\u0421\u0430\u0442\u0441\u0430\u043d\u0433\u0430',
+        val3_desc: '\u041e\u0431\u0449\u0430\u0439\u0442\u0435\u0441\u044c \u0441 \u0435\u0434\u0438\u043d\u043e\u043c\u044b\u0448\u043b\u0435\u043d\u043d\u0438\u043a\u0430\u043c\u0438 \u0438\u0437 \u0441\u0442\u0440\u0430\u043d \u0411\u0430\u043b\u0442\u0438\u0438 \u0438 \u0437\u0430 \u0438\u0445 \u043f\u0440\u0435\u0434\u0435\u043b\u0430\u043c\u0438. \u0414\u0435\u043b\u0438\u0442\u0435\u0441\u044c \u0437\u043d\u0430\u043d\u0438\u044f\u043c\u0438, \u043e\u043f\u044b\u0442\u043e\u043c \u0438 \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0435\u043d\u0438\u0435\u043c \u0432 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u044e\u0449\u0435\u043c \u0434\u0443\u0445\u043e\u0432\u043d\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0435.',
+        teachers_eyebrow: '\u041f\u043e\u0437\u043d\u0430\u043a\u043e\u043c\u044c\u0442\u0435\u0441\u044c \u0441 \u0432\u0430\u0448\u0438\u043c\u0438 \u043d\u0430\u0441\u0442\u0430\u0432\u043d\u0438\u043a\u0430\u043c\u0438',
+        teachers_heading: '\u0410\u0447\u0430\u0440\u044c\u0438 <span style="font-style:italic;opacity:0.6;">(\u0443\u0447\u0438\u0442\u0435\u043b\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438)</span>',
+        cred_years_label: '\u041b\u0435\u0442 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438', cred_init_label: '\u041b\u0438\u0447\u043d\u044b\u0445 \u043f\u043e\u0441\u0432\u044f\u0449\u0435\u043d\u0438\u0439',
+        cred_students_label: '\u0421\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432 \u043f\u043e \u0432\u0441\u0435\u043c\u0443 \u043c\u0438\u0440\u0443', cred_countries_label: '\u0421\u0442\u0440\u0430\u043d',
+        dada_name: '\u0414\u0430\u0434\u0430 \u0421\u0430\u0434\u0430\u043d\u0430\u043d\u0434\u0430',
+        dada_p1: '\u0414\u0430\u0434\u0430 \u0421\u0430\u0434\u0430\u043d\u0430\u043d\u0434\u0430 &mdash; \u043c\u043e\u043d\u0430\u0445, \u0443\u0447\u0438\u0442\u0435\u043b\u044c \u0439\u043e\u0433\u0438 \u0438 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438. \u041e\u0441\u043d\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043e\u0431\u0443\u0447\u0430\u044e\u0449\u0435\u0433\u043e \u043e\u043d\u043b\u0430\u0439\u043d-\u043f\u0440\u043e\u0435\u043a\u0442\u0430 \u0438 YouTube-\u043a\u0430\u043d\u0430\u043b\u0430 &laquo;\u0423\u0440\u043e\u043a\u0438\u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438&raquo; \u0441 \u0431\u043e\u043b\u0435\u0435 \u0447\u0435\u043c 763&nbsp;000 \u043f\u043e\u0434\u043f\u0438\u0441\u0447\u0438\u043a\u043e\u0432.',
+        dada_p2: '\u0421\u0442\u0430\u0436 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u0439\u043e\u0433\u0438 \u0438 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438: 29 \u043b\u0435\u0442. \u041e\u0431\u0443\u0447\u0430\u0435\u0442 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0435 &mdash; \u0441 2000 \u0433\u043e\u0434\u0430. \u0414\u0430\u043b \u043b\u0438\u0447\u043d\u043e\u0435 \u043f\u043e\u0441\u0432\u044f\u0449\u0435\u043d\u0438\u0435 \u0438 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442 \u0432 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0435 \u0431\u043e\u043b\u0435\u0435 2&nbsp;000 \u0447\u0435\u043b\u043e\u0432\u0435\u043a. \u041e\u043a\u043e\u043b\u043e 470&nbsp;000 \u043f\u043e\u0437\u043d\u0430\u043a\u043e\u043c\u0438\u043b\u0438\u0441\u044c \u0441 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0430\u043b\u044c\u043d\u043e\u0439 \u0442\u0435\u0445\u043d\u0438\u043a\u043e\u0439 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438 \u0447\u0435\u0440\u0435\u0437 \u0411\u0430\u0437\u043e\u0432\u044b\u0439 \u043a\u0443\u0440\u0441. \u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u0438\u043b \u0431\u043e\u043b\u0435\u0435 80 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440\u043e\u0432 \u0439\u043e\u0433\u0438 \u0438 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438.',
+        dada_p3: '\u041f\u0440\u043e\u0432\u0451\u043b 3 \u0433\u043e\u0434\u0430 \u0432 \u0439\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u044f\u0445 \u0428\u0432\u0435\u0446\u0438\u0438 \u0438 \u0418\u043d\u0434\u0438\u0438. \u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e \u043f\u0440\u043e\u0432\u043e\u0434\u0438\u0442 \u0441\u0435\u043c\u0438\u043d\u0430\u0440\u044b \u0432 32 \u0441\u0442\u0440\u0430\u043d\u0430\u0445 \u043c\u0438\u0440\u0430. \u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0442\u043e\u0440 \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430 \u0446\u0435\u043d\u0442\u0440\u0430 \u0432\u0441\u0435\u0441\u0442\u043e\u0440\u043e\u043d\u043d\u0435\u0433\u043e \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u044f \u043d\u0430 \u0410\u043b\u0442\u0430\u0435.',
+        dada_p4: '\u0410\u0432\u0442\u043e\u0440 \u043a\u043d\u0438\u0433\u0438 &laquo;\u0414\u0438\u0430\u043b\u043e\u0433\u0438 \u043e \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438&raquo; &mdash; \u043e \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438, \u0439\u043e\u0433\u0435 \u0438 \u0442\u0430\u043d\u0442\u0440\u0435 \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u0438\u0437\u043c\u0443 \u043b\u0438\u0447\u043d\u043e\u0433\u043e \u043c\u043e\u043d\u0430\u0448\u0435\u0441\u043a\u043e\u0433\u043e \u043e\u043f\u044b\u0442\u0430.',
+        didi_name: '\u0414\u0438\u0434\u0438 \u0410\u043d\u0430\u043d\u0434\u0430 \u0421\u0430\u043d\u0434\u0436\u0430\u043d\u0430',
+        didi_p1: '\u041c\u043e\u043d\u0430\u0445\u0438\u043d\u044f, \u0443\u0447\u0438\u0442\u0435\u043b\u044c \u0439\u043e\u0433\u0438 \u0438 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438, \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440 \u0439\u043e\u0433\u0438 \u0438 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u0446\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442 \u043f\u043e \u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u043e\u0439 \u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0435 \u0438\u0437 \u0421\u0438\u043d\u0433\u0430\u043f\u0443\u0440\u0430.',
+        didi_p2: '\u0414\u0438\u0434\u0438 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443\u0435\u0442 \u0439\u043e\u0433\u0443 \u0432 \u043f\u044f\u0442\u0438 \u0442\u0440\u0430\u0434\u0438\u0446\u0438\u044f\u0445 \u0431\u043e\u043b\u0435\u0435 30 \u043b\u0435\u0442 \u0438 \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0451\u0442 \u043f\u043e \u0432\u0441\u0435\u043c\u0443 \u043c\u0438\u0440\u0443. \u041e\u043d\u0430 \u043f\u0440\u043e\u0432\u0435\u043b\u0430 \u0434\u0435\u0442\u043e\u043a\u0441-\u0440\u0435\u0442\u0440\u0438\u0442\u044b \u0441 \u0443\u0447\u0430\u0441\u0442\u0438\u0435\u043c \u0431\u043e\u043b\u0435\u0435 300 \u0447\u0435\u043b\u043e\u0432\u0435\u043a \u0438 \u0438\u043c\u0435\u0435\u0442 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b \u0438\u0437 \u043f\u044f\u0442\u0438 \u0441\u0442\u0440\u0430\u043d. \u0423\u0432\u043b\u0435\u0447\u0451\u043d\u043d\u0430\u044f \u0446\u0435\u043b\u043e\u0441\u0442\u043d\u044b\u043c \u043e\u0437\u0434\u043e\u0440\u043e\u0432\u043b\u0435\u043d\u0438\u0435\u043c, \u043e\u043d\u0430 \u0441\u043e\u0447\u0435\u0442\u0430\u0435\u0442 \u0439\u043e\u0433\u0443 \u0441 \u0430\u0440\u043e\u043c\u0430\u0442\u0435\u0440\u0430\u043f\u0438\u0435\u0439, \u043c\u0430\u0441\u0441\u0430\u0436\u0435\u043c \u0438 \u0444\u0438\u0442\u043d\u0435\u0441\u043e\u043c, \u0434\u0435\u043b\u044f\u0441\u044c \u0441\u0432\u043e\u0438\u043c \u043e\u043f\u044b\u0442\u043e\u043c \u043d\u0430 \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u044b\u0445 \u043a\u043e\u043d\u0444\u0435\u0440\u0435\u043d\u0446\u0438\u044f\u0445.',
+        activities_heading: '\u0427\u0435\u043c \u043c\u044b \u0431\u0443\u0434\u0435\u043c \u0437\u0430\u043d\u0438\u043c\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0440\u0435\u0442\u0440\u0438\u0442\u0435?',
+        act1: '\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0435 \u043a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u044b\u0435 \u0434\u0443\u0445\u043e\u0432\u043d\u044b\u0435 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438',
+        act2: '\u0415\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u044f \u0430\u0441\u0430\u043d\u0430\u043c\u0438, \u0439\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0442\u0430\u043d\u0446\u044b \u041a\u0430\u043e\u0448\u0438\u043a\u0438 \u0438 \u0422\u0430\u043d\u0434\u0430\u0432\u0430',
+        act3: '\u041b\u0435\u043a\u0446\u0438\u0438 \u043f\u043e \u0434\u0443\u0445\u043e\u0432\u043d\u043e\u0439 \u0444\u0438\u043b\u043e\u0441\u043e\u0444\u0438\u0438, \u0441\u0435\u0441\u0441\u0438\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u043e\u0432 \u0438 \u043e\u0442\u0432\u0435\u0442\u043e\u0432, \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0441\u043e\u0432\u0435\u0442\u044b',
+        act4: '\u0421\u0430\u0442\u0441\u0430\u043d\u0433\u0430 &mdash; \u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441 \u0435\u0434\u0438\u043d\u043e\u043c\u044b\u0448\u043b\u0435\u043d\u043d\u0438\u043a\u0430\u043c\u0438',
+        act5: '\u0413\u043e\u043d\u0433-\u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f',
+        act6: '\u0417\u0434\u043e\u0440\u043e\u0432\u043e\u0435 \u0432\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043d\u0441\u043a\u043e\u0435, \u0432\u0435\u0433\u0430\u043d\u0441\u043a\u043e\u0435 \u0438 \u0441\u044b\u0440\u043e\u0435\u0434\u0447\u0435\u0441\u043a\u043e\u0435 \u043f\u0438\u0442\u0430\u043d\u0438\u0435',
+        activities_note: '\u041a\u043e\u043c\u0444\u043e\u0440\u0442\u043d\u043e\u0435 \u043f\u0440\u043e\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0432 \u0443\u044e\u0442\u043d\u043e\u043c, \u0442\u0438\u0445\u043e\u043c, \u0441\u0430\u0442\u0442\u0432\u0438\u0447\u043d\u043e\u043c (\u0447\u0438\u0441\u0442\u043e\u043c \u0438 \u0433\u0430\u0440\u043c\u043e\u043d\u0438\u0447\u043d\u043e\u043c) \u043c\u0435\u0441\u0442\u0435 \u043d\u0435\u0434\u0430\u043b\u0435\u043a\u043e \u043e\u0442 \u0412\u0438\u043b\u044c\u043d\u044e\u0441\u0430, \u041b\u0438\u0442\u0432\u0430.',
+        sched_eyebrow: '\u0414\u0435\u043d\u044c \u0437\u0430 \u0434\u043d\u0451\u043c', sched_heading: '\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0440\u0435\u0442\u0440\u0438\u0442\u0430',
+        sched_dates: '30 \u0430\u043f\u0440\u0435\u043b\u044f &ndash; 3 \u043c\u0430\u044f, 2026',
+        legend_meditation: '\u041c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f', legend_movement: '\u0419\u043e\u0433\u0430 \u0438 \u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435',
+        legend_lectures: '\u041b\u0435\u043a\u0446\u0438\u0438', legend_meals: '\u041f\u0440\u0438\u0451\u043c\u044b \u043f\u0438\u0449\u0438',
+        typical_title: '\u0422\u0438\u043f\u0438\u0447\u043d\u044b\u0439 \u0434\u0435\u043d\u044c', btn_detailed: '\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0435 \u0440\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435',
+        btn_overview: '\u041e\u0431\u0437\u043e\u0440',
+        sched_notation: '\u041e\u0431\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435: (30/30) = 30 \u043c\u0438\u043d \u043a\u0438\u0440\u0442\u0430\u043d\u0430 (\u0434\u0443\u0445\u043e\u0432\u043d\u043e\u0435 \u043f\u0435\u043d\u0438\u0435) + 30 \u043c\u0438\u043d \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f \u0432 \u0442\u0438\u0448\u0438\u043d\u0435. \u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043e.',
+        typ_0500: '\u0423\u0442\u0440\u0435\u043d\u043d\u044f\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f \u0438 \u043f\u0435\u043d\u0438\u0435',
+        typ_0600: '\u0410\u0441\u0430\u043d\u044b \u0438 \u0439\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0430\u043d\u0435\u0446', typ_0730: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f',
+        typ_0900: '\u0417\u0430\u0432\u0442\u0440\u0430\u043a', typ_1000: '\u041b\u0435\u043a\u0446\u0438\u044f \u0438 \u043e\u0431\u0441\u0443\u0436\u0434\u0435\u043d\u0438\u0435',
+        typ_1230: '\u0414\u043d\u0435\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f', typ_1330: '\u041e\u0431\u0435\u0434',
+        typ_1430: '\u0414\u0443\u0445\u043e\u0432\u043d\u043e\u0435 \u0441\u043e\u0431\u0440\u0430\u043d\u0438\u0435 \u0438\u043b\u0438 \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c',
+        typ_1900: '\u0423\u0436\u0438\u043d', typ_2100: '\u0412\u0435\u0447\u0435\u0440\u043d\u044f\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f \u0438 \u043e\u0442\u0434\u044b\u0445',
+        day1_label: '\u0414\u0435\u043d\u044c 1', day1_date: '\u0427\u0442, 30 \u0430\u043f\u0440',
+        day2_label: '\u0414\u0435\u043d\u044c 2', day2_date: '\u041f\u0442, 1 \u043c\u0430\u044f',
+        day3_label: '\u0414\u0435\u043d\u044c 3', day3_date: '\u0421\u0431, 2 \u043c\u0430\u044f',
+        day4_label: '\u0414\u0435\u043d\u044c 4', day4_date: '\u0412\u0441, 3 \u043c\u0430\u044f',
+        sec_afternoon: '\u0414\u0435\u043d\u044c', sec_evening: '\u0412\u0435\u0447\u0435\u0440',
+        sec_early_morning: '\u0420\u0430\u043d\u043d\u0435\u0435 \u0443\u0442\u0440\u043e', sec_morning: '\u0423\u0442\u0440\u043e',
+        badge_featured: '\u0413\u043b\u0430\u0432\u043d\u043e\u0435', badge_special_session: '\u0421\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u0435\u0441\u0441\u0438\u044f',
+        badge_special: '\u0421\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0435',
+        d1_1: '\u0417\u0430\u0435\u0437\u0434, \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u0435, \u043b\u0451\u0433\u043a\u0438\u0439 \u043f\u0435\u0440\u0435\u043a\u0443\u0441', d1_2: '\u0421\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f',
+        d1_3: '\u0426\u0435\u0440\u0435\u043c\u043e\u043d\u0438\u044f \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u044f', d1_4: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30)',
+        d1_5: '\u0417\u0430\u043d\u044f\u0442\u0438\u0435 \u0430\u0441\u0430\u043d\u0430\u043c\u0438', d1_6: '\u0423\u0436\u0438\u043d',
+        d1_7: '\u0422\u0440\u0435\u043d\u0438\u043d\u0433 \u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0438 \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044f, \u0437\u043d\u0430\u043a\u043e\u043c\u0441\u0442\u0432\u043e',
+        d1_8: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (20/30)', d1_9: '\u041e\u0442\u0431\u043e\u0439',
+        d2_1: '\u041f\u043e\u0434\u044a\u0451\u043c, \u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b',
+        d2_2: '\u041f\u0430\u043d\u0447\u0430\u0434\u0436\u0430\u043d\u044c\u044f (5 \u043c\u0438\u043d \u041f\u0440\u0430\u0431\u0445\u0430\u0442 \u0421\u0430\u043c\u0433\u0438\u0438\u0442\u0430, 15 \u043c\u0438\u043d \u043a\u0438\u0440\u0442\u0430\u043d\u0430, 10 \u043c\u0438\u043d \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f)',
+        d2_3: '\u041a\u0430\u043e\u0448\u0438\u043a\u0438 (\u0439\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0430\u043d\u0435\u0446)', d2_4: '\u0410\u0441\u0430\u043d\u044b (\u0439\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u043e\u0437\u044b)',
+        d2_5: '\u0422\u0430\u043d\u0434\u0430\u0432\u0430 (\u0439\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0430\u043d\u0435\u0446)', d2_6: '\u0421\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f',
+        d2_7: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30)', d2_8: '\u0417\u0430\u0432\u0442\u0440\u0430\u043a',
+        d2_9: '\u041b\u0435\u043a\u0446\u0438\u044f \u0414\u0438\u0434\u0438 \u0410\u043d\u0430\u043d\u0434\u0430 \u0421\u0430\u043d\u0434\u0436\u0430\u043d\u044b &mdash; \u0421\u043b\u043e\u0438 \u0443\u043c\u0430',
+        d2_10: '\u0421\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f', d2_11: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30)',
+        d2_12: '\u041e\u0431\u0435\u0434', d2_13: '\u0421\u0430\u0442\u0441\u0430\u043d\u0433 (\u0434\u0443\u0445\u043e\u0432\u043d\u043e\u0435 \u0441\u043e\u0431\u0440\u0430\u043d\u0438\u0435) \u0438 \u043f\u043e\u0432\u0442\u043e\u0440\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0443\u0440\u043e\u043a\u0430',
+        d2_14: '\u041b\u0430\u043b\u0438\u0442\u0430 \u041c\u0430\u0440\u043c\u0438\u043a\u0430 &mdash; \u0434\u0438\u043d\u0430\u043c\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f',
+        d2_15: '\u041c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f', d2_16: '\u0423\u0436\u0438\u043d',
+        d2_17: '\u041c\u0443\u0437\u044b\u043a\u0430\u043b\u044c\u043d\u044b\u0439 \u0432\u0435\u0447\u0435\u0440 \u0443 \u043a\u043e\u0441\u0442\u0440\u0430 &mdash; \u041f\u0440\u0430\u0431\u0445\u0430\u0442 \u0421\u0430\u043c\u0433\u0438\u0438\u0442\u0430',
+        d2_18: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30)', d2_19: '\u041e\u0442\u0431\u043e\u0439',
+        d3_1: '\u041f\u043e\u0434\u044a\u0451\u043c, \u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b',
+        d3_2: '\u041f\u0430\u043d\u0447\u0430\u0434\u0436\u0430\u043d\u044c\u044f (5 \u043c\u0438\u043d \u041f\u0440\u0430\u0431\u0445\u0430\u0442 \u0421\u0430\u043c\u0433\u0438\u0438\u0442\u0430, 15 \u043c\u0438\u043d \u043a\u0438\u0440\u0442\u0430\u043d\u0430, 10 \u043c\u0438\u043d \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f)',
+        d3_3: '\u041a\u0430\u043e\u0448\u0438\u043a\u0438', d3_4: '\u0410\u0441\u0430\u043d\u044b', d3_5: '\u0422\u0430\u043d\u0434\u0430\u0432\u0430',
+        d3_6: '\u0421\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f',
+        d3_7: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30) + \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0435\u043d\u0438\u0435 \u043e\u0442 \u0414\u0438\u0434\u0438 \u0410\u043d\u0430\u043d\u0434\u0430 \u0421\u0430\u043d\u0434\u0436\u0430\u043d\u044b',
+        d3_8: '\u0417\u0430\u0432\u0442\u0440\u0430\u043a + \u043b\u0438\u0447\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f', d3_9: '\u0413\u043e\u043d\u0433-\u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f',
+        d3_10: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30)', d3_11: '\u041e\u0431\u0435\u0434',
+        d3_12: '\u041b\u0435\u043a\u0446\u0438\u044f \u0414\u0438\u0434\u0438 \u0410\u043d\u0430\u043d\u0434\u0430 \u0421\u0430\u043d\u0434\u0436\u0430\u043d\u044b',
+        d3_13: '\u0413\u0440\u0443\u043f\u043f\u043e\u0432\u043e\u0435 \u0444\u043e\u0442\u043e',
+        d3_14: '\u0421\u0430\u0434\u0445\u0430\u043d\u0430 \u0428\u0438\u0432\u0438\u0440 (\u0438\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f) + \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0435\u043d\u0438\u0435 \u043e\u0442 \u0414\u0438\u0434\u0438 \u0410\u043d\u0430\u043d\u0434\u0430 \u0421\u0430\u043d\u0434\u0436\u0430\u043d\u044b (30/30 &times;3)',
+        d3_15: '\u0423\u0436\u0438\u043d', d3_16: '\u0412\u0435\u0447\u0435\u0440\u043d\u044f\u044f \u043f\u0440\u043e\u0433\u0443\u043b\u043a\u0430',
+        d3_17: '3 \u0431\u0430\u0437\u043e\u0432\u044b\u0435 \u0430\u0441\u0430\u043d\u044b', d3_18: '\u041e\u0442\u0431\u043e\u0439',
+        d4_1: '\u041f\u0430\u043d\u0447\u0430\u0434\u0436\u0430\u043d\u044c\u044f (5 \u043c\u0438\u043d \u041f\u0440\u0430\u0431\u0445\u0430\u0442 \u0421\u0430\u043c\u0433\u0438\u0438\u0442\u0430, 15 \u043c\u0438\u043d \u043a\u0438\u0440\u0442\u0430\u043d\u0430, 10 \u043c\u0438\u043d \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f)',
+        d4_2: '\u041a\u0430\u043e\u0448\u0438\u043a\u0438', d4_3: '\u0410\u0441\u0430\u043d\u044b', d4_4: '\u0422\u0430\u043d\u0434\u0430\u0432\u0430',
+        d4_5: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30)', d4_6: '\u0417\u0430\u0432\u0442\u0440\u0430\u043a',
+        d4_7: '\u0421\u0431\u043e\u0440\u044b, \u0433\u0440\u0443\u043f\u043f\u043e\u0432\u044b\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 (\u043f\u0440\u043e\u0433\u0443\u043b\u043a\u0430, \u0441\u0435\u0441\u0441\u0438\u044f \u043e\u0431\u0440\u0430\u0442\u043d\u043e\u0439 \u0441\u0432\u044f\u0437\u0438) + \u043f\u043e\u0432\u0442\u043e\u0440\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0443\u0440\u043e\u043a\u0430',
+        d4_8: '\u041a\u043e\u043b\u043b\u0435\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u044f (30/30)', d4_9: '\u0426\u0435\u0440\u0435\u043c\u043e\u043d\u0438\u044f \u0437\u0430\u043a\u0440\u044b\u0442\u0438\u044f',
+        d4_10: '\u041e\u0431\u0435\u0434', d4_11: '\u041e\u0442\u044a\u0435\u0437\u0434',
+        loc_eyebrow: '\u0413\u0434\u0435 \u043c\u044b \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u043c\u0441\u044f', loc_heading: '\u041c\u0435\u0441\u0442\u043e \u043f\u0440\u043e\u0432\u0435\u0434\u0435\u043d\u0438\u044f',
+        loc_name: 'Laum\u017eirgi\u0173 \u017dem\u0117 / Dragonfly Land',
+        loc_desc: '\u0412\u043e\u043b\u0448\u0435\u0431\u043d\u044b\u0439 \u0440\u0435\u0442\u0440\u0438\u0442\u043d\u044b\u0439 \u0446\u0435\u043d\u0442\u0440 \u043f\u0440\u0438\u043c\u0435\u0440\u043d\u043e \u0432 25 \u043a\u043c \u043a \u0441\u0435\u0432\u0435\u0440\u0443 \u043e\u0442 \u0412\u0438\u043b\u044c\u043d\u044e\u0441\u0430, \u043e\u0441\u043d\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0431\u0430\u043b\u0442\u0438\u0439\u0441\u043a\u0438\u043c\u0438 \u043f\u0438\u043e\u043d\u0435\u0440\u0430\u043c\u0438 \u0437\u0432\u0443\u043a\u043e\u0432\u043e\u0439 \u0442\u0435\u0440\u0430\u043f\u0438\u0438. \u0414\u0432\u0430 \u043f\u0440\u0435\u043a\u0440\u0430\u0441\u043d\u044b\u0445 \u0437\u0430\u043b\u0430 (\u0437\u0430\u043b \u0410\u0448\u0442\u0430\u0440 225 \u043c&sup2; \u0438 \u043a\u0443\u043f\u043e\u043b \u0413\u0430\u0439\u044f 100 \u043c&sup2;), \u0443\u044e\u0442\u043d\u044b\u0435 \u0433\u043e\u0441\u0442\u0435\u0432\u044b\u0435 \u0434\u043e\u043c\u0438\u043a\u0438 \u0438\u0437 \u043a\u0435\u0434\u0440\u0430 \u0438 \u0441\u043e\u043b\u043e\u043c\u0435\u043d\u043d\u043e\u0439 \u0433\u043b\u0438\u043d\u044b (\u043e\u043a\u043e\u043b\u043e 42 \u0441\u043f\u0430\u043b\u044c\u043d\u044b\u0445 \u043c\u0435\u0441\u0442), \u0442\u0440\u0430\u0434\u0438\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0431\u0430\u043b\u0442\u0438\u0439\u0441\u043a\u0430\u044f \u0441\u0430\u0443\u043d\u0430, \u0440\u043e\u0434\u043d\u0438\u043a\u043e\u0432\u044b\u0435 \u043f\u0440\u0443\u0434\u044b \u0438 \u0441\u0432\u044f\u0449\u0435\u043d\u043d\u044b\u0439 \u0433\u043e\u043d\u0433-\u0441\u0430\u0434.',
+        loc_link_text: '\u0421\u0430\u0439\u0442 \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0438 &rarr;', loc_gps: 'GPS: 54.893035, 25.274413',
+        bring_heading: '\u0427\u0442\u043e \u0432\u0437\u044f\u0442\u044c \u0441 \u0441\u043e\u0431\u043e\u0439', bring_shoes: '\u0421\u043c\u0435\u043d\u043d\u0430\u044f \u043e\u0431\u0443\u0432\u044c',
+        bring_hygiene: '\u0421\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u043b\u0438\u0447\u043d\u043e\u0439 \u0433\u0438\u0433\u0438\u0435\u043d\u044b', bring_bottle: '\u0411\u0443\u0442\u044b\u043b\u043a\u0430 \u0434\u043b\u044f \u0432\u043e\u0434\u044b',
+        bring_clothes: '\u0423\u0434\u043e\u0431\u043d\u0430\u044f \u043e\u0434\u0435\u0436\u0434\u0430 \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438',
+        bring_clothes_note: '\u0411\u0435\u0437 \u043b\u0435\u0433\u0433\u0438\u043d\u0441\u043e\u0432 \u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u043e\u0439 \u043e\u0434\u0435\u0436\u0434\u044b',
+        price_eyebrow: '\u0417\u0430\u0431\u0440\u043e\u043d\u0438\u0440\u0443\u0439\u0442\u0435 \u043c\u0435\u0441\u0442\u043e', price_heading: '\u0417\u0430\u0431\u0440\u043e\u043d\u0438\u0440\u0443\u0439\u0442\u0435 \u0441\u0432\u043e\u0451 \u043c\u0435\u0441\u0442\u043e',
+        price_includes: '\u0412\u043a\u043b\u044e\u0447\u0435\u043d\u043e: \u043f\u0440\u043e\u0436\u0438\u0432\u0430\u043d\u0438\u0435, \u0432\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043d\u0441\u043a\u043e\u0435 \u043f\u0438\u0442\u0430\u043d\u0438\u0435, \u0432\u0441\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u044f \u0438 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438, \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u043e \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438.',
+        price_dates: '30 \u0430\u043f\u0440\u0435\u043b\u044f &ndash; 3 \u043c\u0430\u044f, 2026',
+        price_title: '\u0420\u0435\u0442\u0440\u0438\u0442 \u0439\u043e\u0433\u0438 \u0438 \u043c\u0435\u0434\u0438\u0442\u0430\u0446\u0438\u0438',
+        price_subtitle: '4 \u0434\u043d\u044f \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u044f &middot; \u041e\u0442\u043a\u0440\u044b\u0442 \u0434\u043b\u044f \u0432\u0441\u0435\u0445',
+        price_save: '\u0421\u043a\u0438\u0434\u043a\u0430 30 EUR',
+        price_early_label: '\u0420\u0430\u043d\u043d\u044f\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f <em>(\u0434\u043e 15.04.2026)</em>',
+        price_regular_label: '\u041e\u0431\u044b\u0447\u043d\u0430\u044f \u0446\u0435\u043d\u0430', price_register: '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f',
+        contact_text: '\u0412\u043e\u043f\u0440\u043e\u0441\u044b? \u0421\u0432\u044f\u0436\u0438\u0442\u0435\u0441\u044c \u0441 \u043d\u0430\u043c\u0438 \u0432 <a href="https://t.me/Virabhava21" target="_blank" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:2px;">Telegram @Virabhava21</a>',
+        footer_org: 'Meditation Steps Latvia',
+        footer_note: '\u041e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0442\u043e\u0440: Meditation Steps Latvia &middot; \u0420\u0435\u0442\u0440\u0438\u0442 \u043f\u0440\u043e\u0432\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u041b\u0438\u0442\u0432\u0435',
+        footer_copyright: '&copy; 2026 Meditation Steps Latvia',
+        sticky_cta: '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f &mdash; \u043e\u0442 300 EUR'
+      }
+    };
+  </script>
+
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   <style>
     :root {
-      --c-cream: #F5F0E8;
-      --c-cream-dark: #EDE6D8;
-      --c-forest: #1E3828;
-      --c-forest-light: #2D5A3F;
-      --c-sage: #7A9E87;
-      --c-sage-light: #A8C4B0;
-      --c-terracotta: #A8503A;
-      --c-terracotta-light: #C4764A;
-      --c-gold: #C4960A;
-      --c-warm-black: #1C1917;
-      --c-warm-gray: #57534E;
-      --c-warm-gray-light: #A8A29E;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'DM Sans', system-ui, sans-serif;
-
-      /* Glass tokens */
-      --glass-bg-light: rgba(245,240,232,0.45);
-      --glass-bg-light-subtle: rgba(245,240,232,0.25);
-      --glass-bg-dark: rgba(30,56,40,0.35);
-      --glass-bg-dark-strong: rgba(30,56,40,0.55);
-      --glass-border-light: rgba(245,240,232,0.35);
-      --glass-border-dark: rgba(30,56,40,0.15);
-      --glass-blur: blur(16px) saturate(1.4);
-      --glass-blur-light: blur(8px) saturate(1.2);
+      --c-cream: #F5F0E8; --c-cream-dark: #EDE6D8; --c-forest: #1E3828; --c-forest-light: #2D5A3F;
+      --c-sage: #7A9E87; --c-sage-light: #A8C4B0; --c-terracotta: #A8503A; --c-terracotta-light: #C4764A;
+      --c-gold: #C4960A; --c-warm-black: #1C1917; --c-warm-gray: #57534E; --c-warm-gray-light: #A8A29E;
+      --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+      --glass-bg-light: rgba(245,240,232,0.45); --glass-bg-light-subtle: rgba(245,240,232,0.25);
+      --glass-bg-dark: rgba(30,56,40,0.35); --glass-bg-dark-strong: rgba(30,56,40,0.55);
+      --glass-border-light: rgba(245,240,232,0.35); --glass-border-dark: rgba(30,56,40,0.15);
+      --glass-blur: blur(16px) saturate(1.4); --glass-blur-light: blur(8px) saturate(1.2);
       --glass-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.1);
       --glass-shadow-elevated: 0 16px 48px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.12);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--c-warm-black);
-      background: var(--c-cream);
-      overflow-x: hidden;
-    }
-
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--c-cream); }
-    ::-webkit-scrollbar-thumb { background: var(--c-sage); border-radius: 4px; }
-
+    body { font-family: var(--font-body); color: var(--c-warm-black); background: var(--c-cream); overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--c-cream); } ::-webkit-scrollbar-thumb { background: var(--c-sage); border-radius: 4px; }
     .font-display { font-family: var(--font-display); }
-
-    /* Grain */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    }
-
-    /* Reveal animations */
-    .reveal-up {
-      opacity: 0; transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+    .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal-up.revealed { opacity: 1; transform: translateY(0); }
-    .reveal-left {
-      opacity: 0; transform: translateX(-40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal-left.revealed { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0; transform: translateX(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal-right.revealed { opacity: 1; transform: translateX(0); }
-    .reveal-scale {
-      opacity: 0; transform: scale(0.92);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal-scale.revealed { opacity: 1; transform: scale(1); }
-
-    .stagger-1 { transition-delay: 0.1s; }
-    .stagger-2 { transition-delay: 0.2s; }
-    .stagger-3 { transition-delay: 0.3s; }
-    .stagger-4 { transition-delay: 0.4s; }
-    .stagger-5 { transition-delay: 0.5s; }
-    .stagger-6 { transition-delay: 0.6s; }
-    .stagger-7 { transition-delay: 0.7s; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal-up, .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; transition: none; }
-    }
-
-    /* Focus styles */
+    .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; } .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; } .stagger-5 { transition-delay: 0.5s; } .stagger-6 { transition-delay: 0.6s; } .stagger-7 { transition-delay: 0.7s; }
+    @media (prefers-reduced-motion: reduce) { .reveal-up, .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; transition: none; } }
     :focus-visible { outline: 2px solid var(--c-terracotta); outline-offset: 3px; border-radius: 4px; }
-
-    /* Nav */
-    .nav-link {
-      position: relative; letter-spacing: 0.06em; text-transform: uppercase;
-      font-size: 0.8rem; font-weight: 500; color: var(--c-forest); text-decoration: none; padding: 0.25rem 0;
-      transition: color 0.2s;
-    }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px;
-      background: var(--c-terracotta); transition: width 0.3s ease;
-    }
-    .nav-link:hover { color: var(--c-terracotta); }
-    .nav-link:hover::after { width: 100%; }
-
+    .nav-link { position: relative; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.8rem; font-weight: 500; color: var(--c-forest); text-decoration: none; padding: 0.25rem 0; transition: color 0.2s; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px; background: var(--c-terracotta); transition: width 0.3s ease; }
+    .nav-link:hover { color: var(--c-terracotta); } .nav-link:hover::after { width: 100%; }
     .deco-line { width: 60px; height: 2px; background: var(--c-terracotta); }
-
-    /* Hero */
-    .hero-section {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden; background: #0F1F15;
-    }
-    .hero-triptych {
-      position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr 1fr;
-    }
-    .hero-triptych-panel {
-      position: relative; overflow: hidden;
-    }
-    .hero-triptych-panel img {
-      width: 100%; height: 100%; object-fit: cover;
-      opacity: 1; filter: saturate(0.59) brightness(0.85);
-    }
-    .hero-triptych-panel::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(15,31,21,0.4) 0%, transparent 25%, transparent 75%, rgba(15,31,21,0.4) 100%);
-    }
-    .hero-triptych-panel.center img {
-      opacity: 0.71; filter: saturate(0.8) brightness(0.87);
-    }
-    .hero-triptych-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: radial-gradient(ellipse at center, rgba(15,31,21,0.09) 0%, rgba(15,31,21,0.36) 100%);
-    }
-
-    /* Liquid glass — reusable utility */
-    .liquid-glass {
-      background: rgba(245,240,232,0.11);
-      backdrop-filter: blur(7px) saturate(1.4);
-      -webkit-backdrop-filter: blur(7px) saturate(1.4);
-      border: 1px solid rgba(245,240,232,0.21);
-      border-radius: 48px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(245,240,232,0.08);
-    }
-
-    /* Glass card variants */
-    .glass-card-light {
-      background: rgba(245,240,232,0.35);
-      backdrop-filter: blur(24px) saturate(1.6);
-      -webkit-backdrop-filter: blur(24px) saturate(1.6);
-      border: 1px solid rgba(255,255,255,0.5);
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.03);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .glass-card-light:hover {
-      transform: translateY(-6px);
-      background: rgba(245,240,232,0.45);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.03);
-    }
-    .glass-card-light::before {
-      content: ''; position: absolute; top: 0; left: 5%; right: 5%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-      pointer-events: none;
-    }
-    .glass-card-light::after {
-      content: ''; position: absolute; top: -50%; left: -25%; width: 150%; height: 100%;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .glass-card-dark {
-      background: var(--glass-bg-dark);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid rgba(245,240,232,0.12);
-      border-radius: 20px;
-      box-shadow: var(--glass-shadow);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-    }
-    .glass-card-dark:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--glass-shadow-elevated);
-    }
-    .glass-card-dark::before {
-      content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(245,240,232,0.15), transparent);
-      pointer-events: none;
-    }
-
-    .glass-strip {
-      background: var(--glass-bg-light-subtle);
-      backdrop-filter: var(--glass-blur-light);
-      -webkit-backdrop-filter: var(--glass-blur-light);
-      border: 1px solid var(--glass-border-dark);
-      border-radius: 16px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-    }
-
-    /* Hero glass card */
-    .hero-glass {
-      position: relative; z-index: 2;
-      width: 676px; max-width: 90%;
-      text-align: center; padding: 2.25rem;
-      top: 135px;
-    }
-    .hero-glass::before {
-      content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(245,240,232,0.2), transparent);
-    }
-
-    /* Activity cards */
-    .activity-card {
-      position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 1; cursor: default;
-    }
-    .activity-card img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #0F1F15; }
+    .hero-triptych { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .hero-triptych-panel { position: relative; overflow: hidden; }
+    .hero-triptych-panel img { width: 100%; height: 100%; object-fit: cover; opacity: 1; filter: saturate(0.59) brightness(0.85); }
+    .hero-triptych-panel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,31,21,0.4) 0%, transparent 25%, transparent 75%, rgba(15,31,21,0.4) 100%); }
+    .hero-triptych-panel.center img { opacity: 0.71; filter: saturate(0.8) brightness(0.87); }
+    .hero-triptych-overlay { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, rgba(15,31,21,0.09) 0%, rgba(15,31,21,0.36) 100%); }
+    .liquid-glass { background: rgba(245,240,232,0.11); backdrop-filter: blur(7px) saturate(1.4); -webkit-backdrop-filter: blur(7px) saturate(1.4); border: 1px solid rgba(245,240,232,0.21); border-radius: 48px; box-shadow: 0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(245,240,232,0.08); }
+    .glass-card-light { background: rgba(245,240,232,0.35); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); border: 1px solid rgba(255,255,255,0.5); border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.03); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease; position: relative; overflow: hidden; }
+    .glass-card-light:hover { transform: translateY(-6px); background: rgba(245,240,232,0.45); box-shadow: 0 16px 48px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.03); }
+    .glass-card-light::before { content: ''; position: absolute; top: 0; left: 5%; right: 5%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent); pointer-events: none; }
+    .glass-card-light::after { content: ''; position: absolute; top: -50%; left: -25%; width: 150%; height: 100%; background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 60%); pointer-events: none; }
+    .glass-card-dark { background: var(--glass-bg-dark); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid rgba(245,240,232,0.12); border-radius: 20px; box-shadow: var(--glass-shadow); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
+    .glass-card-dark:hover { transform: translateY(-4px); box-shadow: var(--glass-shadow-elevated); }
+    .glass-card-dark::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,240,232,0.15), transparent); pointer-events: none; }
+    .glass-strip { background: var(--glass-bg-light-subtle); backdrop-filter: var(--glass-blur-light); -webkit-backdrop-filter: var(--glass-blur-light); border: 1px solid var(--glass-border-dark); border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+    .hero-glass { position: relative; z-index: 2; width: 676px; max-width: 90%; text-align: center; padding: 2.25rem; top: 135px; }
+    .hero-glass::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,240,232,0.2), transparent); }
+    .activity-card { position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 1; cursor: default; }
+    .activity-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
     .activity-card:hover img { transform: scale(1.08); }
-    .activity-card .overlay {
-      position: absolute; inset: 0;
-      display: flex; align-items: flex-end; padding: 0;
-      transition: all 0.4s ease;
-    }
-    .activity-card .overlay-glass {
-      width: 100%; padding: 1.25rem;
-      background: rgba(30,56,40,0.55);
-      backdrop-filter: blur(12px) saturate(1.3);
-      -webkit-backdrop-filter: blur(12px) saturate(1.3);
-      border-top: 1px solid rgba(245,240,232,0.1);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .activity-card:hover .overlay-glass {
-      background: rgba(30,56,40,0.7);
-      padding: 1.5rem;
-    }
-
-    /* Schedule */
-    .day-tabs {
-      display: flex; gap: 0.5rem; margin-bottom: 2rem;
-      overflow-x: auto; -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; padding-bottom: 0.25rem;
-    }
+    .activity-card .overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 0; transition: all 0.4s ease; }
+    .activity-card .overlay-glass { width: 100%; padding: 1.25rem; background: rgba(30,56,40,0.55); backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3); border-top: 1px solid rgba(245,240,232,0.1); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .activity-card:hover .overlay-glass { background: rgba(30,56,40,0.7); padding: 1.5rem; }
+    .day-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 0.25rem; }
     .day-tabs::-webkit-scrollbar { display: none; }
-    .day-tab {
-      flex-shrink: 0; padding: 0.75rem 1.5rem; border-radius: 100px;
-      border: 1.5px solid rgba(30,56,40,0.2); background: transparent;
-      color: var(--c-forest); font-family: var(--font-body); font-size: 0.85rem;
-      font-weight: 500; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
-    }
+    .day-tab { flex-shrink: 0; padding: 0.75rem 1.5rem; border-radius: 100px; border: 1.5px solid rgba(30,56,40,0.2); background: transparent; color: var(--c-forest); font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; white-space: nowrap; }
     .day-tab:hover { border-color: var(--c-forest); }
-    .day-tab.active {
-      background: rgba(30,56,40,0.08);
-      backdrop-filter: blur(8px) saturate(1.2);
-      -webkit-backdrop-filter: blur(8px) saturate(1.2);
-      border-color: var(--c-forest);
-      color: var(--c-forest);
-      box-shadow: 0 2px 8px rgba(30,56,40,0.1), inset 0 1px 0 rgba(255,255,255,0.3);
-    }
-
+    .day-tab.active { background: rgba(30,56,40,0.08); backdrop-filter: blur(8px) saturate(1.2); -webkit-backdrop-filter: blur(8px) saturate(1.2); border-color: var(--c-forest); color: var(--c-forest); box-shadow: 0 2px 8px rgba(30,56,40,0.1), inset 0 1px 0 rgba(255,255,255,0.3); }
     .schedule-timeline { position: relative; padding-left: 0.5rem; }
-    .schedule-timeline::before {
-      content: ''; position: absolute; left: 130px; top: 0; bottom: 0;
-      width: 1px; background: rgba(30,56,40,0.12);
-    }
-
-    .schedule-day-section-label {
-      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--c-sage); padding: 1.25rem 0 0.4rem; margin-top: 0.5rem;
-      border-top: 1px solid rgba(122,158,135,0.15); font-weight: 600;
-    }
+    .schedule-timeline::before { content: ''; position: absolute; left: 130px; top: 0; bottom: 0; width: 1px; background: rgba(30,56,40,0.12); }
+    .schedule-day-section-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-sage); padding: 1.25rem 0 0.4rem; margin-top: 0.5rem; border-top: 1px solid rgba(122,158,135,0.15); font-weight: 600; }
     .schedule-day-section-label:first-child { border-top: none; margin-top: 0; }
-
-    .schedule-item {
-      display: grid; grid-template-columns: 120px 1fr; gap: 1rem;
-      padding: 0.6rem 0 0.6rem 1rem; font-size: 0.95rem; line-height: 1.6;
-      border-left: 3px solid transparent; transition: background 0.2s ease;
-      position: relative;
-    }
-    .schedule-item::before {
-      content: ''; position: absolute; left: calc(130px - 3px); top: 50%;
-      transform: translateY(-50%); width: 7px; height: 7px; border-radius: 50%;
-      background: var(--c-cream); border: 2px solid var(--c-sage); z-index: 1;
-    }
+    .schedule-item { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 0.6rem 0 0.6rem 1rem; font-size: 0.95rem; line-height: 1.6; border-left: 3px solid transparent; transition: background 0.2s ease; position: relative; }
+    .schedule-item::before { content: ''; position: absolute; left: calc(130px - 3px); top: 50%; transform: translateY(-50%); width: 7px; height: 7px; border-radius: 50%; background: var(--c-cream); border: 2px solid var(--c-sage); z-index: 1; }
     .schedule-item:hover { background: rgba(30,56,40,0.03); border-radius: 0 6px 6px 0; }
     .schedule-item .time { font-weight: 600; color: var(--c-forest); white-space: nowrap; }
-
-    /* Category colors */
-    .schedule-item[data-cat="meditation"] { border-left-color: var(--c-forest); }
-    .schedule-item[data-cat="movement"]   { border-left-color: var(--c-sage); }
-    .schedule-item[data-cat="learning"]   { border-left-color: var(--c-terracotta); }
-    .schedule-item[data-cat="meal"]       { border-left-color: var(--c-gold); }
-    .schedule-item[data-cat="logistics"]  { border-left-color: var(--c-warm-gray-light); }
-
-    .schedule-item[data-cat="meditation"]::before { border-color: var(--c-forest); }
-    .schedule-item[data-cat="movement"]::before   { border-color: var(--c-sage); }
-    .schedule-item[data-cat="learning"]::before   { border-color: var(--c-terracotta); }
-    .schedule-item[data-cat="meal"]::before        { border-color: var(--c-gold); }
-    .schedule-item[data-cat="logistics"]::before   { border-color: var(--c-warm-gray-light); }
-
-    /* Highlight items */
-    .schedule-item.highlight {
-      background: rgba(30,56,40,0.04); border-radius: 0 8px 8px 0;
-      padding: 0.75rem 1rem; margin: 0.15rem 0; border-left-width: 4px;
-    }
-    .schedule-item.highlight::before {
-      background: var(--c-terracotta); border-color: var(--c-terracotta);
-      width: 9px; height: 9px;
-    }
+    .schedule-item[data-cat="meditation"] { border-left-color: var(--c-forest); } .schedule-item[data-cat="movement"] { border-left-color: var(--c-sage); } .schedule-item[data-cat="learning"] { border-left-color: var(--c-terracotta); } .schedule-item[data-cat="meal"] { border-left-color: var(--c-gold); } .schedule-item[data-cat="logistics"] { border-left-color: var(--c-warm-gray-light); }
+    .schedule-item[data-cat="meditation"]::before { border-color: var(--c-forest); } .schedule-item[data-cat="movement"]::before { border-color: var(--c-sage); } .schedule-item[data-cat="learning"]::before { border-color: var(--c-terracotta); } .schedule-item[data-cat="meal"]::before { border-color: var(--c-gold); } .schedule-item[data-cat="logistics"]::before { border-color: var(--c-warm-gray-light); }
+    .schedule-item.highlight { background: rgba(30,56,40,0.04); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; margin: 0.15rem 0; border-left-width: 4px; }
+    .schedule-item.highlight::before { background: var(--c-terracotta); border-color: var(--c-terracotta); width: 9px; height: 9px; }
     .schedule-item.highlight .activity-name { font-weight: 500; color: var(--c-forest); }
-    .schedule-item.highlight .activity-badge {
-      display: inline-block; font-size: 0.65rem; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--c-terracotta); margin-left: 0.5rem;
-    }
-
-    /* Staggered reveal for schedule items */
-    .schedule-animate .schedule-item {
-      opacity: 0; transform: translateY(8px);
-      animation: scheduleReveal 0.3s ease forwards;
-    }
+    .schedule-item.highlight .activity-badge { display: inline-block; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-terracotta); margin-left: 0.5rem; }
+    .schedule-animate .schedule-item { opacity: 0; transform: translateY(8px); animation: scheduleReveal 0.3s ease forwards; }
     @keyframes scheduleReveal { to { opacity: 1; transform: translateY(0); } }
-    .schedule-animate .schedule-item:nth-child(1)  { animation-delay: 0ms; }
-    .schedule-animate .schedule-item:nth-child(2)  { animation-delay: 30ms; }
-    .schedule-animate .schedule-item:nth-child(3)  { animation-delay: 40ms; }
-    .schedule-animate .schedule-item:nth-child(4)  { animation-delay: 60ms; }
-    .schedule-animate .schedule-item:nth-child(5)  { animation-delay: 80ms; }
-    .schedule-animate .schedule-item:nth-child(6)  { animation-delay: 100ms; }
-    .schedule-animate .schedule-item:nth-child(7)  { animation-delay: 120ms; }
-    .schedule-animate .schedule-item:nth-child(8)  { animation-delay: 140ms; }
-    .schedule-animate .schedule-item:nth-child(9)  { animation-delay: 160ms; }
-    .schedule-animate .schedule-item:nth-child(10) { animation-delay: 180ms; }
-    .schedule-animate .schedule-item:nth-child(11) { animation-delay: 200ms; }
-    .schedule-animate .schedule-item:nth-child(12) { animation-delay: 220ms; }
-    .schedule-animate .schedule-item:nth-child(13) { animation-delay: 240ms; }
-    .schedule-animate .schedule-item:nth-child(14) { animation-delay: 260ms; }
-    .schedule-animate .schedule-item:nth-child(15) { animation-delay: 280ms; }
-    .schedule-animate .schedule-item:nth-child(16) { animation-delay: 300ms; }
-    .schedule-animate .schedule-item:nth-child(17) { animation-delay: 320ms; }
-    .schedule-animate .schedule-item:nth-child(18) { animation-delay: 340ms; }
-    .schedule-animate .schedule-item:nth-child(19) { animation-delay: 360ms; }
-    .schedule-animate .schedule-item:nth-child(20) { animation-delay: 380ms; }
-    .schedule-animate .schedule-day-section-label {
-      opacity: 0; transform: translateY(8px);
-      animation: scheduleReveal 0.3s ease forwards;
-    }
-
-    /* Typical day overview */
-    .typical-day-item {
-      display: grid; grid-template-columns: 80px 1fr; gap: 1rem;
-      padding: 0.75rem 0 0.75rem 1rem; font-size: 0.95rem;
-      border-left: 3px solid transparent;
-    }
+    .schedule-animate .schedule-item:nth-child(1) { animation-delay: 0ms; } .schedule-animate .schedule-item:nth-child(2) { animation-delay: 30ms; } .schedule-animate .schedule-item:nth-child(3) { animation-delay: 40ms; } .schedule-animate .schedule-item:nth-child(4) { animation-delay: 60ms; } .schedule-animate .schedule-item:nth-child(5) { animation-delay: 80ms; } .schedule-animate .schedule-item:nth-child(6) { animation-delay: 100ms; } .schedule-animate .schedule-item:nth-child(7) { animation-delay: 120ms; } .schedule-animate .schedule-item:nth-child(8) { animation-delay: 140ms; } .schedule-animate .schedule-item:nth-child(9) { animation-delay: 160ms; } .schedule-animate .schedule-item:nth-child(10) { animation-delay: 180ms; } .schedule-animate .schedule-item:nth-child(11) { animation-delay: 200ms; } .schedule-animate .schedule-item:nth-child(12) { animation-delay: 220ms; } .schedule-animate .schedule-item:nth-child(13) { animation-delay: 240ms; } .schedule-animate .schedule-item:nth-child(14) { animation-delay: 260ms; } .schedule-animate .schedule-item:nth-child(15) { animation-delay: 280ms; } .schedule-animate .schedule-item:nth-child(16) { animation-delay: 300ms; } .schedule-animate .schedule-item:nth-child(17) { animation-delay: 320ms; } .schedule-animate .schedule-item:nth-child(18) { animation-delay: 340ms; } .schedule-animate .schedule-item:nth-child(19) { animation-delay: 360ms; } .schedule-animate .schedule-item:nth-child(20) { animation-delay: 380ms; }
+    .schedule-animate .schedule-day-section-label { opacity: 0; transform: translateY(8px); animation: scheduleReveal 0.3s ease forwards; }
+    .typical-day-item { display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 0.75rem 0 0.75rem 1rem; font-size: 0.95rem; border-left: 3px solid transparent; }
     .typical-day-item .time { font-weight: 600; color: var(--c-forest); }
-
-    .schedule-legend {
-      display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
-      margin-bottom: 2.5rem; font-size: 0.8rem; color: var(--c-warm-gray);
-    }
-    .schedule-legend span { display: flex; align-items: center; gap: 0.4rem; }
-    .schedule-legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-
-    .btn-schedule-toggle {
-      background: rgba(30,56,40,0.06);
-      backdrop-filter: blur(8px) saturate(1.2);
-      -webkit-backdrop-filter: blur(8px) saturate(1.2);
-      border: 1.5px solid rgba(30,56,40,0.2); color: var(--c-forest);
-      padding: 0.6rem 1.5rem; border-radius: 100px; font-family: var(--font-body);
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; cursor: pointer; transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(30,56,40,0.06), inset 0 1px 0 rgba(255,255,255,0.3);
-    }
-    .btn-schedule-toggle:hover {
-      background: rgba(30,56,40,0.75);
-      backdrop-filter: blur(12px) saturate(1.3);
-      -webkit-backdrop-filter: blur(12px) saturate(1.3);
-      color: var(--c-cream);
-      border-color: rgba(30,56,40,0.3);
-      box-shadow: 0 4px 16px rgba(30,56,40,0.15), inset 0 1px 0 rgba(245,240,232,0.1);
-    }
-
-    /* Price cards */
-    .price-card {
-      background: white; border-radius: 16px; padding: 2.5rem;
-      position: relative; overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .price-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
-    }
-    .price-card.featured {
-      background: rgba(30,56,40,0.88);
-      backdrop-filter: blur(20px) saturate(1.5);
-      -webkit-backdrop-filter: blur(20px) saturate(1.5);
-      color: var(--c-cream);
-      border: 1px solid rgba(245,240,232,0.1);
-      box-shadow: 0 8px 32px rgba(30,56,40,0.3), 0 1px 0 rgba(245,240,232,0.06) inset;
-    }
-    .price-card.featured::before {
-      content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(245,240,232,0.15), transparent);
-    }
-    .price-card.featured::after {
-      content: ''; position: absolute; bottom: -50%; left: -20%; right: -20%; height: 80%;
-      background: radial-gradient(ellipse at center, rgba(122,158,135,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .price-card.featured:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(30,56,40,0.35), 0 1px 0 rgba(245,240,232,0.08) inset;
-    }
-
-    /* Buttons — frosted glass with terracotta */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 1rem 2.5rem;
-      background: rgba(168,80,58,0.40);
-      backdrop-filter: blur(12px) saturate(1.3);
-      -webkit-backdrop-filter: blur(12px) saturate(1.3);
-      color: white;
-      font-family: var(--font-body); font-size: 0.875rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
-      border-radius: 100px; border: 1px solid rgba(245,240,232,0.14); cursor: pointer;
-      transition: all 0.3s ease; position: relative; overflow: hidden;
-      box-shadow: 0 4px 16px rgba(168,80,58,0.31), inset 0 1px 0 rgba(255,255,255,0.12);
-    }
-    .btn-primary:hover {
-      background: rgba(139,61,42,0.55); transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(168,80,58,0.40), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 2rem; background: transparent; color: var(--c-cream);
-      font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
-      border-radius: 100px; border: 1.5px solid rgba(245,240,232,0.5); cursor: pointer;
-      transition: all 0.3s ease;
-    }
+    .schedule-legend { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; font-size: 0.8rem; color: var(--c-warm-gray); }
+    .schedule-legend span { display: flex; align-items: center; gap: 0.4rem; } .schedule-legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .btn-schedule-toggle { background: rgba(30,56,40,0.06); backdrop-filter: blur(8px) saturate(1.2); -webkit-backdrop-filter: blur(8px) saturate(1.2); border: 1.5px solid rgba(30,56,40,0.2); color: var(--c-forest); padding: 0.6rem 1.5rem; border-radius: 100px; font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(30,56,40,0.06), inset 0 1px 0 rgba(255,255,255,0.3); }
+    .btn-schedule-toggle:hover { background: rgba(30,56,40,0.75); backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3); color: var(--c-cream); border-color: rgba(30,56,40,0.3); box-shadow: 0 4px 16px rgba(30,56,40,0.15), inset 0 1px 0 rgba(245,240,232,0.1); }
+    .price-card { background: white; border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .price-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+    .price-card.featured { background: rgba(30,56,40,0.88); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); color: var(--c-cream); border: 1px solid rgba(245,240,232,0.1); box-shadow: 0 8px 32px rgba(30,56,40,0.3), 0 1px 0 rgba(245,240,232,0.06) inset; }
+    .price-card.featured::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,240,232,0.15), transparent); }
+    .price-card.featured::after { content: ''; position: absolute; bottom: -50%; left: -20%; right: -20%; height: 80%; background: radial-gradient(ellipse at center, rgba(122,158,135,0.12) 0%, transparent 70%); pointer-events: none; }
+    .price-card.featured:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(30,56,40,0.35), 0 1px 0 rgba(245,240,232,0.08) inset; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: rgba(168,80,58,0.40); backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3); color: white; font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border-radius: 100px; border: 1px solid rgba(245,240,232,0.14); cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; box-shadow: 0 4px 16px rgba(168,80,58,0.31), inset 0 1px 0 rgba(255,255,255,0.12); }
+    .btn-primary:hover { background: rgba(139,61,42,0.55); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(168,80,58,0.40), inset 0 1px 0 rgba(255,255,255,0.15); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 2rem; background: transparent; color: var(--c-cream); font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border-radius: 100px; border: 1.5px solid rgba(245,240,232,0.5); cursor: pointer; transition: all 0.3s ease; }
     .btn-outline:hover { background: var(--c-cream); color: var(--c-forest); border-color: var(--c-cream); }
-
-    /* What to Bring */
     .pack-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
-    .pack-icon {
-      width: 120px; height: 120px;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+    .pack-icon { width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
     .pack-icon:hover { transform: scale(1.05) rotate(-3deg); }
-    .pack-icon img {
-      width: 120px; height: 120px; object-fit: cover; border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
-    }
-
-    /* Teacher card */
+    .pack-icon img { width: 120px; height: 120px; object-fit: cover; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06); }
     .teacher-card { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .teacher-card.reverse { direction: rtl; }
-    .teacher-card.reverse > * { direction: ltr; }
-    .teacher-img-wrap {
-      position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4;
-    }
+    .teacher-card.reverse { direction: rtl; } .teacher-card.reverse > * { direction: ltr; }
+    .teacher-img-wrap { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; }
     .teacher-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-
-    .lang-btn {
-      padding: 0.25rem 0.5rem; font-size: 0.75rem; letter-spacing: 0.05em;
-      color: var(--c-warm-gray-light); text-decoration: none; transition: color 0.2s; text-transform: uppercase;
-      font-weight: 500;
-    }
+    .lang-btn { padding: 0.25rem 0.5rem; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-warm-gray-light); text-decoration: none; transition: color 0.2s; text-transform: uppercase; font-weight: 500; cursor: pointer; background: none; border: none; font-family: var(--font-body); }
     .lang-btn:hover, .lang-btn.active { color: var(--c-forest); }
-
-    .section-pad { padding: 6rem 1.5rem; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .container-narrow { max-width: 800px; margin: 0 auto; }
-
-    /* Value proposition section — nature BG for glass cards */
-    .values-section {
-      position: relative; overflow: hidden;
-    }
-    .values-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #D4CFC3 0%, #B8CABC 35%, #C8D5CB 55%, #D4CFC3 100%);
-    }
-    .values-bg::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(circle at 20% 40%, rgba(122,158,135,0.35) 0%, transparent 45%),
-        radial-gradient(circle at 75% 25%, rgba(168,196,176,0.3) 0%, transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(196,150,10,0.08) 0%, transparent 50%);
-    }
-    .values-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(122,158,135,0.15) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 30%, rgba(196,150,10,0.06) 0%, transparent 50%);
-    }
-
-    /* Credibility bar — glass strip */
-    .credibility-bar {
-      display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
-      padding: 1.75rem 2rem;
-    }
-
-    /* Location glass overlay */
-    .location-info-glass {
-      background: rgba(30,56,40,0.5);
-      backdrop-filter: blur(16px) saturate(1.4);
-      -webkit-backdrop-filter: blur(16px) saturate(1.4);
-      border: 1px solid rgba(245,240,232,0.1);
-      border-radius: 20px;
-      padding: 2.5rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-      position: relative;
-    }
-    .location-info-glass::before {
-      content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(245,240,232,0.12), transparent);
-    }
-
-    /* What to Bring glass cards */
-    .pack-glass {
-      position: relative;
-      background: rgba(245,240,232,0.5);
-      backdrop-filter: blur(8px) saturate(1.2);
-      -webkit-backdrop-filter: blur(8px) saturate(1.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 20px;
-      padding: 2rem 1rem 1.5rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-    }
-    .pack-glass:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-    .pack-glass::before {
-      content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-      pointer-events: none;
-    }
-
-    /* Sticky mobile CTA — liquid glass style */
-    .sticky-cta {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
-      background: rgba(30,56,40,0.85); backdrop-filter: blur(16px) saturate(1.4);
-      -webkit-backdrop-filter: blur(16px) saturate(1.4);
-      padding: 0.75rem 1.5rem; display: none;
-      border-top: 1px solid rgba(245,240,232,0.12);
-    }
+    .section-pad { padding: 6rem 1.5rem; } .container { max-width: 1200px; margin: 0 auto; } .container-narrow { max-width: 800px; margin: 0 auto; }
+    .values-section { position: relative; overflow: hidden; }
+    .values-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #D4CFC3 0%, #B8CABC 35%, #C8D5CB 55%, #D4CFC3 100%); }
+    .values-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 40%, rgba(122,158,135,0.35) 0%, transparent 45%), radial-gradient(circle at 75% 25%, rgba(168,196,176,0.3) 0%, transparent 40%), radial-gradient(circle at 50% 80%, rgba(196,150,10,0.08) 0%, transparent 50%); }
+    .values-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(122,158,135,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(196,150,10,0.06) 0%, transparent 50%); }
+    .credibility-bar { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; padding: 1.75rem 2rem; }
+    .location-info-glass { background: rgba(30,56,40,0.5); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); border: 1px solid rgba(245,240,232,0.1); border-radius: 20px; padding: 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.15); position: relative; }
+    .location-info-glass::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,240,232,0.12), transparent); }
+    .pack-glass { position: relative; background: rgba(245,240,232,0.5); backdrop-filter: blur(8px) saturate(1.2); -webkit-backdrop-filter: blur(8px) saturate(1.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 2rem 1rem 1.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.04); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
+    .pack-glass:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .pack-glass::before { content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); pointer-events: none; }
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 40; background: rgba(30,56,40,0.85); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); padding: 0.75rem 1.5rem; display: none; border-top: 1px solid rgba(245,240,232,0.12); }
     .sticky-cta a { width: 100%; justify-content: center; }
-
-    /* Mobile menu */
-    .mobile-menu {
-      position: fixed; inset: 0; background: var(--c-forest); z-index: 100;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
-    }
-    .mobile-menu a {
-      font-family: var(--font-display); font-size: 2rem; color: var(--c-cream);
-      text-decoration: none; font-weight: 300;
-    }
-
-    /* Quote block */
-    .quote-block {
-      position: relative; padding: 2rem 0; text-align: center;
-      font-family: var(--font-display); font-style: italic; font-size: 1.4rem;
-      line-height: 1.6; color: var(--c-forest); max-width: 700px; margin: 0 auto;
-    }
-    .quote-block cite {
-      display: block; margin-top: 1rem; font-style: normal;
-      font-family: var(--font-body); font-size: 0.8rem;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-warm-gray);
-    }
-
-    /* Responsive */
+    .mobile-menu { position: fixed; inset: 0; background: var(--c-forest); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+    .mobile-menu a { font-family: var(--font-display); font-size: 2rem; color: var(--c-cream); text-decoration: none; font-weight: 300; }
+    .quote-block { position: relative; padding: 2rem 0; text-align: center; font-family: var(--font-display); font-style: italic; font-size: 1.4rem; line-height: 1.6; color: var(--c-forest); max-width: 700px; margin: 0 auto; }
+    .quote-block cite { display: block; margin-top: 1rem; font-style: normal; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-warm-gray); }
     @media (max-width: 768px) {
-      .teacher-card, .teacher-card.reverse { grid-template-columns: 1fr; direction: ltr; }
-      .teacher-img-wrap { aspect-ratio: 3/4; max-height: 450px; }
-      .schedule-item { grid-template-columns: 1fr; gap: 0.15rem; font-size: 0.9rem; padding: 0.75rem 0 0.75rem 1rem; }
-      .schedule-item .time { font-size: 0.8rem; opacity: 0.85; }
-      .schedule-timeline::before { left: 0; opacity: 0; }
-      .schedule-item::before { display: none; }
-      .day-tab { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
-      .typical-day-item { grid-template-columns: 60px 1fr; gap: 0.75rem; font-size: 0.9rem; }
-      .section-pad { padding: 4rem 1.5rem; }
-      .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; }
-      .activity-grid { grid-template-columns: 1fr 1fr !important; }
-      .value-grid { grid-template-columns: 1fr !important; }
-      .pack-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .hero-triptych { grid-template-columns: 1fr; }
-      .hero-triptych-panel:not(.center) { display: none; }
-      .hero-triptych-panel.center img { opacity: 0.5; }
-      .hero-glass { padding: 2rem 1.5rem; border-radius: 32px; }
-      .sticky-cta { display: flex; }
-      .desktop-only { display: none !important; }
-      .credibility-bar { gap: 1.5rem; padding: 1.25rem 1rem; }
+      .teacher-card, .teacher-card.reverse { grid-template-columns: 1fr; direction: ltr; } .teacher-img-wrap { aspect-ratio: 3/4; max-height: 450px; }
+      .schedule-item { grid-template-columns: 1fr; gap: 0.15rem; font-size: 0.9rem; padding: 0.75rem 0 0.75rem 1rem; } .schedule-item .time { font-size: 0.8rem; opacity: 0.85; }
+      .schedule-timeline::before { left: 0; opacity: 0; } .schedule-item::before { display: none; } .day-tab { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+      .typical-day-item { grid-template-columns: 60px 1fr; gap: 0.75rem; font-size: 0.9rem; } .section-pad { padding: 4rem 1.5rem; }
+      .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem) !important; } .activity-grid { grid-template-columns: 1fr 1fr !important; }
+      .value-grid { grid-template-columns: 1fr !important; } .pack-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .hero-triptych { grid-template-columns: 1fr; } .hero-triptych-panel:not(.center) { display: none; } .hero-triptych-panel.center img { opacity: 0.5; }
+      .hero-glass { padding: 2rem 1.5rem; border-radius: 32px; } .sticky-cta { display: flex; } .desktop-only { display: none !important; } .credibility-bar { gap: 1.5rem; padding: 1.25rem 1rem; }
     }
-    @media (min-width: 769px) {
-      .mobile-only { display: none !important; }
-    }
-    @media (max-width: 480px) {
-      .activity-grid { grid-template-columns: 1fr !important; }
-      .price-grid { grid-template-columns: 1fr !important; }
-    }
+    @media (min-width: 769px) { .mobile-only { display: none !important; } }
+    @media (max-width: 480px) { .activity-grid { grid-template-columns: 1fr !important; } .price-grid { grid-template-columns: 1fr !important; } }
   </style>
 </head>
 
-<body x-data="{ mobileOpen: false, lang: 'en' }">
+<body x-data="{ mobileOpen: false, lang: localStorage.getItem('lang') || (location.hash.replace('#','') || 'en'), t(key) { return (translations[this.lang] || translations.en)[key] || translations.en[key] || key; } }"
+      x-init="$watch('lang', v => { localStorage.setItem('lang', v); document.documentElement.lang = v; document.title = t('page_title'); history.replaceState(null, '', '#' + v); }); document.documentElement.lang = lang; document.title = t('page_title'); document.querySelector('meta[name=description]').content = t('page_description');">
 
   <!-- MOBILE MENU -->
-  <div class="mobile-menu" x-show="mobileOpen" x-transition:enter="transition ease-out duration-300"
-       x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-       x-transition:leave="transition ease-in duration-200"
-       x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-       @click.self="mobileOpen = false">
-    <a href="#programme" @click="mobileOpen = false">Programme</a>
-    <a href="#teachers" @click="mobileOpen = false">Teachers</a>
-    <a href="#schedule" @click="mobileOpen = false">Schedule</a>
-    <a href="#tickets" @click="mobileOpen = false">Tickets</a>
-    <a href="#location" @click="mobileOpen = false">Location</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" target="_blank" class="btn-primary" style="margin-top:1rem;font-size:0.9rem;" @click="mobileOpen = false">Register Now</a>
+  <div class="mobile-menu" x-show="mobileOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.self="mobileOpen = false">
+    <a href="#programme" @click="mobileOpen = false" x-text="t('nav_programme')"></a>
+    <a href="#teachers" @click="mobileOpen = false" x-text="t('nav_teachers')"></a>
+    <a href="#schedule" @click="mobileOpen = false" x-text="t('nav_schedule')"></a>
+    <a href="#tickets" @click="mobileOpen = false" x-text="t('nav_tickets')"></a>
+    <a href="#location" @click="mobileOpen = false" x-text="t('nav_location')"></a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" target="_blank" class="btn-primary" style="margin-top:1rem;font-size:0.9rem;" @click="mobileOpen = false" x-text="t('nav_register')"></a>
     <button @click="mobileOpen = false" aria-label="Close menu" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--c-cream);font-size:2rem;cursor:pointer;">&times;</button>
   </div>
 
   <!-- NAVIGATION -->
-  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 0.4s ease;"
-       x-data="{ scrolled: false }"
-       x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 60 })"
-       :style="scrolled ? 'background:rgba(245,240,232,0.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,0.04)' : 'background:transparent'">
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 0.4s ease;" x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 60 })" :style="scrolled ? 'background:rgba(245,240,232,0.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,0.04)' : 'background:transparent'">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;">
-      <a href="#" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
-        <img src="images/logo.png" alt="Meditation Steps" style="height:36px;width:auto;">
-      </a>
+      <a href="#" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;"><img src="images/logo.png" alt="Meditation Steps" style="height:36px;width:auto;"></a>
       <div style="display:flex;align-items:center;gap:2rem;">
         <div style="display:flex;gap:2rem;" class="desktop-only">
-          <a href="#programme" class="nav-link">Programme</a>
-          <a href="#teachers" class="nav-link">Teachers</a>
-          <a href="#schedule" class="nav-link">Schedule</a>
-          <a href="#tickets" class="nav-link">Tickets</a>
-          <a href="#location" class="nav-link">Location</a>
+          <a href="#programme" class="nav-link" x-text="t('nav_programme')"></a>
+          <a href="#teachers" class="nav-link" x-text="t('nav_teachers')"></a>
+          <a href="#schedule" class="nav-link" x-text="t('nav_schedule')"></a>
+          <a href="#tickets" class="nav-link" x-text="t('nav_tickets')"></a>
+          <a href="#location" class="nav-link" x-text="t('nav_location')"></a>
         </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" target="_blank" class="btn-primary desktop-only" style="padding:0.6rem 1.5rem;font-size:0.7rem;">Register</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" target="_blank" class="btn-primary desktop-only" style="padding:0.6rem 1.5rem;font-size:0.7rem;" x-text="t('nav_register')"></a>
         <div style="display:flex;gap:0.25rem;align-items:center;">
-          <a href="index.html" class="lang-btn active">En</a>
+          <a href="#" class="lang-btn" :class="lang==='en' && 'active'" @click.prevent="lang='en'">En</a>
           <span style="color:var(--c-warm-gray-light);font-size:0.65rem;">|</span>
-          <a href="index-lv.html" class="lang-btn">Lv</a>
+          <a href="#" class="lang-btn" :class="lang==='lv' && 'active'" @click.prevent="lang='lv'">Lv</a>
           <span style="color:var(--c-warm-gray-light);font-size:0.65rem;">|</span>
-          <a href="index-ru.html" class="lang-btn">Ru</a>
+          <a href="#" class="lang-btn" :class="lang==='ru' && 'active'" @click.prevent="lang='ru'">Ru</a>
         </div>
-        <button @click="mobileOpen = true" class="mobile-only" aria-label="Open menu"
-                style="background:none;border:none;color:var(--c-forest);cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;">
+        <button @click="mobileOpen = true" class="mobile-only" aria-label="Open menu" style="background:none;border:none;color:var(--c-forest);cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;">
           <span style="width:24px;height:1.5px;background:currentColor;display:block;"></span>
           <span style="width:18px;height:1.5px;background:currentColor;display:block;margin-left:auto;"></span>
         </button>
@@ -679,104 +545,34 @@
 
   <!-- HERO -->
   <header class="hero-section">
-    <!-- Triptych: Dada | Gong Spiral | Didi -->
-    <div class="hero-triptych">
-      <div class="hero-triptych-panel">
-        <img src="images/dada-hero.jpeg" alt="" style="object-position:center 20%;">
-      </div>
-      <div class="hero-triptych-panel center">
-        <img src="images/didi-hero.jpg" alt="">
-      </div>
-      <div class="hero-triptych-panel">
-        <img src="images/dada-portrait.png" alt="" style="object-position:center 30%;">
-      </div>
-    </div>
+    <div class="hero-triptych"><div class="hero-triptych-panel"><img src="images/dada-hero.jpeg" alt="" style="object-position:center 20%;"></div><div class="hero-triptych-panel center"><img src="images/didi-hero.jpg" alt=""></div><div class="hero-triptych-panel"><img src="images/dada-portrait.png" alt="" style="object-position:center 30%;"></div></div>
     <div class="hero-triptych-overlay"></div>
-
-    <!-- Glass card -->
     <div class="hero-glass liquid-glass reveal-up revealed">
       <div style="display:inline-flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;color:rgba(245,240,232,0.6);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;">
-        <span style="width:32px;height:1px;background:var(--c-terracotta-light);"></span>
-        <span>Lithuania &middot; April 30 &ndash; May 3, 2026</span>
-        <span style="width:32px;height:1px;background:var(--c-terracotta-light);"></span>
+        <span style="width:32px;height:1px;background:var(--c-terracotta-light);"></span><span x-html="t('hero_eyebrow')"></span><span style="width:32px;height:1px;background:var(--c-terracotta-light);"></span>
       </div>
-
-      <h1 class="font-display hero-title reveal-up revealed" style="font-size:clamp(3rem,6vw,4.8rem);font-weight:300;line-height:1.05;color:var(--c-cream);margin-bottom:1rem;letter-spacing:-0.02em;">
-        Yoga Retreat<br>
-        <span style="font-style:italic;font-weight:300;color:var(--c-sage-light);">in the Baltics</span>
-      </h1>
-
-      <p class="reveal-up revealed stagger-1" style="color:rgba(245,240,232,0.85);font-size:0.95rem;margin-bottom:1.5rem;">
-        <strong style="color:var(--c-cream);">April 30<sup>th</sup> &ndash; May 3<sup>rd</sup>, 2026</strong> &mdash; <span style="color:var(--c-sage-light);">Open to everyone</span>
-      </p>
-
+      <h1 class="font-display hero-title reveal-up revealed" style="font-size:clamp(3rem,6vw,4.8rem);font-weight:300;line-height:1.05;color:var(--c-cream);margin-bottom:1rem;letter-spacing:-0.02em;"><span x-text="t('hero_title_1')"></span><br><span style="font-style:italic;font-weight:300;color:var(--c-sage-light);" x-text="t('hero_title_2')"></span></h1>
+      <p class="reveal-up revealed stagger-1" style="color:rgba(245,240,232,0.85);font-size:0.95rem;margin-bottom:1.5rem;" x-html="t('hero_date')"></p>
       <div class="reveal-up revealed stagger-2" style="display:flex;justify-content:center;">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" class="btn-primary" target="_blank">
-          Register Now
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" class="btn-primary" target="_blank"><span x-text="t('hero_register')"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
-
     <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;z-index:5;">
-      <span style="color:rgba(245,240,232,0.4);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;">Discover</span>
+      <span style="color:rgba(245,240,232,0.4);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;" x-text="t('hero_discover')"></span>
       <div style="width:1px;height:32px;background:linear-gradient(to bottom,rgba(245,240,232,0.4),transparent);animation:scrollPulse 2s ease infinite;"></div>
     </div>
-    <style>
-      @keyframes scrollPulse {
-        0%, 100% { opacity: 1; transform: scaleY(1); }
-        50% { opacity: 0.4; transform: scaleY(0.6); }
-      }
-    </style>
+    <style>@keyframes scrollPulse { 0%, 100% { opacity: 1; transform: scaleY(1); } 50% { opacity: 0.4; transform: scaleY(0.6); } }</style>
   </header>
 
-  <!-- RETREAT IS A CHANCE TO — Glass cards over tinted background -->
+  <!-- VALUES -->
   <section id="programme" class="section-pad values-section">
     <div class="values-bg"></div>
     <div class="container" style="position:relative;z-index:1;">
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;">
-        <div class="deco-line" style="margin:0 auto 1.5rem;"></div>
-        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);letter-spacing:-0.01em;">
-          Retreat Is a Chance to
-        </h2>
-      </div>
-
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;"><div class="deco-line" style="margin:0 auto 1.5rem;"></div><h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);letter-spacing:-0.01em;" x-html="t('values_heading')"></h2></div>
       <div class="value-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto;">
-        <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="glass-card-light" style="position:relative;text-align:center;padding:2.5rem 1.5rem;">
-            <div style="margin-bottom:1.5rem;">
-              <img src="images/icon-lotus1.png" alt="Spiritual practice" style="width:120px;height:120px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;">
-            </div>
-            <h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;">Deep Practice</h3>
-            <p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;">
-              Immerse yourself in intensive spiritual practice. Experience the power of collective meditation guided by experienced acharyas, away from everyday distractions.
-            </p>
-          </div>
-        </div>
-
-        <div class="reveal-up stagger-2" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="glass-card-light" style="position:relative;text-align:center;padding:2.5rem 1.5rem;">
-            <div style="margin-bottom:1.5rem;">
-              <img src="images/icon-lotus2.png" alt="Personal guidance" style="width:120px;height:120px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;">
-            </div>
-            <h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;">Personal Guidance</h3>
-            <p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;">
-              Receive personal meditation instruction from the teachers. Whether you are a beginner or experienced, get techniques suited to your level.
-            </p>
-          </div>
-        </div>
-
-        <div class="reveal-up stagger-3" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="glass-card-light" style="position:relative;text-align:center;padding:2.5rem 1.5rem;">
-            <div style="margin-bottom:1.5rem;">
-              <img src="images/icon-lotus3.png" alt="Community" style="width:120px;height:120px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;">
-            </div>
-            <h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;">Satsanga</h3>
-            <p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;">
-              Connect with like-minded seekers from across the Baltics and beyond. Share knowledge, experience and inspiration in a supportive spiritual community.
-            </p>
-          </div>
-        </div>
+        <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')"><div class="glass-card-light" style="position:relative;text-align:center;padding:2.5rem 1.5rem;"><div style="margin-bottom:1.5rem;"><img src="images/icon-lotus1.png" alt="" style="width:120px;height:120px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;"></div><h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;" x-text="t('val1_title')"></h3><p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;" x-text="t('val1_desc')"></p></div></div>
+        <div class="reveal-up stagger-2" x-data x-intersect.once="$el.classList.add('revealed')"><div class="glass-card-light" style="position:relative;text-align:center;padding:2.5rem 1.5rem;"><div style="margin-bottom:1.5rem;"><img src="images/icon-lotus2.png" alt="" style="width:120px;height:120px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;"></div><h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;" x-text="t('val2_title')"></h3><p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;" x-text="t('val2_desc')"></p></div></div>
+        <div class="reveal-up stagger-3" x-data x-intersect.once="$el.classList.add('revealed')"><div class="glass-card-light" style="position:relative;text-align:center;padding:2.5rem 1.5rem;"><div style="margin-bottom:1.5rem;"><img src="images/icon-lotus3.png" alt="" style="width:120px;height:120px;object-fit:contain;margin:0 auto;display:block;border-radius:50%;"></div><h3 class="font-display" style="font-size:1.3rem;color:var(--c-forest);margin-bottom:0.75rem;" x-text="t('val3_title')"></h3><p style="color:var(--c-warm-gray);line-height:1.7;font-size:0.95rem;" x-text="t('val3_desc')"></p></div></div>
       </div>
     </div>
   </section>
@@ -784,495 +580,116 @@
   <!-- TEACHERS -->
   <section id="teachers" class="section-pad" style="background:var(--c-cream-dark);">
     <div class="container">
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:2rem;">
-        <span style="color:var(--c-terracotta);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Meet your guides</span>
-        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);margin-top:0.75rem;">
-          Acharyas <span style="font-style:italic;opacity:0.6;">(meditation teachers)</span>
-        </h2>
-      </div>
-
-      <!-- Credibility bar — glass strip -->
-      <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')" style="margin-bottom:4rem;">
-        <div class="glass-strip credibility-bar">
-          <div style="text-align:center;">
-            <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">29</div>
-            <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Years of practice</div>
-          </div>
-          <div style="text-align:center;">
-            <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">2,000+</div>
-            <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Personal initiations</div>
-          </div>
-          <div style="text-align:center;">
-            <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">470,000+</div>
-            <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Students worldwide</div>
-          </div>
-          <div style="text-align:center;">
-            <div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">32</div>
-            <div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;">Countries</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dada Sadananda -->
-      <div class="teacher-card" style="margin-bottom:6rem;">
-        <div class="reveal-left" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="teacher-img-wrap">
-            <img src="images/dada-hero.jpeg" alt="Dada Sadananda" loading="lazy" style="object-position:center 20%;">
-          </div>
-        </div>
-        <div class="reveal-right" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div style="max-width:480px;">
-            <h3 class="font-display" style="font-size:2.2rem;font-weight:400;color:var(--c-forest);margin-bottom:1.5rem;">Dada Sadananda</h3>
-            <div style="color:var(--c-warm-gray);line-height:1.8;font-size:1rem;">
-              <p style="margin-bottom:1rem;">
-                Yogic monk, teacher of yoga and meditation. Founder of the educational online project and YouTube channel "Meditationsteps" with over 763,000 subscribers.
-              </p>
-              <p style="margin-bottom:1rem;">
-                Dada has been practicing yoga and meditation for 29 years. Since the year 2000 has been teaching yoga practices. Has given personal initiations and guides in practice more than 2,000 people. Around 470,000 have learned the universal meditation technique through the Basic Course. Has trained more than 80 yoga and meditation instructors.
-              </p>
-              <p style="margin-bottom:1rem;">
-                Spent 3 years in yogic monasteries in Sweden and India. Annually holds seminars across 32 countries. Founder and organizer of the Centre for overall development in Altai.
-              </p>
-              <p>
-                Author of the book "Dialogues on Meditation" &mdash; exploring meditation, yoga and tantra through the lens of personal monastic experience.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Didi Ananda Sanjana -->
-      <div class="teacher-card reverse">
-        <div class="reveal-right" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="teacher-img-wrap">
-            <img src="images/didi-photo.jpg" alt="Didi Ananda Sanjana" loading="lazy">
-          </div>
-        </div>
-        <div class="reveal-left" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div style="max-width:480px;">
-            <h3 class="font-display" style="font-size:2.2rem;font-weight:400;color:var(--c-forest);margin-bottom:1.5rem;">
-              <a href="https://www.instagram.com/meditationsteps_azerbaijan/p/CjpYzKbj5t-/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--c-sage-light);transition:border-color 0.2s;">
-                Didi Ananda Sanjana
-              </a>
-            </h3>
-            <div style="color:var(--c-warm-gray);line-height:1.8;font-size:1rem;">
-              <p style="margin-bottom:1rem;">
-                Nun, yoga and meditation teacher, yoga instructor, and certified alternative medicine specialist from Singapore.
-              </p>
-              <p>
-                Didi has been practicing yoga in five traditions for over 30 years and teaching internationally. She has led detox retreats with over 300 participants and holds certifications from five countries. Passionate about holistic wellness, she blends yoga with aromatherapy, massage, and fitness, sharing her expertise at global conferences.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:2rem;"><span style="color:var(--c-terracotta);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;" x-text="t('teachers_eyebrow')"></span><h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);margin-top:0.75rem;" x-html="t('teachers_heading')"></h2></div>
+      <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')" style="margin-bottom:4rem;"><div class="glass-strip credibility-bar"><div style="text-align:center;"><div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">29</div><div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;" x-text="t('cred_years_label')"></div></div><div style="text-align:center;"><div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">2,000+</div><div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;" x-text="t('cred_init_label')"></div></div><div style="text-align:center;"><div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">470,000+</div><div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;" x-text="t('cred_students_label')"></div></div><div style="text-align:center;"><div class="font-display" style="font-size:2rem;font-weight:600;color:var(--c-forest);">32</div><div style="font-size:0.75rem;color:var(--c-warm-gray);text-transform:uppercase;letter-spacing:0.08em;" x-text="t('cred_countries_label')"></div></div></div></div>
+      <div class="teacher-card" style="margin-bottom:6rem;"><div class="reveal-left" x-data x-intersect.once="$el.classList.add('revealed')"><div class="teacher-img-wrap"><img src="images/dada-hero.jpeg" alt="Dada Sadananda" loading="lazy" style="object-position:center 20%;"></div></div><div class="reveal-right" x-data x-intersect.once="$el.classList.add('revealed')"><div style="max-width:480px;"><h3 class="font-display" style="font-size:2.2rem;font-weight:400;color:var(--c-forest);margin-bottom:1.5rem;" x-text="t('dada_name')"></h3><div style="color:var(--c-warm-gray);line-height:1.8;font-size:1rem;"><p style="margin-bottom:1rem;" x-html="t('dada_p1')"></p><p style="margin-bottom:1rem;" x-html="t('dada_p2')"></p><p style="margin-bottom:1rem;" x-html="t('dada_p3')"></p><p x-html="t('dada_p4')"></p></div></div></div></div>
+      <div class="teacher-card reverse"><div class="reveal-right" x-data x-intersect.once="$el.classList.add('revealed')"><div class="teacher-img-wrap"><img src="images/didi-photo.jpg" alt="Didi Ananda Sanjana" loading="lazy"></div></div><div class="reveal-left" x-data x-intersect.once="$el.classList.add('revealed')"><div style="max-width:480px;"><h3 class="font-display" style="font-size:2.2rem;font-weight:400;color:var(--c-forest);margin-bottom:1.5rem;"><a href="https://www.instagram.com/meditationsteps_azerbaijan/p/CjpYzKbj5t-/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--c-sage-light);transition:border-color 0.2s;" x-text="t('didi_name')"></a></h3><div style="color:var(--c-warm-gray);line-height:1.8;font-size:1rem;"><p style="margin-bottom:1rem;" x-text="t('didi_p1')"></p><p x-text="t('didi_p2')"></p></div></div></div></div>
     </div>
   </section>
 
-  <!-- WHAT WILL WE DO — Glass overlay on activity cards -->
+  <!-- ACTIVITIES -->
   <section class="section-pad" style="background:var(--c-forest);color:var(--c-cream);">
     <div class="container">
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;">
-        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;letter-spacing:-0.01em;">
-          What will we do at the retreat?
-        </h2>
-      </div>
-
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;"><h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;letter-spacing:-0.01em;" x-text="t('activities_heading')"></h2></div>
       <div class="activity-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:1000px;margin:0 auto;">
-        <div class="reveal-scale stagger-1" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="activity-card">
-            <img src="images/activity-1.jpg" alt="Spiritual practices" loading="lazy">
-            <div class="overlay">
-              <div class="overlay-glass">
-                <p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Daily collective spiritual practices</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal-scale stagger-2" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="activity-card">
-            <img src="images/activity-2.jpeg" alt="Asana classes" loading="lazy">
-            <div class="overlay">
-              <div class="overlay-glass">
-                <p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Daily asana classes, yogic dances Kaoshiki and Tandava</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal-scale stagger-3" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="activity-card">
-            <img src="images/activity-3.jpg" alt="Lectures" loading="lazy">
-            <div class="overlay">
-              <div class="overlay-glass">
-                <p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Lectures on spiritual philosophy, Q&amp;A sessions, practical advice</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal-scale stagger-4" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="activity-card">
-            <img src="images/activity-4.jpg" alt="Satsanga" loading="lazy">
-            <div class="overlay">
-              <div class="overlay-glass">
-                <p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Satsanga &mdash; connecting with like-minded seekers</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal-scale stagger-5" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="activity-card">
-            <img src="images/activity-5.png" alt="Gong meditation" loading="lazy">
-            <div class="overlay">
-              <div class="overlay-glass">
-                <p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Gong meditation</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal-scale stagger-6" x-data x-intersect.once="$el.classList.add('revealed')">
-          <div class="activity-card">
-            <img src="images/activity-6.jpg" alt="Vegetarian food" loading="lazy">
-            <div class="overlay">
-              <div class="overlay-glass">
-                <p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;">Healthy vegetarian, vegan &amp; raw food</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="reveal-scale stagger-1" x-data x-intersect.once="$el.classList.add('revealed')"><div class="activity-card"><img src="images/activity-1.jpg" alt="" loading="lazy"><div class="overlay"><div class="overlay-glass"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;" x-text="t('act1')"></p></div></div></div></div>
+        <div class="reveal-scale stagger-2" x-data x-intersect.once="$el.classList.add('revealed')"><div class="activity-card"><img src="images/activity-2.jpeg" alt="" loading="lazy"><div class="overlay"><div class="overlay-glass"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;" x-text="t('act2')"></p></div></div></div></div>
+        <div class="reveal-scale stagger-3" x-data x-intersect.once="$el.classList.add('revealed')"><div class="activity-card"><img src="images/activity-3.jpg" alt="" loading="lazy"><div class="overlay"><div class="overlay-glass"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;" x-html="t('act3')"></p></div></div></div></div>
+        <div class="reveal-scale stagger-4" x-data x-intersect.once="$el.classList.add('revealed')"><div class="activity-card"><img src="images/activity-4.jpg" alt="" loading="lazy"><div class="overlay"><div class="overlay-glass"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;" x-html="t('act4')"></p></div></div></div></div>
+        <div class="reveal-scale stagger-5" x-data x-intersect.once="$el.classList.add('revealed')"><div class="activity-card"><img src="images/activity-5.png" alt="" loading="lazy"><div class="overlay"><div class="overlay-glass"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;" x-text="t('act5')"></p></div></div></div></div>
+        <div class="reveal-scale stagger-6" x-data x-intersect.once="$el.classList.add('revealed')"><div class="activity-card"><img src="images/activity-6.jpg" alt="" loading="lazy"><div class="overlay"><div class="overlay-glass"><p style="color:var(--c-cream);font-size:0.9rem;line-height:1.5;" x-html="t('act6')"></p></div></div></div></div>
       </div>
-
-      <div class="reveal-up stagger-7" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-top:2rem;">
-        <p style="color:var(--c-sage-light);font-size:1rem;line-height:1.7;max-width:600px;margin:0 auto;">
-          Comfortable accommodation in a cozy, quiet, sattvic (pure and harmonious) place near Vilnius, Lithuania.
-        </p>
-      </div>
+      <div class="reveal-up stagger-7" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-top:2rem;"><p style="color:var(--c-sage-light);font-size:1rem;line-height:1.7;max-width:600px;margin:0 auto;" x-text="t('activities_note')"></p></div>
     </div>
   </section>
 
   <!-- SCHEDULE -->
   <section id="schedule" class="section-pad" style="background:var(--c-cream);">
     <div class="container-narrow" style="padding:0 1.5rem;" x-data="{ scheduleView: 'detailed', activeDay: 1 }">
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:2.5rem;">
-        <span style="color:var(--c-terracotta);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Day by Day</span>
-        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);margin-top:0.75rem;">
-          Retreat Schedule
-        </h2>
-        <p style="color:var(--c-warm-gray);margin-top:0.75rem;font-size:0.95rem;">April 30 &ndash; May 3, 2026</p>
-      </div>
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:2.5rem;"><span style="color:var(--c-terracotta);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;" x-text="t('sched_eyebrow')"></span><h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--c-forest);margin-top:0.75rem;" x-text="t('sched_heading')"></h2><p style="color:var(--c-warm-gray);margin-top:0.75rem;font-size:0.95rem;" x-html="t('sched_dates')"></p></div>
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')"><div class="schedule-legend"><span><span class="schedule-legend-dot" style="background:var(--c-forest);"></span> <span x-text="t('legend_meditation')"></span></span><span><span class="schedule-legend-dot" style="background:var(--c-sage);"></span> <span x-html="t('legend_movement')"></span></span><span><span class="schedule-legend-dot" style="background:var(--c-terracotta);"></span> <span x-text="t('legend_lectures')"></span></span><span><span class="schedule-legend-dot" style="background:var(--c-gold);"></span> <span x-text="t('legend_meals')"></span></span></div></div>
 
-      <!-- Legend -->
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')">
-        <div class="schedule-legend">
-          <span><span class="schedule-legend-dot" style="background:var(--c-forest);"></span> Meditation</span>
-          <span><span class="schedule-legend-dot" style="background:var(--c-sage);"></span> Yoga &amp; Movement</span>
-          <span><span class="schedule-legend-dot" style="background:var(--c-terracotta);"></span> Lectures</span>
-          <span><span class="schedule-legend-dot" style="background:var(--c-gold);"></span> Meals</span>
-        </div>
-      </div>
-
-      <!-- TYPICAL DAY OVERVIEW -->
+      <!-- TYPICAL DAY -->
       <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" x-show="scheduleView === 'overview'" x-transition:enter.duration.300ms>
-        <h3 class="font-display" style="text-align:center;font-size:1.3rem;font-weight:400;color:var(--c-forest);margin-bottom:2rem;">A Typical Day</h3>
+        <h3 class="font-display" style="text-align:center;font-size:1.3rem;font-weight:400;color:var(--c-forest);margin-bottom:2rem;" x-text="t('typical_title')"></h3>
         <div style="max-width:600px;margin:0 auto;">
-          <div class="typical-day-item" style="border-left-color:var(--c-forest);">
-            <span class="time">05:00</span><span>Morning meditation &amp; chanting</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-sage);">
-            <span class="time">06:00</span><span>Yoga asanas &amp; yogic dance</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-forest);">
-            <span class="time">07:30</span><span>Collective meditation</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-gold);">
-            <span class="time">09:00</span><span>Breakfast</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-terracotta);">
-            <span class="time">10:00</span><span>Lecture &amp; discussion</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-forest);">
-            <span class="time">12:30</span><span>Midday meditation</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-gold);">
-            <span class="time">13:30</span><span>Lunch</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-terracotta);">
-            <span class="time">14:30</span><span>Spiritual gathering or special activity</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-gold);">
-            <span class="time">19:00</span><span>Dinner</span>
-          </div>
-          <div class="typical-day-item" style="border-left-color:var(--c-forest);">
-            <span class="time">21:00</span><span>Evening meditation &amp; rest</span>
-          </div>
+          <div class="typical-day-item" style="border-left-color:var(--c-forest);"><span class="time">05:00</span><span x-html="t('typ_0500')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-sage);"><span class="time">06:00</span><span x-html="t('typ_0600')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-forest);"><span class="time">07:30</span><span x-text="t('typ_0730')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-gold);"><span class="time">09:00</span><span x-text="t('typ_0900')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-terracotta);"><span class="time">10:00</span><span x-html="t('typ_1000')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-forest);"><span class="time">12:30</span><span x-text="t('typ_1230')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-gold);"><span class="time">13:30</span><span x-text="t('typ_1330')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-terracotta);"><span class="time">14:30</span><span x-text="t('typ_1430')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-gold);"><span class="time">19:00</span><span x-text="t('typ_1900')"></span></div>
+          <div class="typical-day-item" style="border-left-color:var(--c-forest);"><span class="time">21:00</span><span x-html="t('typ_2100')"></span></div>
         </div>
-        <div style="text-align:center;margin-top:2.5rem;">
-          <button class="btn-schedule-toggle" @click="scheduleView = 'detailed'">
-            View Detailed Schedule
-            <svg style="display:inline-block;vertical-align:middle;margin-left:0.25rem;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
+        <div style="text-align:center;margin-top:2.5rem;"><button class="btn-schedule-toggle" @click="scheduleView = 'detailed'"><span x-text="t('btn_detailed')"></span> <svg style="display:inline-block;vertical-align:middle;margin-left:0.25rem;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></div>
       </div>
 
-      <!-- DETAILED DAY-BY-DAY SCHEDULE -->
+      <!-- DETAILED SCHEDULE -->
       <div x-show="scheduleView === 'detailed'" x-transition:enter.duration.300ms>
-        <div style="text-align:center;margin-bottom:1rem;">
-          <button class="btn-schedule-toggle" @click="scheduleView = 'overview'" style="font-size:0.75rem;padding:0.4rem 1.2rem;">
-            <svg style="display:inline-block;vertical-align:middle;margin-right:0.25rem;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
-            Back to Overview
-          </button>
-        </div>
-        <p style="color:var(--c-warm-gray);margin-bottom:2rem;font-size:0.8rem;font-style:italic;text-align:center;">Notation: (30/30) = 30 min kiirtana (devotional chanting) + 30 min silent meditation. Schedule may be adjusted.</p>
-
-        <!-- Day tabs — glass active state -->
+        <div style="text-align:center;margin-bottom:1rem;"><button class="btn-schedule-toggle" @click="scheduleView = 'overview'" style="font-size:0.75rem;padding:0.4rem 1.2rem;"><svg style="display:inline-block;vertical-align:middle;margin-right:0.25rem;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg> <span x-text="t('btn_overview')"></span></button></div>
+        <p style="color:var(--c-warm-gray);margin-bottom:2rem;font-size:0.8rem;font-style:italic;text-align:center;" x-text="t('sched_notation')"></p>
         <div class="day-tabs" style="justify-content:center;">
-          <button class="day-tab" :class="activeDay === 1 && 'active'" @click="activeDay = 1">
-            <span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;">Day 1</span>
-            Thu, Apr 30
-          </button>
-          <button class="day-tab" :class="activeDay === 2 && 'active'" @click="activeDay = 2">
-            <span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;">Day 2</span>
-            Fri, May 1
-          </button>
-          <button class="day-tab" :class="activeDay === 3 && 'active'" @click="activeDay = 3">
-            <span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;">Day 3</span>
-            Sat, May 2
-          </button>
-          <button class="day-tab" :class="activeDay === 4 && 'active'" @click="activeDay = 4">
-            <span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;">Day 4</span>
-            Sun, May 3
-          </button>
+          <button class="day-tab" :class="activeDay === 1 && 'active'" @click="activeDay = 1"><span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;" x-text="t('day1_label')"></span><span x-text="t('day1_date')"></span></button>
+          <button class="day-tab" :class="activeDay === 2 && 'active'" @click="activeDay = 2"><span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;" x-text="t('day2_label')"></span><span x-text="t('day2_date')"></span></button>
+          <button class="day-tab" :class="activeDay === 3 && 'active'" @click="activeDay = 3"><span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;" x-text="t('day3_label')"></span><span x-text="t('day3_date')"></span></button>
+          <button class="day-tab" :class="activeDay === 4 && 'active'" @click="activeDay = 4"><span style="display:block;font-size:0.65rem;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;" x-text="t('day4_label')"></span><span x-text="t('day4_date')"></span></button>
         </div>
-
-        <!-- Day 1: Thursday, April 30 -->
-        <div x-show="activeDay === 1" x-transition.opacity.duration.200ms>
-          <div class="schedule-timeline schedule-animate">
-            <div class="schedule-day-section-label">Afternoon</div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">14:00 - 16:00</span><span>Arrival, accommodation, light snack</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">14:00 - 16:00</span><span>Free time</span></div>
-            <div class="schedule-item highlight" data-cat="learning"><span class="time">16:00 - 17:00</span><span><span class="activity-name">Opening Ceremony</span></span></div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">17:00 - 18:00</span><span>Collective Meditation (30/30)</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">18:00 - 18:50</span><span>Asana class</span></div>
-            <div class="schedule-day-section-label">Evening</div>
-            <div class="schedule-item" data-cat="meal"><span class="time">19:00 - 19:50</span><span>Dinner</span></div>
-            <div class="schedule-item" data-cat="learning"><span class="time">20:00 - 21:00</span><span>Communication &amp; interaction training, introductions</span></div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">21:10 - 22:00</span><span>Collective Meditation (20/30)</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">22:00</span><span>Lights out</span></div>
-          </div>
-        </div>
-
-        <!-- Day 2: Friday, May 1 -->
-        <div x-show="activeDay === 2" x-transition.opacity.duration.200ms>
-          <div class="schedule-timeline schedule-animate">
-            <div class="schedule-day-section-label">Early Morning</div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">04:30 - 05:00</span><span>Wake up, morning routine</span></div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">05:00</span><span>Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">05:45 - 05:55</span><span>Kaoshiki (yogic dance)</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">05:55 - 07:00</span><span>Asanas (yoga postures)</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">07:05 - 07:10</span><span>Tandava (yogic dance)</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">07:10 - 07:30</span><span>Free time</span></div>
-            <div class="schedule-day-section-label">Morning</div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">07:30 - 08:30</span><span>Collective Meditation (30/30)</span></div>
-            <div class="schedule-item" data-cat="meal"><span class="time">09:00 - 09:50</span><span>Breakfast</span></div>
-            <div class="schedule-item highlight" data-cat="learning"><span class="time">10:00 - 12:00</span><span><span class="activity-name">Lecture by Didi Ananda Sanjana &mdash; Layers of the Mind</span><span class="activity-badge">Featured</span></span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">12:00 - 12:30</span><span>Free time</span></div>
-            <div class="schedule-day-section-label">Afternoon</div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">12:30 - 13:30</span><span>Collective Meditation (30/30)</span></div>
-            <div class="schedule-item" data-cat="meal"><span class="time">13:30 - 14:20</span><span>Lunch</span></div>
-            <div class="schedule-item" data-cat="learning"><span class="time">14:30 - 16:00</span><span>Satsang (spiritual gathering) &amp; personal lesson review</span></div>
-            <div class="schedule-item highlight" data-cat="meditation"><span class="time">16:00 - 19:00</span><span><span class="activity-name">Lalita Marmika &mdash; dynamic meditation</span><span class="activity-badge">Special Session</span></span></div>
-            <div class="schedule-day-section-label">Evening</div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">19:00 - 19:20</span><span>Meditation</span></div>
-            <div class="schedule-item" data-cat="meal"><span class="time">19:20 - 20:00</span><span>Dinner</span></div>
-            <div class="schedule-item highlight" data-cat="learning"><span class="time">20:00 - 21:00</span><span><span class="activity-name">Musical evening by the campfire &mdash; Prabhat Samgiita</span><span class="activity-badge">Special</span></span></div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">21:00 - 22:00</span><span>Collective Meditation (30/30)</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">22:00</span><span>Lights out</span></div>
-          </div>
-        </div>
-
-        <!-- Day 3: Saturday, May 2 -->
-        <div x-show="activeDay === 3" x-transition.opacity.duration.200ms>
-          <div class="schedule-timeline schedule-animate">
-            <div class="schedule-day-section-label">Early Morning</div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">04:30 - 05:00</span><span>Wake up, morning routine</span></div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">05:00</span><span>Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">05:45 - 05:55</span><span>Kaoshiki</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">05:55 - 07:00</span><span>Asanas</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">07:05 - 07:10</span><span>Tandava</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">07:10 - 07:30</span><span>Free time</span></div>
-            <div class="schedule-day-section-label">Morning</div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">07:30 - 08:30</span><span>Collective Meditation (30/30) + inspiration from Didi Ananda Sanjana</span></div>
-            <div class="schedule-item" data-cat="meal"><span class="time">09:00 - 10:15</span><span>Breakfast + personal time</span></div>
-            <div class="schedule-item highlight" data-cat="meditation"><span class="time">10:15 - 11:45</span><span><span class="activity-name">Gong Meditation</span><span class="activity-badge">Special Session</span></span></div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">12:00</span><span>Collective Meditation (30/30)</span></div>
-            <div class="schedule-day-section-label">Afternoon</div>
-            <div class="schedule-item" data-cat="meal"><span class="time">13:00</span><span>Lunch</span></div>
-            <div class="schedule-item highlight" data-cat="learning"><span class="time">14:00</span><span><span class="activity-name">Lecture by Didi Ananda Sanjana</span><span class="activity-badge">Featured</span></span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">15:10</span><span>Group photo</span></div>
-            <div class="schedule-item highlight" data-cat="meditation"><span class="time">15:35</span><span><span class="activity-name">Sadhana Shivir (intensive meditation) + inspiration from Didi Ananda Sanjana (30/30 &times;3)</span><span class="activity-badge">Special Session</span></span></div>
-            <div class="schedule-day-section-label">Evening</div>
-            <div class="schedule-item" data-cat="meal"><span class="time">19:00</span><span>Dinner</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">20:00 - 21:30</span><span>Evening walk</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">21:30 - 22:00</span><span>3 basic asanas</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">22:00</span><span>Lights out</span></div>
-          </div>
-        </div>
-
-        <!-- Day 4: Sunday, May 3 -->
-        <div x-show="activeDay === 4" x-transition.opacity.duration.200ms>
-          <div class="schedule-timeline schedule-animate">
-            <div class="schedule-day-section-label">Early Morning</div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">05:00</span><span>Panchajanya (5 min Prabhat Samgiita, 15 min kiirtana, 10 min meditation)</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">05:40 - 05:55</span><span>Kaoshiki</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">05:55 - 07:20</span><span>Asanas</span></div>
-            <div class="schedule-item" data-cat="movement"><span class="time">07:20 - 07:40</span><span>Tandava</span></div>
-            <div class="schedule-day-section-label">Morning</div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">07:40 - 09:00</span><span>Collective Meditation (30/30)</span></div>
-            <div class="schedule-item" data-cat="meal"><span class="time">09:00</span><span>Breakfast</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">10:00</span><span>Packing, group activities (walk, feedback session) + personal lesson review</span></div>
-            <div class="schedule-item" data-cat="meditation"><span class="time">11:30</span><span>Collective Meditation (30/30)</span></div>
-            <div class="schedule-item highlight" data-cat="learning"><span class="time">12:30</span><span><span class="activity-name">Closing ceremony</span></span></div>
-            <div class="schedule-item" data-cat="meal"><span class="time">13:30</span><span>Lunch</span></div>
-            <div class="schedule-item" data-cat="logistics"><span class="time">14:00 - 14:30</span><span>Departure</span></div>
-          </div>
-        </div>
+        <!-- Day 1 --><div x-show="activeDay === 1" x-transition.opacity.duration.200ms><div class="schedule-timeline schedule-animate"><div class="schedule-day-section-label" x-text="t('sec_afternoon')"></div><div class="schedule-item" data-cat="logistics"><span class="time">14:00 - 16:00</span><span x-text="t('d1_1')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">14:00 - 16:00</span><span x-text="t('d1_2')"></span></div><div class="schedule-item highlight" data-cat="learning"><span class="time">16:00 - 17:00</span><span><span class="activity-name" x-text="t('d1_3')"></span></span></div><div class="schedule-item" data-cat="meditation"><span class="time">17:00 - 18:00</span><span x-text="t('d1_4')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">18:00 - 18:50</span><span x-text="t('d1_5')"></span></div><div class="schedule-day-section-label" x-text="t('sec_evening')"></div><div class="schedule-item" data-cat="meal"><span class="time">19:00 - 19:50</span><span x-text="t('d1_6')"></span></div><div class="schedule-item" data-cat="learning"><span class="time">20:00 - 21:00</span><span x-html="t('d1_7')"></span></div><div class="schedule-item" data-cat="meditation"><span class="time">21:10 - 22:00</span><span x-text="t('d1_8')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">22:00</span><span x-text="t('d1_9')"></span></div></div></div>
+        <!-- Day 2 --><div x-show="activeDay === 2" x-transition.opacity.duration.200ms><div class="schedule-timeline schedule-animate"><div class="schedule-day-section-label" x-text="t('sec_early_morning')"></div><div class="schedule-item" data-cat="logistics"><span class="time">04:30 - 05:00</span><span x-text="t('d2_1')"></span></div><div class="schedule-item" data-cat="meditation"><span class="time">05:00</span><span x-text="t('d2_2')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">05:45 - 05:55</span><span x-text="t('d2_3')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">05:55 - 07:00</span><span x-text="t('d2_4')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">07:05 - 07:10</span><span x-text="t('d2_5')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">07:10 - 07:30</span><span x-text="t('d2_6')"></span></div><div class="schedule-day-section-label" x-text="t('sec_morning')"></div><div class="schedule-item" data-cat="meditation"><span class="time">07:30 - 08:30</span><span x-text="t('d2_7')"></span></div><div class="schedule-item" data-cat="meal"><span class="time">09:00 - 09:50</span><span x-text="t('d2_8')"></span></div><div class="schedule-item highlight" data-cat="learning"><span class="time">10:00 - 12:00</span><span><span class="activity-name" x-html="t('d2_9')"></span><span class="activity-badge" x-text="t('badge_featured')"></span></span></div><div class="schedule-item" data-cat="logistics"><span class="time">12:00 - 12:30</span><span x-text="t('d2_10')"></span></div><div class="schedule-day-section-label" x-text="t('sec_afternoon')"></div><div class="schedule-item" data-cat="meditation"><span class="time">12:30 - 13:30</span><span x-text="t('d2_11')"></span></div><div class="schedule-item" data-cat="meal"><span class="time">13:30 - 14:20</span><span x-text="t('d2_12')"></span></div><div class="schedule-item" data-cat="learning"><span class="time">14:30 - 16:00</span><span x-html="t('d2_13')"></span></div><div class="schedule-item highlight" data-cat="meditation"><span class="time">16:00 - 19:00</span><span><span class="activity-name" x-html="t('d2_14')"></span><span class="activity-badge" x-text="t('badge_special_session')"></span></span></div><div class="schedule-day-section-label" x-text="t('sec_evening')"></div><div class="schedule-item" data-cat="meditation"><span class="time">19:00 - 19:20</span><span x-text="t('d2_15')"></span></div><div class="schedule-item" data-cat="meal"><span class="time">19:20 - 20:00</span><span x-text="t('d2_16')"></span></div><div class="schedule-item highlight" data-cat="learning"><span class="time">20:00 - 21:00</span><span><span class="activity-name" x-html="t('d2_17')"></span><span class="activity-badge" x-text="t('badge_special')"></span></span></div><div class="schedule-item" data-cat="meditation"><span class="time">21:00 - 22:00</span><span x-text="t('d2_18')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">22:00</span><span x-text="t('d2_19')"></span></div></div></div>
+        <!-- Day 3 --><div x-show="activeDay === 3" x-transition.opacity.duration.200ms><div class="schedule-timeline schedule-animate"><div class="schedule-day-section-label" x-text="t('sec_early_morning')"></div><div class="schedule-item" data-cat="logistics"><span class="time">04:30 - 05:00</span><span x-text="t('d3_1')"></span></div><div class="schedule-item" data-cat="meditation"><span class="time">05:00</span><span x-text="t('d3_2')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">05:45 - 05:55</span><span x-text="t('d3_3')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">05:55 - 07:00</span><span x-text="t('d3_4')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">07:05 - 07:10</span><span x-text="t('d3_5')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">07:10 - 07:30</span><span x-text="t('d3_6')"></span></div><div class="schedule-day-section-label" x-text="t('sec_morning')"></div><div class="schedule-item" data-cat="meditation"><span class="time">07:30 - 08:30</span><span x-text="t('d3_7')"></span></div><div class="schedule-item" data-cat="meal"><span class="time">09:00 - 10:15</span><span x-text="t('d3_8')"></span></div><div class="schedule-item highlight" data-cat="meditation"><span class="time">10:15 - 11:45</span><span><span class="activity-name" x-text="t('d3_9')"></span><span class="activity-badge" x-text="t('badge_special_session')"></span></span></div><div class="schedule-item" data-cat="meditation"><span class="time">12:00</span><span x-text="t('d3_10')"></span></div><div class="schedule-day-section-label" x-text="t('sec_afternoon')"></div><div class="schedule-item" data-cat="meal"><span class="time">13:00</span><span x-text="t('d3_11')"></span></div><div class="schedule-item highlight" data-cat="learning"><span class="time">14:00</span><span><span class="activity-name" x-text="t('d3_12')"></span><span class="activity-badge" x-text="t('badge_featured')"></span></span></div><div class="schedule-item" data-cat="logistics"><span class="time">15:10</span><span x-text="t('d3_13')"></span></div><div class="schedule-item highlight" data-cat="meditation"><span class="time">15:35</span><span><span class="activity-name" x-html="t('d3_14')"></span><span class="activity-badge" x-text="t('badge_special_session')"></span></span></div><div class="schedule-day-section-label" x-text="t('sec_evening')"></div><div class="schedule-item" data-cat="meal"><span class="time">19:00</span><span x-text="t('d3_15')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">20:00 - 21:30</span><span x-text="t('d3_16')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">21:30 - 22:00</span><span x-text="t('d3_17')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">22:00</span><span x-text="t('d3_18')"></span></div></div></div>
+        <!-- Day 4 --><div x-show="activeDay === 4" x-transition.opacity.duration.200ms><div class="schedule-timeline schedule-animate"><div class="schedule-day-section-label" x-text="t('sec_early_morning')"></div><div class="schedule-item" data-cat="meditation"><span class="time">05:00</span><span x-text="t('d4_1')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">05:40 - 05:55</span><span x-text="t('d4_2')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">05:55 - 07:20</span><span x-text="t('d4_3')"></span></div><div class="schedule-item" data-cat="movement"><span class="time">07:20 - 07:40</span><span x-text="t('d4_4')"></span></div><div class="schedule-day-section-label" x-text="t('sec_morning')"></div><div class="schedule-item" data-cat="meditation"><span class="time">07:40 - 09:00</span><span x-text="t('d4_5')"></span></div><div class="schedule-item" data-cat="meal"><span class="time">09:00</span><span x-text="t('d4_6')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">10:00</span><span x-text="t('d4_7')"></span></div><div class="schedule-item" data-cat="meditation"><span class="time">11:30</span><span x-text="t('d4_8')"></span></div><div class="schedule-item highlight" data-cat="learning"><span class="time">12:30</span><span><span class="activity-name" x-text="t('d4_9')"></span></span></div><div class="schedule-item" data-cat="meal"><span class="time">13:30</span><span x-text="t('d4_10')"></span></div><div class="schedule-item" data-cat="logistics"><span class="time">14:00 - 14:30</span><span x-text="t('d4_11')"></span></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- LOCATION — Glass info panel -->
+  <!-- LOCATION -->
   <section id="location" class="section-pad" style="background:var(--c-forest);color:var(--c-cream);position:relative;overflow:hidden;">
     <div class="container" style="position:relative;z-index:1;">
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:3rem;">
-        <span style="color:var(--c-terracotta-light);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Where we gather</span>
-        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;margin-top:0.75rem;">
-          Retreat Location
-        </h2>
-      </div>
-
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:3rem;"><span style="color:var(--c-terracotta-light);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;" x-text="t('loc_eyebrow')"></span><h2 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;margin-top:0.75rem;" x-text="t('loc_heading')"></h2></div>
       <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')" style="max-width:800px;margin:0 auto;">
-        <div class="location-info-glass" style="text-align:center;margin-bottom:2rem;">
-          <h3 class="font-display" style="font-size:1.6rem;font-weight:400;margin-bottom:0.75rem;">
-            Laum&#382;irgi&#371; &#381;em&#279; / Dragonfly Land
-          </h3>
-          <p style="color:var(--c-sage-light);line-height:1.7;font-size:0.95rem;margin-bottom:1.5rem;">
-            A magical retreat center ~25 km north of Vilnius, founded by Baltic sound therapy pioneers. Two beautiful halls (225 m&sup2; Ashtar Hall &amp; 100 m&sup2; Gaia Dome), cozy cedar and straw-clay guest cabins (~42 sleeping places), a traditional Baltic sauna, spring-water ponds, and a sacred gong garden.
-          </p>
-          <p style="color:var(--c-sage-light);line-height:1.7;font-size:0.85rem;">
-            <a href="https://www.gongai.lt/erdves/laumzirgiu-zeme/" target="_blank" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:3px;">Visit venue website &rarr;</a>
-            &nbsp;&middot;&nbsp; GPS: 54.893035, 25.274413
-          </p>
-        </div>
-
-        <!-- Google Maps embed -->
-        <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:2rem;">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4600!2d25.274413!3d54.893035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTTCsDUzJzM0LjkiTiAyNcKwMTYnMjcuOSJF!5e0!3m2!1sen!2slt!4v1"
-            width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" title="Laumžirgių Žemė location map"></iframe>
-        </div>
-
-        <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:var(--c-forest-light);">
-          <img src="images/activity-7.jpg" alt="Retreat venue — Dragonfly Land" loading="lazy" style="width:100%;height:100%;object-fit:cover;opacity:0.9;">
-        </div>
+        <div class="location-info-glass" style="text-align:center;margin-bottom:2rem;"><h3 class="font-display" style="font-size:1.6rem;font-weight:400;margin-bottom:0.75rem;" x-text="t('loc_name')"></h3><p style="color:var(--c-sage-light);line-height:1.7;font-size:0.95rem;margin-bottom:1.5rem;" x-html="t('loc_desc')"></p><p style="color:var(--c-sage-light);line-height:1.7;font-size:0.85rem;"><a href="https://www.gongai.lt/erdves/laumzirgiu-zeme/" target="_blank" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:3px;" x-html="t('loc_link_text')"></a> &nbsp;&middot;&nbsp; <span x-text="t('loc_gps')"></span></p></div>
+        <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:2rem;"><iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4600!2d25.274413!3d54.893035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTTCsDUzJzM0LjkiTiAyNcKwMTYnMjcuOSJF!5e0!3m2!1sen!2slt!4v1" width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Laumžirgių Žemė location map"></iframe></div>
+        <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:var(--c-forest-light);"><img src="images/activity-7.jpg" alt="Retreat venue — Dragonfly Land" loading="lazy" style="width:100%;height:100%;object-fit:cover;opacity:0.9;"></div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT TO BRING — Glass item cards -->
+  <!-- WHAT TO BRING -->
   <section class="section-pad" style="background:var(--c-cream-dark);position:relative;overflow:hidden;">
     <div class="container" style="max-width:800px;position:relative;z-index:1;">
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:3.5rem;">
-        <h2 class="font-display" style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:400;color:var(--c-forest);">
-          What to Bring
-        </h2>
-      </div>
-
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:3.5rem;"><h2 class="font-display" style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:400;color:var(--c-forest);" x-text="t('bring_heading')"></h2></div>
       <div class="pack-grid reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;">
-        <div class="pack-glass">
-          <div class="pack-item">
-            <div class="pack-icon"><img src="images/shoe.png" alt="Indoor shoes"></div>
-            <span style="font-size:0.85rem;color:var(--c-warm-gray);">Indoor shoes</span>
-          </div>
-        </div>
-        <div class="pack-glass">
-          <div class="pack-item">
-            <div class="pack-icon"><img src="images/hygiene.png" alt="Hygiene products"></div>
-            <span style="font-size:0.85rem;color:var(--c-warm-gray);">Personal hygiene products</span>
-          </div>
-        </div>
-        <div class="pack-glass">
-          <div class="pack-item">
-            <div class="pack-icon"><img src="images/bottle.png" alt="Water bottle"></div>
-            <span style="font-size:0.85rem;color:var(--c-warm-gray);">Drinking water bottle</span>
-          </div>
-        </div>
-        <div class="pack-glass">
-          <div class="pack-item">
-            <div class="pack-icon"><img src="images/clothes.png" alt="Comfortable clothes"></div>
-            <span style="font-size:0.85rem;color:var(--c-warm-gray);">Comfortable clothes for practice<br><strong style="color:var(--c-terracotta);font-size:0.8rem;">No leggings or revealing clothes</strong></span>
-          </div>
-        </div>
+        <div class="pack-glass"><div class="pack-item"><div class="pack-icon"><img src="images/shoe.png" alt=""></div><span style="font-size:0.85rem;color:var(--c-warm-gray);" x-text="t('bring_shoes')"></span></div></div>
+        <div class="pack-glass"><div class="pack-item"><div class="pack-icon"><img src="images/hygiene.png" alt=""></div><span style="font-size:0.85rem;color:var(--c-warm-gray);" x-text="t('bring_hygiene')"></span></div></div>
+        <div class="pack-glass"><div class="pack-item"><div class="pack-icon"><img src="images/bottle.png" alt=""></div><span style="font-size:0.85rem;color:var(--c-warm-gray);" x-text="t('bring_bottle')"></span></div></div>
+        <div class="pack-glass"><div class="pack-item"><div class="pack-icon"><img src="images/clothes.png" alt=""></div><span style="font-size:0.85rem;color:var(--c-warm-gray);"><span x-text="t('bring_clothes')"></span><br><strong style="color:var(--c-terracotta);font-size:0.8rem;" x-text="t('bring_clothes_note')"></strong></span></div></div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING — Full glass section -->
+  <!-- PRICING -->
   <section id="tickets" class="section-pad" style="background:rgb(30,56,40);position:relative;overflow:hidden;">
-    <!-- Background image -->
-    <div style="position:absolute;inset:0;opacity:0.38;">
-      <img src="images/activity-7.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:saturate(0.40) brightness(0.60);">
-    </div>
-    <!-- Overlay -->
+    <div style="position:absolute;inset:0;opacity:0.38;"><img src="images/activity-7.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:saturate(0.40) brightness(0.60);"></div>
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(30,56,40,0.36) 0%,rgba(30,56,40,0.84) 100%);"></div>
-
     <div class="container" style="max-width:1000px;position:relative;z-index:1;">
-      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;">
-        <span style="color:var(--c-terracotta-light);font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;">Secure your spot</span>
-        <h2 class="font-display" style="font-size:clamp(2.8rem,5vw,3.8rem);font-weight:300;color:var(--c-cream);margin-top:0.75rem;letter-spacing:-0.02em;">
-          Reserve Your Place
-        </h2>
-        <p style="color:var(--c-sage-light);margin-top:1rem;font-size:1rem;">
-          Includes: accommodation, all vegetarian meals, all teachings &amp; practices, personal meditation instruction.
-        </p>
-      </div>
-
+      <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-bottom:4rem;"><span style="color:var(--c-terracotta-light);font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;" x-text="t('price_eyebrow')"></span><h2 class="font-display" style="font-size:clamp(2.8rem,5vw,3.8rem);font-weight:300;color:var(--c-cream);margin-top:0.75rem;letter-spacing:-0.02em;" x-text="t('price_heading')"></h2><p style="color:var(--c-sage-light);margin-top:1rem;font-size:1rem;" x-html="t('price_includes')"></p></div>
       <div class="reveal-up stagger-1" x-data x-intersect.once="$el.classList.add('revealed')" style="max-width:590px;margin:0 auto;">
         <div style="text-align:center;position:relative;background:rgba(245,240,232,0.04);backdrop-filter:blur(19px) saturate(1.3);-webkit-backdrop-filter:blur(19px) saturate(1.3);border:1px solid rgba(245,240,232,0.19);border-radius:33px;padding:2.25rem 1.75rem;box-shadow:0 16px 48px rgba(0,0,0,0.22),inset 0 1px 0 rgba(245,240,232,0.10),inset 0 -1px 0 rgba(0,0,0,0.02);overflow:hidden;">
-          <!-- Top edge highlight -->
           <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(245,240,232,0.12),transparent);"></div>
-          <!-- Radial glow -->
           <div style="position:absolute;bottom:-40%;left:-10%;right:-10%;height:70%;background:radial-gradient(ellipse at center,rgba(122,158,135,0.06) 0%,transparent 70%);pointer-events:none;"></div>
-
-          <div style="margin-bottom:2.5rem;position:relative;z-index:1;">
-            <span style="font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-sage-light);font-weight:500;">April 30 &ndash; May 3, 2026</span>
-            <h3 class="font-display" style="font-size:1.8rem;font-weight:400;margin-top:0.5rem;color:var(--c-cream);">Yoga &amp; Meditation Retreat</h3>
-            <p style="font-size:0.9rem;color:var(--c-sage-light);margin-top:0.35rem;">4 days of immersion &middot; Open to everyone</p>
-          </div>
+          <div style="margin-bottom:2.5rem;position:relative;z-index:1;"><span style="font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-sage-light);font-weight:500;" x-html="t('price_dates')"></span><h3 class="font-display" style="font-size:1.8rem;font-weight:400;margin-top:0.5rem;color:var(--c-cream);" x-html="t('price_title')"></h3><p style="font-size:0.9rem;color:var(--c-sage-light);margin-top:0.35rem;" x-html="t('price_subtitle')"></p></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:2rem 0;border-top:1px solid rgba(245,240,232,0.1);position:relative;z-index:1;">
-            <div>
-              <div style="position:relative;display:inline-block;">
-                <span style="position:absolute;top:-1.4rem;left:50%;transform:translateX(-50%);background:var(--c-gold);color:var(--c-warm-black);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:600;white-space:nowrap;">Save 30 EUR</span>
-              </div>
-              <span style="font-size:0.85rem;color:var(--c-sage-light);display:block;margin-top:0.5rem;">Early bird <em>(before 15.04.2026)</em></span>
-              <div class="font-display" style="font-size:2.8rem;font-weight:600;margin-top:0.25rem;color:var(--c-cream);">300 <span style="font-size:1.1rem;font-weight:400;">EUR</span></div>
-            </div>
-            <div style="border-left:1px solid rgba(245,240,232,0.1);padding-left:2rem;">
-              <span style="font-size:0.85rem;color:var(--c-sage-light);display:block;margin-top:0.5rem;">Regular price</span>
-              <div class="font-display" style="font-size:2.8rem;font-weight:600;margin-top:0.25rem;color:var(--c-cream);">330 <span style="font-size:1.1rem;font-weight:400;">EUR</span></div>
-            </div>
+            <div><div style="position:relative;display:inline-block;"><span style="position:absolute;top:-1.4rem;left:50%;transform:translateX(-50%);background:var(--c-gold);color:var(--c-warm-black);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;font-weight:600;white-space:nowrap;" x-text="t('price_save')"></span></div><span style="font-size:0.85rem;color:var(--c-sage-light);display:block;margin-top:0.5rem;" x-html="t('price_early_label')"></span><div class="font-display" style="font-size:2.8rem;font-weight:600;margin-top:0.25rem;color:var(--c-cream);">300 <span style="font-size:1.1rem;font-weight:400;">EUR</span></div></div>
+            <div style="border-left:1px solid rgba(245,240,232,0.1);padding-left:2rem;"><span style="font-size:0.85rem;color:var(--c-sage-light);display:block;margin-top:0.5rem;" x-text="t('price_regular_label')"></span><div class="font-display" style="font-size:2.8rem;font-weight:600;margin-top:0.25rem;color:var(--c-cream);">330 <span style="font-size:1.1rem;font-weight:400;">EUR</span></div></div>
           </div>
         </div>
       </div>
-
-      <!-- Register CTA -->
       <div class="reveal-up" x-data x-intersect.once="$el.classList.add('revealed')" style="text-align:center;margin-top:3.5rem;">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" class="btn-primary" target="_blank" style="font-size:1.05rem;padding:1.25rem 3.5rem;">
-          Register Now
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <p style="margin-top:1.25rem;font-size:0.85rem;color:var(--c-sage-light);">
-          Questions? Contact us on <a href="https://t.me/Virabhava21" target="_blank" style="color:var(--c-terracotta-light);text-decoration:underline;text-underline-offset:2px;">Telegram @Virabhava21</a>
-        </p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" class="btn-primary" target="_blank" style="font-size:1.05rem;padding:1.25rem 3.5rem;"><span x-text="t('price_register')"></span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <p style="margin-top:1.25rem;font-size:0.85rem;color:var(--c-sage-light);" x-html="t('contact_text')"></p>
       </div>
     </div>
   </section>
@@ -1280,62 +697,30 @@
   <!-- FOOTER -->
   <footer style="background:var(--c-forest);color:var(--c-cream);padding:3rem 1.5rem;">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
-      <div style="display:flex;align-items:center;gap:1rem;">
-        <img src="images/logo.png" alt="Meditation Steps" style="height:28px;width:auto;filter:brightness(1.2);">
-        <span style="font-size:0.85rem;color:var(--c-sage-light);">Meditation Steps Latvia</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:2rem;">
-        <a href="https://t.me/Virabhava21" target="_blank"
-           style="color:var(--c-sage-light);text-decoration:none;font-size:0.9rem;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;"
-           onmouseover="this.style.color='var(--c-cream)'" onmouseout="this.style.color='var(--c-sage-light)'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          @Virabhava21
-        </a>
-      </div>
+      <div style="display:flex;align-items:center;gap:1rem;"><img src="images/logo.png" alt="Meditation Steps" style="height:28px;width:auto;filter:brightness(1.2);"><span style="font-size:0.85rem;color:var(--c-sage-light);" x-text="t('footer_org')"></span></div>
+      <div style="display:flex;align-items:center;gap:2rem;"><a href="https://t.me/Virabhava21" target="_blank" style="color:var(--c-sage-light);text-decoration:none;font-size:0.9rem;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;" onmouseover="this.style.color='var(--c-cream)'" onmouseout="this.style.color='var(--c-sage-light)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg> @Virabhava21</a></div>
     </div>
-    <div style="text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(245,240,232,0.08);">
-      <p style="font-size:0.8rem;color:rgba(245,240,232,0.35);">Organized by Meditation Steps Latvia &middot; Retreat held in Lithuania</p>
-      <p style="font-size:0.75rem;color:rgba(245,240,232,0.2);margin-top:0.25rem;">&copy; 2026 Meditation Steps Latvia</p>
-    </div>
+    <div style="text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(245,240,232,0.08);"><p style="font-size:0.8rem;color:rgba(245,240,232,0.35);" x-html="t('footer_note')"></p><p style="font-size:0.75rem;color:rgba(245,240,232,0.2);margin-top:0.25rem;" x-html="t('footer_copyright')"></p></div>
   </footer>
 
   <!-- STICKY MOBILE CTA -->
-  <div class="sticky-cta mobile-only">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" class="btn-primary" target="_blank" style="width:100%;justify-content:center;">
-      Register Now &mdash; from 300 EUR
-    </a>
-  </div>
+  <div class="sticky-cta mobile-only"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeoBDC2xUZg2GJQhAKAjVoA8lWGoH3ksyGfkLxt8xlbV7D9Pw/viewform" class="btn-primary" target="_blank" style="width:100%;justify-content:center;" x-html="t('sticky_cta')"></a></div>
 
   <!-- Alpine.js plugins -->
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.directive('intersect', (el, { modifiers }, { cleanup }) => {
         const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              el.classList.add('revealed');
-              if (modifiers.includes('once')) observer.unobserve(el);
-            }
-          });
+          entries.forEach(entry => { if (entry.isIntersecting) { el.classList.add('revealed'); if (modifiers.includes('once')) observer.unobserve(el); } });
         }, { threshold: 0.1 });
-        observer.observe(el);
-        cleanup(() => observer.unobserve(el));
+        observer.observe(el); cleanup(() => observer.unobserve(el));
       });
-
       Alpine.directive('collapse', (el, {}, { cleanup }) => {
-        el.style.overflow = 'hidden';
-        el.style.transition = 'max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
-        const setHeight = (show) => {
-          if (show) { el.style.maxHeight = el.scrollHeight + 'px'; el.style.opacity = '1'; }
-          else { el.style.maxHeight = '0px'; el.style.opacity = '0'; }
-        };
-        const obs = new MutationObserver(() => {
-          const visible = el.style.display !== 'none';
-          if (visible) { el.style.display = ''; setHeight(true); } else { setHeight(false); }
-        });
+        el.style.overflow = 'hidden'; el.style.transition = 'max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+        const setHeight = (show) => { if (show) { el.style.maxHeight = el.scrollHeight + 'px'; el.style.opacity = '1'; } else { el.style.maxHeight = '0px'; el.style.opacity = '0'; } };
+        const obs = new MutationObserver(() => { const visible = el.style.display !== 'none'; if (visible) { el.style.display = ''; setHeight(true); } else { setHeight(false); } });
         if (el.style.display === 'none' || !el.offsetParent) { el.style.maxHeight = '0px'; el.style.opacity = '0'; }
-        obs.observe(el, { attributes: true, attributeFilter: ['style'] });
-        cleanup(() => obs.disconnect());
+        obs.observe(el, { attributes: true, attributeFilter: ['style'] }); cleanup(() => obs.disconnect());
       });
     });
   </script>
