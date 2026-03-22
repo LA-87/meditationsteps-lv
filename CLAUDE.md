@@ -57,3 +57,22 @@ Note: Some filenames are misleading (`didi-portrait.png` is actually Dada Sadana
 - Domain is `.lv` (Latvia) but the event venue is in Lithuania — this is intentional
 - Audience is multilingual (English, Russian); site has EN/RU language toggle
 - Registration links to an external Google Form
+
+## Analytics System
+
+Self-hosted, cookie-free analytics. See `docs/superpowers/specs/2026-03-21-self-hosted-analytics-design.md` for full spec.
+
+**Files:**
+- `site/api/track.php` — event receiver (POST endpoint), stores to SQLite
+- `site/api/dashboard.php` — password-protected dashboard with Chart.js
+- `site/api/test-analytics.html` — local testing harness (not for production)
+- Tracking script is inline at the bottom of `site/index.html`
+
+**Environment variables (set on server, not in git):**
+- `ANALYTICS_PASSWORD` — dashboard login password
+- `ANALYTICS_SECRET` — salt for IP hashing
+- `ANALYTICS_ORIGIN` — allowed CORS origin (default: `http://meditationsteps.lv.test`)
+- `ANALYTICS_DB_PATH` — SQLite database path (default: `/var/data/meditationsteps/analytics.db`)
+- `ANALYTICS_DEBUG` — set to `1` for debug mode (local dev only)
+
+**Events tracked:** `pageview`, `click`, `section`, `accordion`, `conversion`, `duration`, `first_click`

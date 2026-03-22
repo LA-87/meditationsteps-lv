@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Test Harness</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; background: #f5f5f5; }
+        h1 { margin-bottom: 1rem; font-size: 1.5rem; }
+        .test-group { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .test-group h2 { font-size: 1rem; margin-bottom: 1rem; color: #333; }
+        button { padding: 0.5rem 1rem; margin: 0.25rem; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; font-size: 0.85rem; }
+        button:hover { background: #f0f0f0; }
+        button.success { border-color: #4caf50; background: #e8f5e9; }
+        button.error { border-color: #f44336; background: #ffebee; }
+        #log { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.8rem; max-height: 400px; overflow-y: auto; white-space: pre-wrap; margin-top: 1rem; }
+        .log-entry { margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #333; }
+        .log-req { color: #569cd6; }
+        .log-res-ok { color: #4ec9b0; }
+        .log-res-err { color: #f44747; }
+        .links { margin-top: 1rem; }
+        .links a { color: #1976d2; margin-right: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>Analytics Test Harness</h1>
+
+    <div class="test-group">
+        <h2>Pageview Events</h2>
+        <button onclick="send('pageview', {is_return: false}, {referrer:'https://google.com', utm_source:'test', utm_medium:'manual', utm_campaign:'harness'})">Pageview (new visitor)</button>
+        <button onclick="send('pageview', {is_return: true}, {referrer:'https://facebook.com'})">Pageview (return visitor)</button>
+    </div>
+
+    <div class="test-group">
+        <h2>CTA Click Events</h2>
+        <button onclick="send('click', {button:'hero'})">Click: Hero</button>
+        <button onclick="send('click', {button:'nav-desktop'})">Click: Nav Desktop</button>
+        <button onclick="send('click', {button:'nav-mobile'})">Click: Nav Mobile</button>
+        <button onclick="send('click', {button:'pricing'})">Click: Pricing</button>
+        <button onclick="send('click', {button:'sticky-mobile'})">Click: Sticky Mobile</button>
+    </div>
+
+    <div class="test-group">
+        <h2>Section Visibility Events</h2>
+        <button onclick="send('section', {section:'programme'})">Section: Programme</button>
+        <button onclick="send('section', {section:'teachers'})">Section: Teachers</button>
+        <button onclick="send('section', {section:'activities'})">Section: Activities</button>
+        <button onclick="send('section', {section:'schedule'})">Section: Schedule</button>
+        <button onclick="send('section', {section:'location'})">Section: Location</button>
+        <button onclick="send('section', {section:'tickets'})">Section: Tickets</button>
+    </div>
+
+    <div class="test-group">
+        <h2>Engagement Events</h2>
+        <button onclick="send('accordion', {day:1})">Accordion: Day 1</button>
+        <button onclick="send('accordion', {day:2})">Accordion: Day 2</button>
+        <button onclick="send('accordion', {day:3})">Accordion: Day 3</button>
+        <button onclick="send('accordion', {day:4})">Accordion: Day 4</button>
+        <button onclick="send('duration', {seconds:95})">Duration: 95s</button>
+        <button onclick="send('first_click', {seconds:12.5})">First Click: 12.5s</button>
+        <button onclick="send('conversion', {})">Conversion</button>
+    </div>
+
+    <div class="links">
+        <a href="dashboard.php" target="_blank">Open Dashboard</a>
+    </div>
+
+    <div id="log"></div>
+
+    <script>
+        var TRACK_URL = '/api/track.php?debug=1';
+        var logEl = document.getElementById('log');
+
+        async function send(event, data, extra) {
+            extra = extra || {};
+            var payload = Object.assign({
+                event: event,
+                data: data,
+                lang: 'en',
+                screen_width: window.innerWidth
+            }, extra);
+
+            var entry = document.createElement('div');
+            entry.className = 'log-entry';
+
+            var reqLine = document.createElement('span');
+            reqLine.className = 'log-req';
+            reqLine.textContent = '-> POST ' + event;
+            entry.appendChild(reqLine);
+            entry.appendChild(document.createTextNode('\n' + JSON.stringify(payload, null, 2)));
+            logEl.prepend(entry);
+
+            try {
+                var res = await fetch(TRACK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                var text = await res.text();
+                var resLine = document.createElement('span');
+                resLine.className = res.ok ? 'log-res-ok' : 'log-res-err';
+                resLine.textContent = '<- ' + res.status + ' ' + text;
+                entry.appendChild(document.createTextNode('\n'));
+                entry.appendChild(resLine);
+            } catch (err) {
+                var errLine = document.createElement('span');
+                errLine.className = 'log-res-err';
+                errLine.textContent = '<- ERROR: ' + err.message;
+                entry.appendChild(document.createTextNode('\n'));
+                entry.appendChild(errLine);
+            }
+        }
+    </script>
+</body>
+</html>
