@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Header Playground — Tweak Everything</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5F0E8;
+    --forest: #1E3828;
+    --forest-deep: #0F1F15;
+    --sage: #8A9685;
+    --sage-light: #C0C8BA;
+    --terracotta: #A8503A;
+    --terracotta-light: #C47A62;
+    --gold: #C9A020;
+
+    /* Tweakable via controls */
+    --bg-opacity: 0.4;
+    --bg-saturate: 0.6;
+    --bg-brightness: 0.6;
+    --panel-blur: 24;
+    --panel-bg-opacity: 0.06;
+    --panel-border-opacity: 0.1;
+    --panel-radius: 32;
+    --grid-opacity: 0.04;
+    --portrait-size: 320;
+    --orbit-opacity: 0.07;
+    --badge-blur: 16;
+    --badge-bg-opacity: 0.08;
+    --cta-glow-intensity: 0.4;
+    --atmosphere-intensity: 0.7;
+    --nav-link-opacity: 0.65;
+  }
+
+  body { background: #0a0a0a; font-family: 'Source Sans 3', sans-serif; overflow-x: hidden; }
+
+  /* ══════════════════════════════════
+     CONTROL PANEL
+     ══════════════════════════════════ */
+  .controls {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 340px;
+    height: 100vh;
+    background: rgba(20,20,20,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255,255,255,0.08);
+    z-index: 100;
+    overflow-y: auto;
+    padding: 1.25rem;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.15) transparent;
+  }
+  .controls.collapsed { transform: translateX(100%); }
+  .controls::-webkit-scrollbar { width: 5px; }
+  .controls::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+  .controls-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 101;
+    background: rgba(168,80,58,0.85);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 16px rgba(168,80,58,0.3);
+  }
+  .controls-toggle:hover { background: rgba(168,80,58,1); }
+
+  .ctrl-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-top: 1.5rem;
+  }
+  .ctrl-title:first-child { margin-top: 0.5rem; }
+
+  .ctrl-group {
+    margin-bottom: 0.9rem;
+  }
+  .ctrl-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+  }
+  .ctrl-label span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .ctrl-value {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    font-variant-numeric: tabular-nums;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  .ctrl-group input[type="range"] {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    outline: none;
+  }
+  .ctrl-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .ctrl-group input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    cursor: pointer;
+    border: none;
+  }
+
+  .color-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .color-row input[type="color"] {
+    width: 32px;
+    height: 24px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+  .color-row input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+  .color-row input[type="color"]::-webkit-color-swatch { border-radius: 4px; border: none; }
+  .color-row label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    flex: 1;
+  }
+  .color-row .hex-display {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.3);
+    font-family: monospace;
+  }
+
+  .ctrl-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .ctrl-btn {
+    flex: 1;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .ctrl-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.9);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .export-output {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  /* ══════════════════════════════════
+     HEADER (same as header-final)
+     ══════════════════════════════════ */
+  .hero-wrap {
+    margin-right: 340px;
+    transition: margin-right 0.3s ease;
+  }
+  .hero-wrap.full { margin-right: 0; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: var(--bg-opacity);
+    filter: saturate(var(--bg-saturate)) brightness(var(--bg-brightness));
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+
+  .hero-atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(138,150,133,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(201,160,32,0.05) 0%, transparent 40%),
+      linear-gradient(180deg, rgba(15,31,21,var(--atmosphere-intensity)) 0%, rgba(15,31,21,0.4) 40%, rgba(15,31,21,0.8) 100%);
+    transition: all 0.3s ease;
+  }
+
+  .deco-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: var(--grid-opacity);
+    background-image:
+      linear-gradient(rgba(245,240,232,1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,240,232,1) 1px, transparent 1px);
+    background-size: 80px 80px;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(245,240,232,0.25));
+    opacity: 0.9;
+  }
+  .nav-logo-text { display: flex; flex-direction: column; }
+  .nav-logo-text .brand {
+    font-family: 'Libre Caslon Display', serif;
+    font-size: 1.15rem;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .nav-logo-text .tagline {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232, var(--nav-link-opacity));
+    text-decoration: none;
+    padding: 0.45rem 1rem;
+    border: 1px solid rgba(245,240,232,0.12);
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  .nav-links a:hover {
+    color: var(--cream);
+    border-color: rgba(245,240,232,0.3);
+    background: rgba(245,240,232,0.06);
+  }
+  .nav-links .nav-register {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--cream);
+  }
+  .nav-links .nav-register:hover { background: #b85a43; border-color: #b85a43; }
+
+  .hero-layout {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    max-width: 1200px;
+    width: 90%;
+    align-items: center;
+    padding: 6rem 0;
+  }
+
+  .hero-panel {
+    position: relative;
+    background: rgba(245,240,232, var(--panel-bg-opacity));
+    backdrop-filter: blur(calc(var(--panel-blur) * 1px)) saturate(1.4);
+    -webkit-backdrop-filter: blur(calc(var(--panel-blur) * 1px)) saturate(1.4);
+    border: 1px solid rgba(245,240,232, var(--panel-border-opacity));
+    border-radius: calc(var(--panel-radius) * 1px);
+    padding: 3.5rem;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,240,232,0.15), transparent);
+  }
+
+  .panel-eyebrow {
+    font-size: 0.92rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.75rem;
+    font-weight: 500;
+  }
+
+  .panel-title {
+    font-family: 'Libre Caslon Display', serif;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 0.4em;
+  }
+  .panel-title .accent {
+    color: var(--sage-light);
+    display: block;
+    font-style: italic;
+  }
+
+  .panel-rule { width: 40px; height: 1.5px; background: var(--terracotta); margin: 1.5rem 0; }
+
+  .panel-date { font-size: 1rem; color: rgba(245,240,232,0.6); margin-bottom: 0.5rem; font-weight: 300; }
+  .panel-date strong { color: var(--cream); font-weight: 500; }
+
+  .panel-location {
+    font-size: 0.85rem; color: rgba(245,240,232,0.4); margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .panel-location svg { opacity: 0.5; flex-shrink: 0; }
+
+  .panel-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.25rem;
+    background: var(--terracotta);
+    color: white;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: 1px solid rgba(245,240,232,0.15);
+    transition: all 0.3s ease;
+    box-shadow:
+      0 4px 20px rgba(168,80,58, var(--cta-glow-intensity)),
+      0 0 40px rgba(168,80,58, calc(var(--cta-glow-intensity) * 0.4));
+    animation: ctaGlow 3s ease-in-out infinite;
+  }
+  .panel-cta:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 32px rgba(168,80,58,0.5),
+      0 0 60px rgba(168,80,58,0.25);
+  }
+  .panel-cta svg { transition: transform 0.3s; }
+  .panel-cta:hover svg { transform: translateX(3px); }
+
+  @keyframes ctaGlow {
+    0%, 100% { box-shadow: 0 4px 20px rgba(168,80,58, var(--cta-glow-intensity)), 0 0 40px rgba(168,80,58, calc(var(--cta-glow-intensity) * 0.4)); }
+    50% { box-shadow: 0 4px 28px rgba(168,80,58, calc(var(--cta-glow-intensity) + 0.15)), 0 0 60px rgba(168,80,58, calc(var(--cta-glow-intensity) * 0.6)); }
+  }
+
+  .hero-portrait {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .portrait-frame {
+    position: relative;
+    width: calc(var(--portrait-size) * 1px);
+    height: calc(var(--portrait-size) * 1px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(245,240,232,0.12);
+    box-shadow:
+      0 0 0 12px rgba(138,150,133,0.06),
+      0 0 0 24px rgba(138,150,133,0.03),
+      0 24px 60px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(0.85);
+  }
+
+  .portrait-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--portrait-size) * 1.25px);
+    height: calc(var(--portrait-size) * 1.25px);
+    border-radius: 50%;
+    border: 1px dashed rgba(245,240,232, var(--orbit-opacity));
+    animation: spin 90s linear infinite;
+    transition: all 0.3s ease;
+  }
+  .portrait-orbit::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+  .portrait-orbit-2 {
+    width: calc(var(--portrait-size) * 1.44px);
+    height: calc(var(--portrait-size) * 1.44px);
+    border: 1px solid rgba(245,240,232, calc(var(--orbit-opacity) * 0.6));
+    animation-direction: reverse;
+    animation-duration: 120s;
+  }
+
+  .float-badge {
+    position: absolute;
+    background: rgba(245,240,232, var(--badge-bg-opacity));
+    backdrop-filter: blur(calc(var(--badge-blur) * 1px)) saturate(1.3);
+    -webkit-backdrop-filter: blur(calc(var(--badge-blur) * 1px)) saturate(1.3);
+    border: 1px solid rgba(245,240,232,0.1);
+    border-radius: 100px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    font-weight: 500;
+    white-space: nowrap;
+    animation: floatBadge 6s ease-in-out infinite;
+    transition: all 0.3s ease;
+  }
+  .float-badge .badge-dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  .float-badge-1 { top: 8%; right: -5%; animation-delay: 0s; }
+  .float-badge-1 .badge-dot { background: var(--sage); }
+  .float-badge-2 { bottom: 18%; left: -8%; animation-delay: 2s; }
+  .float-badge-2 .badge-dot { background: var(--gold); }
+  .float-badge-3 { top: 45%; right: -18%; animation-delay: 4s; }
+  .float-badge-3 .badge-dot { background: var(--terracotta); }
+
+  @keyframes floatBadge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .portrait-info { text-align: center; }
+  .portrait-name {
+    font-family: 'Libre Caslon Display', serif;
+    font-size: 1.3rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .portrait-role {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+
+  .hero-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding: 1.5rem;
+    background: rgba(15,31,21,0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(245,240,232,0.06);
+  }
+  .bottom-item { display: flex; align-items: center; gap: 0.75rem; }
+  .bottom-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(245,240,232,0.06);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bottom-icon svg { color: var(--sage); opacity: 0.7; }
+  .bottom-text .bt-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.35); }
+  .bottom-text .bt-value { font-size: 0.85rem; color: rgba(245,240,232,0.75); font-weight: 400; }
+
+  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  @media (max-width: 900px) {
+    .controls { width: 100%; height: auto; max-height: 50vh; position: fixed; bottom: 0; top: auto; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
+    .controls.collapsed { transform: translateY(100%); }
+    .hero-wrap { margin-right: 0; }
+    .hero-layout { grid-template-columns: 1fr; text-align: center; padding: 6rem 0; }
+    .hero-portrait { order: -1; }
+    .portrait-frame { width: 200px !important; height: 200px !important; }
+    .portrait-orbit, .portrait-orbit-2 { display: none; }
+    .float-badge { display: none; }
+    .hero-panel { padding: 2rem; border-radius: 24px; }
+    .panel-location { justify-content: center; }
+    .nav-links { display: none; }
+    .hero-bottom { gap: 1.5rem; flex-wrap: wrap; }
+    .bottom-icon { display: none; }
+    .nav { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Toggle button -->
+<button class="controls-toggle" onclick="toggleControls()">Controls</button>
+
+<!-- Control panel -->
+<div class="controls" id="controls">
+  <div class="ctrl-title">Colors</div>
+
+  <div class="color-row">
+    <input type="color" id="c-cream" value="#F5F0E8" onchange="setColor('--cream', this.value)">
+    <label>Cream (text)</label>
+    <span class="hex-display" id="hex-cream">#F5F0E8</span>
+  </div>
+  <div class="color-row">
+    <input type="color" id="c-forest-deep" value="#0F1F15" onchange="setColor('--forest-deep', this.value); document.body.style.background=this.value">
+    <label>Background</label>
+    <span class="hex-display" id="hex-forest-deep">#0F1F15</span>
+  </div>
+  <div class="color-row">
+    <input type="color" id="c-sage" value="#8A9685" onchange="setColor('--sage', this.value)">
+    <label>Sage (secondary)</label>
+    <span class="hex-display" id="hex-sage">#8A9685</span>
+  </div>
+  <div class="color-row">
+    <input type="color" id="c-sage-light" value="#C0C8BA" onchange="setColor('--sage-light', this.value)">
+    <label>Sage light (italic)</label>
+    <span class="hex-display" id="hex-sage-light">#C0C8BA</span>
+  </div>
+  <div class="color-row">
+    <input type="color" id="c-terracotta" value="#A8503A" onchange="setColor('--terracotta', this.value)">
+    <label>Terracotta (CTA)</label>
+    <span class="hex-display" id="hex-terracotta">#A8503A</span>
+  </div>
+  <div class="color-row">
+    <input type="color" id="c-gold" value="#C9A020" onchange="setColor('--gold', this.value)">
+    <label>Gold (eyebrow)</label>
+    <span class="hex-display" id="hex-gold">#C9A020</span>
+  </div>
+
+  <div class="ctrl-title">Background Image</div>
+
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Opacity</span><span class="ctrl-value" id="v-bg-opacity">0.40</span></div>
+    <input type="range" min="0" max="1" step="0.05" value="0.4" oninput="setVar('--bg-opacity', this.value); show('v-bg-opacity', this.value)">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Saturation</span><span class="ctrl-value" id="v-bg-sat">0.60</span></div>
+    <input type="range" min="0" max="2" step="0.05" value="0.6" oninput="setVar('--bg-saturate', this.value); show('v-bg-sat', this.value)">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Brightness</span><span class="ctrl-value" id="v-bg-bright">0.60</span></div>
+    <input type="range" min="0" max="1.5" step="0.05" value="0.6" oninput="setVar('--bg-brightness', this.value); show('v-bg-bright', this.value)">
+  </div>
+
+  <div class="ctrl-title">Atmosphere</div>
+
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Overlay intensity</span><span class="ctrl-value" id="v-atmo">0.70</span></div>
+    <input type="range" min="0" max="1" step="0.05" value="0.7" oninput="setVar('--atmosphere-intensity', this.value); show('v-atmo', this.value)">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Grid lines</span><span class="ctrl-value" id="v-grid">0.04</span></div>
+    <input type="range" min="0" max="0.15" step="0.005" value="0.04" oninput="setVar('--grid-opacity', this.value); show('v-grid', (+this.value).toFixed(3))">
+  </div>
+
+  <div class="ctrl-title">Glass Panel</div>
+
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Blur</span><span class="ctrl-value" id="v-panel-blur">24px</span></div>
+    <input type="range" min="0" max="60" step="1" value="24" oninput="setVar('--panel-blur', this.value); show('v-panel-blur', this.value+'px')">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Background opacity</span><span class="ctrl-value" id="v-panel-bg">0.06</span></div>
+    <input type="range" min="0" max="0.3" step="0.01" value="0.06" oninput="setVar('--panel-bg-opacity', this.value); show('v-panel-bg', this.value)">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Border opacity</span><span class="ctrl-value" id="v-panel-border">0.10</span></div>
+    <input type="range" min="0" max="0.4" step="0.01" value="0.1" oninput="setVar('--panel-border-opacity', this.value); show('v-panel-border', this.value)">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Border radius</span><span class="ctrl-value" id="v-panel-radius">32px</span></div>
+    <input type="range" min="0" max="60" step="1" value="32" oninput="setVar('--panel-radius', this.value); show('v-panel-radius', this.value+'px')">
+  </div>
+
+  <div class="ctrl-title">Portrait</div>
+
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Size</span><span class="ctrl-value" id="v-portrait">320px</span></div>
+    <input type="range" min="200" max="450" step="5" value="320" oninput="setVar('--portrait-size', this.value); show('v-portrait', this.value+'px')">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Orbit opacity</span><span class="ctrl-value" id="v-orbit">0.07</span></div>
+    <input type="range" min="0" max="0.2" step="0.005" value="0.07" oninput="setVar('--orbit-opacity', this.value); show('v-orbit', this.value)">
+  </div>
+
+  <div class="ctrl-title">Floating Badges</div>
+
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Blur</span><span class="ctrl-value" id="v-badge-blur">16px</span></div>
+    <input type="range" min="0" max="40" step="1" value="16" oninput="setVar('--badge-blur', this.value); show('v-badge-blur', this.value+'px')">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Background opacity</span><span class="ctrl-value" id="v-badge-bg">0.08</span></div>
+    <input type="range" min="0" max="0.3" step="0.01" value="0.08" oninput="setVar('--badge-bg-opacity', this.value); show('v-badge-bg', this.value)">
+  </div>
+
+  <div class="ctrl-title">CTA &amp; Nav</div>
+
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>CTA glow intensity</span><span class="ctrl-value" id="v-cta-glow">0.40</span></div>
+    <input type="range" min="0" max="1" step="0.05" value="0.4" oninput="setVar('--cta-glow-intensity', this.value); show('v-cta-glow', this.value)">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label"><span>Nav link brightness</span><span class="ctrl-value" id="v-nav-opacity">0.65</span></div>
+    <input type="range" min="0.2" max="1" step="0.05" value="0.65" oninput="setVar('--nav-link-opacity', this.value); show('v-nav-opacity', this.value)">
+  </div>
+
+  <div class="ctrl-actions">
+    <button class="ctrl-btn" onclick="resetAll()">Reset</button>
+    <button class="ctrl-btn" onclick="exportCSS()">Export CSS</button>
+  </div>
+  <pre class="export-output" id="export-output"></pre>
+</div>
+
+<!-- Header -->
+<div class="hero-wrap" id="hero-wrap">
+<header class="hero">
+  <div class="hero-bg">
+    <img src="../images/didi-hero.jpg" alt="">
+  </div>
+  <div class="hero-atmosphere"></div>
+  <div class="deco-grid"></div>
+
+  <nav class="nav">
+    <div class="nav-logo">
+      <img src="../images/logo.png" alt="">
+      <div class="nav-logo-text">
+        <span class="brand">Meditation Steps</span>
+        <span class="tagline">Latvia</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Programme</a></li>
+      <li><a href="#">Teacher</a></li>
+      <li><a href="#">Schedule</a></li>
+      <li><a href="#">Location</a></li>
+      <li><a href="#" class="nav-register">Register</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-layout">
+    <div class="hero-panel">
+      <div class="panel-eyebrow">Yoga &amp; Meditation Retreat 2026</div>
+      <h1 class="panel-title">
+        Yoga Retreat
+        <span class="accent">in the Baltics</span>
+      </h1>
+      <div class="panel-rule"></div>
+      <p class="panel-date">
+        <strong>April 30<sup>th</sup> &ndash; May 3<sup>rd</sup>, 2026</strong> &mdash; Open to everyone
+      </p>
+      <p class="panel-location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Dragonfly Land, near Vilnius, Lithuania
+      </p>
+      <a href="#" class="panel-cta">
+        Register Now &mdash; from &euro;300
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-portrait">
+      <div class="portrait-orbit"></div>
+      <div class="portrait-orbit portrait-orbit-2"></div>
+      <div class="float-badge float-badge-1"><span class="badge-dot"></span>30+ years practice</div>
+      <div class="float-badge float-badge-2"><span class="badge-dot"></span>5 traditions</div>
+      <div class="float-badge float-badge-3"><span class="badge-dot"></span>International teacher</div>
+      <div class="portrait-frame">
+        <img src="../images/didi-photo.jpg" alt="Didi Ananda Sanjana">
+      </div>
+      <div class="portrait-info">
+        <div class="portrait-name">Didi Ananda Sanjana</div>
+        <div class="portrait-role">Acharya &middot; Meditation Teacher</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="bottom-item">
+      <div class="bottom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="bottom-text"><div class="bt-label">Duration</div><div class="bt-value">4 days</div></div>
+    </div>
+    <div class="bottom-item">
+      <div class="bottom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="bottom-text"><div class="bt-label">Level</div><div class="bt-value">All welcome</div></div>
+    </div>
+    <div class="bottom-item">
+      <div class="bottom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="bottom-text"><div class="bt-label">Includes</div><div class="bt-value">Accommodation, meals &amp; teachings</div></div>
+    </div>
+  </div>
+</header>
+</div>
+
+<script>
+  const root = document.documentElement;
+
+  function setVar(prop, val) {
+    root.style.setProperty(prop, val);
+  }
+  function setColor(prop, val) {
+    root.style.setProperty(prop, val);
+    const id = prop.replace('--', 'hex-');
+    const el = document.getElementById(id);
+    if (el) el.textContent = val.toUpperCase();
+  }
+  function show(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = parseFloat(val).toFixed(val.includes('px') ? 0 : 2).replace('.00','') + (String(val).includes('px') ? 'px' : '');
+    // Fix display for simple numbers
+    if (el && !String(val).includes('px')) el.textContent = parseFloat(val).toFixed(String(val).includes('.') ? (val.split('.')[1]||'').length > 2 ? 3 : 2 : 0);
+  }
+
+  function toggleControls() {
+    const c = document.getElementById('controls');
+    const h = document.getElementById('hero-wrap');
+    c.classList.toggle('collapsed');
+    h.classList.toggle('full');
+  }
+
+  function resetAll() {
+    // Reset all CSS vars
+    root.style.cssText = '';
+    document.body.style.background = '';
+    // Reset all inputs
+    document.querySelectorAll('input[type="range"]').forEach(el => {
+      el.dispatchEvent(new Event('input'));
+    });
+    // Reset color pickers
+    const defaults = {
+      'c-cream': '#F5F0E8', 'c-forest-deep': '#0F1F15', 'c-sage': '#8A9685',
+      'c-sage-light': '#C0C8BA', 'c-terracotta': '#A8503A', 'c-gold': '#C9A020'
+    };
+    Object.entries(defaults).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) { el.value = val; }
+      const hexEl = document.getElementById('hex-' + id.replace('c-',''));
+      if (hexEl) hexEl.textContent = val;
+    });
+    location.reload();
+  }
+
+  function exportCSS() {
+    const el = document.getElementById('export-output');
+    const cs = getComputedStyle(root);
+    const vars = [
+      '--cream', '--forest', '--forest-deep', '--sage', '--sage-light',
+      '--terracotta', '--terracotta-light', '--gold',
+      '--bg-opacity', '--bg-saturate', '--bg-brightness',
+      '--panel-blur', '--panel-bg-opacity', '--panel-border-opacity', '--panel-radius',
+      '--grid-opacity', '--portrait-size', '--orbit-opacity',
+      '--badge-blur', '--badge-bg-opacity',
+      '--cta-glow-intensity', '--atmosphere-intensity', '--nav-link-opacity'
+    ];
+    let css = ':root {\n';
+    vars.forEach(v => {
+      const val = cs.getPropertyValue(v).trim();
+      if (val) css += `  ${v}: ${val};\n`;
+    });
+    css += '}';
+    el.textContent = css;
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Header Variant 1 — Cinematic Editorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5F0E8;
+    --forest: #1E3828;
+    --sage: #7A9E87;
+    --terracotta: #A8503A;
+    --gold: #C4960A;
+    --dark: #0A0F0C;
+  }
+
+  body { background: var(--dark); font-family: 'Outfit', sans-serif; }
+
+  /* ═══════════════════════════════════════════════
+     VARIANT 1: CINEMATIC EDITORIAL
+     Full-viewport dark atmosphere with the abstract
+     spiral image, large editorial serif typography,
+     horizontal rule accents, and a film-grain overlay.
+     Think: Condé Nast meets spiritual retreat.
+     ═══════════════════════════════════════════════ */
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--dark);
+  }
+
+  /* Background image — the abstract golden spiral */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.55) saturate(0.7);
+  }
+  /* Cinematic letterbox gradient */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,15,12,0.9) 0%, rgba(10,15,12,0.15) 35%, rgba(10,15,12,0.1) 55%, rgba(10,15,12,0.85) 100%),
+      linear-gradient(90deg, rgba(10,15,12,0.5) 0%, transparent 30%, transparent 70%, rgba(10,15,12,0.5) 100%);
+  }
+
+  /* Film grain overlay */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.035;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  /* Top nav bar */
+  .nav {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 3.5rem;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+  .nav-logo span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--cream); }
+
+  /* Main hero content */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  .hero-eyebrow .line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .hero-eyebrow span {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 0.3em;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--sage);
+    opacity: 0.85;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.55);
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+  .hero-subtitle strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.75rem;
+    border: 1px solid rgba(245,240,232,0.2);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .hero-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+  }
+  .hero-cta:hover::before { transform: scaleX(1); }
+  .hero-cta:hover { border-color: var(--terracotta); }
+  .hero-cta svg {
+    transition: transform 0.3s ease;
+  }
+  .hero-cta:hover svg { transform: translateX(4px); }
+
+  /* Bottom bar */
+  .hero-bottom {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3.5rem;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    animation: fadeUp 1s ease 1s both;
+  }
+  .hero-bottom-item {
+    text-align: center;
+  }
+  .hero-bottom-item .label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 0.35rem;
+  }
+  .hero-bottom-item .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.8);
+  }
+  .hero-bottom-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(245,240,232,0.1);
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1s ease 1.2s both;
+  }
+  .scroll-hint span {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(245,240,232,0.3), transparent);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.3; transform: scaleY(0.6); }
+  }
+
+  @media (max-width: 768px) {
+    .nav { padding: 1.5rem; }
+    .nav-links { display: none; }
+    .hero-bottom { padding: 1.25rem 1.5rem; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .hero-bottom-divider { display: none; }
+    .hero-title { font-size: clamp(2.8rem, 10vw, 5rem); }
+    .scroll-hint { bottom: 6.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg">
+    <img src="../images/didi-hero.jpg" alt="">
+  </div>
+
+  <nav class="nav">
+    <div class="nav-logo">
+      <img src="../images/logo.png" alt="">
+      <span>Meditation Steps</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Programme</a></li>
+      <li><a href="#">Teacher</a></li>
+      <li><a href="#">Schedule</a></li>
+      <li><a href="#">Location</a></li>
+      <li><a href="#" style="color:var(--cream);border:1px solid rgba(245,240,232,0.25);padding:0.4rem 1.25rem;border-radius:2px;">Register</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="line"></div>
+      <span>Lithuania &middot; April 30 &ndash; May 3, 2026</span>
+      <div class="line"></div>
+    </div>
+    <h1 class="hero-title">Yoga Retreat<br><em>in the Baltics</em></h1>
+    <p class="hero-subtitle">
+      <strong>April 30<sup>th</sup> &ndash; May 3<sup>rd</sup>, 2026</strong> &mdash; Open to everyone
+    </p>
+    <a href="#" class="hero-cta">
+      Register Now
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Discover</span>
+    <div class="scroll-line"></div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-bottom-item">
+      <div class="label">Location</div>
+      <div class="value">Dragonfly Land, near Vilnius</div>
+    </div>
+    <div class="hero-bottom-divider"></div>
+    <div class="hero-bottom-item">
+      <div class="label">Duration</div>
+      <div class="value">4 days of immersion</div>
+    </div>
+    <div class="hero-bottom-divider"></div>
+    <div class="hero-bottom-item">
+      <div class="label">Guide</div>
+      <div class="value">Didi Ananda Sanjana</div>
+    </div>
+    <div class="hero-bottom-divider"></div>
+    <div class="hero-bottom-item">
+      <div class="label">Early bird</div>
+      <div class="value">from &euro;300</div>
+    </div>
+  </div>
+</header>
+
+</body>
+</html>
